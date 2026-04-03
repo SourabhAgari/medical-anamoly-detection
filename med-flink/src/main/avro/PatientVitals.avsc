@@ -1,0 +1,19 @@
+{
+  "namespace": "com.healthcare.vitals.avro",
+  "type": "record",
+  "name": "PatientVitals",
+  "doc": "A single vital-signs reading captured from a bedside monitoring device.",
+  "fields": [
+    {"name": "vitalId",            "type": "string",  "doc": "Unique reading ID (UUID)"},
+    {"name": "patientId",          "type": "string",  "doc": "Hospital patient identifier"},
+    {"name": "wardId",             "type": "string",  "doc": "Ward/unit where the device is located"},
+    {"name": "deviceId",           "type": ["null", "string"], "default": null, "doc": "Device serial number"},
+    {"name": "measuredAt",         "type": {"type": "long", "logicalType": "timestamp-millis"}, "doc": "UTC timestamp of reading"},
+    {"name": "heartRate",          "type": ["null", "double"], "default": null, "doc": "Heart rate in beats per minute"},
+    {"name": "spo2",               "type": ["null", "double"], "default": null, "doc": "Peripheral oxygen saturation (%)"},
+    {"name": "systolicBp",         "type": ["null", "double"], "default": null, "doc": "Systolic blood pressure (mmHg)"},
+    {"name": "diastolicBp",        "type": ["null", "double"], "default": null, "doc": "Diastolic blood pressure (mmHg)"},
+    {"name": "temperatureCelsius", "type": ["null", "double"], "default": null, "doc": "Body temperature in Celsius"},
+    {"name": "respiratoryRate",    "type": ["null", "double"], "default": null, "doc": "Respiratory rate (breaths per minute)"}
+  ]
+}

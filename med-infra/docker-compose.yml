@@ -1,0 +1,228 @@
+---
+# =============================================================================
+# Medical Anomaly Detection — Local Kafka Cluster
+# Mode     : KRaft (no ZooKeeper) — Confluent Platform 7.7.x
+# Topology : 3 combined controller+broker nodes  |  RF=3  |  min-ISR=2
+# Extras   : Schema Registry, Redpanda Console (UI)
+# Upgrade  : Replace advertised listener IPs/hostnames for cloud/k8s deploy
+# =============================================================================
+
+name: med-kafka
+
+x-kafka-common: &kafka-common
+  image: confluentinc/cp-kafka:${CONFLUENT_PLATFORM_VERSION}
+  restart: on-failure
+  networks:
+    - kafka-net
+  ulimits:
+    nofile:
+      soft: 65536
+      hard: 65536
+
+# ── Shared broker environment (overrides per broker below) ──────────────────
+x-kafka-env-common: &kafka-env-common
+  KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+  KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+  KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+
+  # KRaft quorum — all 3 nodes vote
+  KAFKA_CONTROLLER_QUORUM_VOTERS: 1@broker-1:29093,2@broker-2:29093,3@broker-3:29093
+  CLUSTER_ID: ${KAFKA_CLUSTER_ID}
+
+  # Durability — non-negotiable for medical data
+  KAFKA_DEFAULT_REPLICATION_FACTOR: ${KAFKA_DEFAULT_REPLICATION_FACTOR}
+  KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: ${KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR}
+  KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: ${KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR}
+  KAFKA_MIN_INSYNC_REPLICAS: ${KAFKA_MIN_INSYNC_REPLICAS}
+  KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: ${KAFKA_TRANSACTION_STATE_LOG_MIN_ISR}
+
+  # Partition defaults
+  KAFKA_NUM_PARTITIONS: ${KAFKA_NUM_PARTITIONS}
+
+  # Retention
+  KAFKA_LOG_RETENTION_HOURS: ${KAFKA_LOG_RETENTION_HOURS}
+  KAFKA_LOG_SEGMENT_BYTES: ${KAFKA_LOG_SEGMENT_BYTES}
+  KAFKA_LOG_RETENTION_CHECK_INTERVAL_MS: ${KAFKA_LOG_RETENTION_CHECK_INTERVAL_MS}
+
+  # Governance
+  KAFKA_AUTO_CREATE_TOPICS_ENABLE: ${KAFKA_AUTO_CREATE_TOPICS_ENABLE}
+  KAFKA_DELETE_TOPIC_ENABLE: ${KAFKA_DELETE_TOPIC_ENABLE}
+
+  # Consumer group rebalance — 0 ms for local dev speed
+  KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+
+  # Log dirs
+  KAFKA_LOG_DIRS: /var/lib/kafka/data
+
+services:
+
+  # ── Broker 1 ──────────────────────────────────────────────────────────────
+  broker-1:
+    <<: *kafka-common
+    container_name: broker-1
+    hostname: broker-1
+    ports:
+      - "9092:9092"           # external client access
+      - "${BROKER1_JMX_PORT}:9101"
+    environment:
+      <<: *kafka-env-common
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: CONTROLLER://broker-1:29093,INTERNAL://broker-1:29092,EXTERNAL://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://broker-1:29092,EXTERNAL://localhost:9092
+      KAFKA_JMX_PORT: 9101
+      KAFKA_JMX_HOSTNAME: localhost
+    volumes:
+      - broker-1-data:/var/lib/kafka/data
+    healthcheck:
+      test: ["CMD", "kafka-broker-api-versions", "--bootstrap-server", "localhost:9092"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+
+  # ── Broker 2 ──────────────────────────────────────────────────────────────
+  broker-2:
+    <<: *kafka-common
+    container_name: broker-2
+    hostname: broker-2
+    ports:
+      - "9093:9093"
+      - "${BROKER2_JMX_PORT}:9102"
+    environment:
+      <<: *kafka-env-common
+      KAFKA_NODE_ID: 2
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: CONTROLLER://broker-2:29093,INTERNAL://broker-2:29092,EXTERNAL://0.0.0.0:9093
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://broker-2:29092,EXTERNAL://localhost:9093
+      KAFKA_JMX_PORT: 9102
+      KAFKA_JMX_HOSTNAME: localhost
+    volumes:
+      - broker-2-data:/var/lib/kafka/data
+    healthcheck:
+      test: ["CMD", "kafka-broker-api-versions", "--bootstrap-server", "localhost:9093"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+
+  # ── Broker 3 ──────────────────────────────────────────────────────────────
+  broker-3:
+    <<: *kafka-common
+    container_name: broker-3
+    hostname: broker-3
+    ports:
+      - "9094:9094"
+      - "${BROKER3_JMX_PORT}:9103"
+    environment:
+      <<: *kafka-env-common
+      KAFKA_NODE_ID: 3
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: CONTROLLER://broker-3:29093,INTERNAL://broker-3:29092,EXTERNAL://0.0.0.0:9094
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://broker-3:29092,EXTERNAL://localhost:9094
+      KAFKA_JMX_PORT: 9103
+      KAFKA_JMX_HOSTNAME: localhost
+    volumes:
+      - broker-3-data:/var/lib/kafka/data
+    healthcheck:
+      test: ["CMD", "kafka-broker-api-versions", "--bootstrap-server", "localhost:9094"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+
+  # ── Schema Registry ───────────────────────────────────────────────────────
+  # Enforces Avro/Protobuf schema contracts — critical for medical data pipelines
+  schema-registry:
+    image: confluentinc/cp-schema-registry:${CONFLUENT_PLATFORM_VERSION}
+    container_name: schema-registry
+    hostname: schema-registry
+    restart: on-failure
+    networks:
+      - kafka-net
+    ports:
+      - "${SCHEMA_REGISTRY_PORT}:8081"
+    depends_on:
+      broker-1:
+        condition: service_healthy
+      broker-2:
+        condition: service_healthy
+      broker-3:
+        condition: service_healthy
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: broker-1:29092,broker-2:29092,broker-3:29092
+      SCHEMA_REGISTRY_KAFKASTORE_TOPIC: _schemas
+      SCHEMA_REGISTRY_KAFKASTORE_TOPIC_REPLICATION_FACTOR: 3
+      SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
+      SCHEMA_REGISTRY_DEBUG: "false"
+      # Schema compatibility: FULL_TRANSITIVE is safest for medical data
+      SCHEMA_REGISTRY_SCHEMA_COMPATIBILITY_LEVEL: FULL_TRANSITIVE
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/subjects"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+
+  # ── Topic Initializer ─────────────────────────────────────────────────────
+  # One-shot container: creates all required topics on first boot
+  # In prod: replace with Terraform (Confluent provider) or Helm chart hooks
+  kafka-topic-init:
+    image: confluentinc/cp-kafka:${CONFLUENT_PLATFORM_VERSION}
+    container_name: kafka-topic-init
+    networks:
+      - kafka-net
+    depends_on:
+      broker-1:
+        condition: service_healthy
+      broker-2:
+        condition: service_healthy
+      broker-3:
+        condition: service_healthy
+    volumes:
+      - ./kafka/scripts/create-topics.sh:/create-topics.sh:ro
+    entrypoint: ["/bin/bash", "/create-topics.sh"]
+    restart: "no"
+
+  # ── Redpanda Console (Kafka UI) ───────────────────────────────────────────
+  kafka-ui:
+    image: redpandadata/console:v2.7.2
+    container_name: kafka-ui
+    hostname: kafka-ui
+    restart: on-failure
+    networks:
+      - kafka-net
+    ports:
+      - "${KAFKA_UI_PORT}:8080"
+    depends_on:
+      broker-1:
+        condition: service_healthy
+      schema-registry:
+        condition: service_healthy
+    environment:
+      KAFKA_BROKERS: broker-1:29092,broker-2:29092,broker-3:29092
+      KAFKA_SCHEMAREGISTRY_ENABLED: "true"
+      KAFKA_SCHEMAREGISTRY_URLS: http://schema-registry:8081
+      SERVER_LISTENPORT: 8080
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:8080/admin/health"]
+      interval: 20s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+# ── Named volumes (survive container restarts) ────────────────────────────
+volumes:
+  broker-1-data:
+    driver: local
+  broker-2-data:
+    driver: local
+  broker-3-data:
+    driver: local
+
+# ── Isolated network (mirrors prod VPC isolation) ────────────────────────
+networks:
+  kafka-net:
+    driver: bridge
+    name: med-kafka-net

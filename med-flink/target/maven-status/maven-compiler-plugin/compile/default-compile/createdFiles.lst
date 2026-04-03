@@ -1,0 +1,15 @@
+com/healthcare/vitals/avro/VitalRule.class
+com/healthcare/vitals/avro/PatientVitals.class
+com/healthcare/vitals/operator/AnomalyDetectionFunction.class
+com/healthcare/vitals/avro/PatientVitals$Builder.class
+com/healthcare/vitals/source/WatermarkStrategyFactory.class
+com/healthcare/vitals/job/JobConfig.class
+com/healthcare/vitals/avro/AlertSeverity.class
+com/healthcare/vitals/source/KafkaSourceFactory.class
+com/healthcare/vitals/job/VitalsAnomalyDetectionJob.class
+com/healthcare/vitals/source/KafkaSourceFactory$FaultTolerantDeserializer.class
+com/healthcare/vitals/job/JobConfig$Builder.class
+com/healthcare/vitals/avro/AlertEvent.class
+com/healthcare/vitals/sink/KafkaSinkFactory.class
+com/healthcare/vitals/avro/AlertEvent$Builder.class
+com/healthcare/vitals/config/TopicNames.class

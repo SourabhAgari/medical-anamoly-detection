@@ -1,0 +1,54 @@
+# =============================================================================
+# Flink Cluster Configuration — Local Development
+# Production: externalise via ConfigMap (k8s) or Flink Operator values.yaml
+# =============================================================================
+
+# ── JobManager ────────────────────────────────────────────────────────────────
+jobmanager.rpc.address: flink-jobmanager
+jobmanager.rpc.port: 6123
+jobmanager.memory.process.size: 1600m
+
+# ── TaskManager ───────────────────────────────────────────────────────────────
+taskmanager.memory.process.size: 2048m
+# 4 slots = can run 4 parallel task chains concurrently on one TM
+taskmanager.numberOfTaskSlots: 4
+
+# ── Parallelism ───────────────────────────────────────────────────────────────
+parallelism.default: 1
+
+# ── Heartbeat (Apple Silicon / Rosetta tolerance) ─────────────────────────────
+# Default timeout is 50s — too tight under Rosetta x86 emulation where GC pauses
+# can cause the TM to miss heartbeats. 120s gives headroom without hiding real failures.
+heartbeat.timeout: 120000
+heartbeat.interval: 10000
+
+# ── Pekko RPC (Apple Silicon / Rosetta tolerance) ─────────────────────────────
+# Default ask.timeout is 10s — too tight when JobManager is under GC or checkpoint
+# pressure on Rosetta. 60s matches the headroom given to heartbeats above.
+pekko.ask.timeout: 60 s
+
+# ── Checkpointing ─────────────────────────────────────────────────────────────
+# Filesystem backend — persist to a local bind-mount so checkpoints survive TM restart
+state.backend: hashmap
+state.checkpoints.dir: file:///opt/flink/checkpoints
+# Retain last 3 completed checkpoints
+state.checkpoints.num-retained: 3
+
+# ── Web UI ────────────────────────────────────────────────────────────────────
+rest.port: 8081
+rest.address: 0.0.0.0
+# Allow job submission via REST (required for flink run -m REST endpoint)
+web.submit.enable: true
+web.cancel.enable: true
+
+# ── Metrics ───────────────────────────────────────────────────────────────────
+# Reporter disabled locally; enable Prometheus reporter in prod
+# metrics.reporter.prom.factory.class: org.apache.flink.metrics.prometheus.PrometheusReporterFactory
+# metrics.reporter.prom.port: 9249
+
+# ── Security ─────────────────────────────────────────────────────────────────
+# TLS disabled locally; enable in prod with keystore/truststore paths
+security.ssl.enabled: false
+
+# ── Logging ───────────────────────────────────────────────────────────────────
+env.log.level: INFO

@@ -1,0 +1,101 @@
+---
+# =============================================================================
+# Medical Anomaly Detection — Flink Cluster
+# Joins med-kafka-net so containers resolve broker-*/schema-registry hostnames.
+#
+# Start order:
+#   1. cd med-infra && docker compose up -d      (Kafka + Schema Registry)
+#   2. cd med-flink  && docker compose up -d      (this file)
+#   3. ./scripts/submit-job.sh                    (submit the fat jar)
+# =============================================================================
+
+name: med-flink
+
+# ── Shared job env vars (injected into both JM and TM) ───────────────────────
+x-job-env: &job-env
+  KAFKA_BOOTSTRAP: "broker-1:29092,broker-2:29092,broker-3:29092"
+  SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
+  KAFKA_CONSUMER_GROUP: "vitals-anomaly-detector"
+  KAFKA_AUTO_OFFSET_RESET: "latest"
+  FLINK_PARALLELISM: "1"
+  FLINK_CHECKPOINT_INTERVAL_MS: "30000"
+
+# ── Shared volume mounts ──────────────────────────────────────────────────────
+x-flink-volumes: &flink-volumes
+  - ./flink-conf/config.yaml:/opt/flink/conf/config.yaml:ro
+  - flink-checkpoints:/opt/flink/checkpoints
+  - ./target/med-flink-1.0.0-SNAPSHOT-shaded.jar:/opt/flink/jobs/med-flink.jar:ro
+  # Log files on host — tail with: tail -f logs/taskmanager/*.log
+  - ./logs/jobmanager:/opt/flink/log
+
+services:
+
+  # ── JobManager ──────────────────────────────────────────────────────────────
+  flink-jobmanager:
+    image: apache/flink:1.19.1-scala_2.12-java11
+    container_name: flink-jobmanager
+    hostname: flink-jobmanager
+    # Ensure checkpoint dir is owned by flink user (uid 9999) before starting JM
+    command: >
+      bash -c "mkdir -p /opt/flink/checkpoints && chown -R flink:flink /opt/flink/checkpoints && /docker-entrypoint.sh jobmanager"
+    user: root
+    restart: on-failure
+    networks:
+      - kafka-net
+      - flink-net
+    ports:
+      - "8082:8081"   # Flink Web UI  → http://localhost:8082
+      - "6123:6123"   # RPC (TM registration)
+    volumes: *flink-volumes
+    environment:
+      <<: *job-env
+      FLINK_PROPERTIES: |
+        jobmanager.rpc.address: flink-jobmanager
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:8081/overview"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+
+  # ── TaskManager ─────────────────────────────────────────────────────────────
+  flink-taskmanager:
+    image: apache/flink:1.19.1-scala_2.12-java11
+    container_name: flink-taskmanager
+    hostname: flink-taskmanager
+    command: taskmanager
+    restart: on-failure
+    networks:
+      - kafka-net
+      - flink-net
+    volumes:
+      - ./flink-conf/config.yaml:/opt/flink/conf/config.yaml:ro
+      - flink-checkpoints:/opt/flink/checkpoints
+      - ./target/med-flink-1.0.0-SNAPSHOT-shaded.jar:/opt/flink/jobs/med-flink.jar:ro
+      - ./logs/taskmanager:/opt/flink/log
+    depends_on:
+      flink-jobmanager:
+        condition: service_healthy
+    environment:
+      <<: *job-env
+      FLINK_PROPERTIES: |
+        jobmanager.rpc.address: flink-jobmanager
+        taskmanager.numberOfTaskSlots: 4
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://flink-jobmanager:8081/taskmanagers | grep -q taskmanagers"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+
+volumes:
+  flink-checkpoints:
+    driver: local
+
+networks:
+  kafka-net:
+    external: true
+    name: med-kafka-net
+  flink-net:
+    driver: bridge
+    name: med-flink-net
