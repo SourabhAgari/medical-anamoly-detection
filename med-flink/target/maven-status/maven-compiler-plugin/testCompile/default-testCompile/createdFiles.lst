@@ -1,3 +1,5 @@
-com/healthcare/vitals/operator/AnomalyDetectionFunctionTest$VitalsCustomizer.class
+com/healthcare/vitals/source/FaultTolerantDeserializerTest$ListCollector.class
 com/healthcare/vitals/operator/AnomalyDetectionFunctionTest.class
+com/healthcare/vitals/source/FaultTolerantDeserializerTest.class
+com/healthcare/vitals/operator/AnomalyDetectionFunctionTest$VitalsCustomizer.class
 com/healthcare/vitals/operator/AnomalyDetectionFunctionTest$ListCollector.class

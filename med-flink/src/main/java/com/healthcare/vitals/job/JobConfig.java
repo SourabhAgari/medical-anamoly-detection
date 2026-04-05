@@ -104,8 +104,8 @@ public final class JobConfig {
         private String consumerGroup       = "vitals-anomaly-detector";
         private String autoOffsetReset     = "latest";
         private String schemaRegistryUrl   = "http://localhost:8081";
-        private int    parallelism         = 1;
-        private long   checkpointIntervalMs = 30_000L;
+        private int parallelism         = 1;
+        private long checkpointIntervalMs = 30_000L;
 
         public Builder bootstrapServers(String v)     { this.bootstrapServers    = Objects.requireNonNull(v); return this; }
         public Builder consumerGroup(String v)        { this.consumerGroup       = v; return this; }

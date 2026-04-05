@@ -1,0 +1,717 @@
+2026-04-04 09:25:33,865 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] - --------------------------------------------------------------------------------
+2026-04-04 09:25:33,867 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -  Preconfiguration: 
+2026-04-04 09:25:33,867 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] - 
+
+
+RESOURCE_PARAMS extraction logs:
+jvm_params: -Xmx697932173 -Xms697932173 -XX:MaxDirectMemorySize=300647712 -XX:MaxMetaspaceSize=268435456
+dynamic_configs: -D taskmanager.memory.network.min=166429984b -D taskmanager.cpu.cores=4.0 -D taskmanager.memory.task.off-heap.size=0b -D taskmanager.memory.jvm-metaspace.size=268435456b -D external-resources=none -D taskmanager.memory.jvm-overhead.min=214748368b -D taskmanager.memory.framework.off-heap.size=134217728b -D taskmanager.memory.network.max=166429984b -D taskmanager.memory.framework.heap.size=134217728b -D taskmanager.memory.managed.size=665719939b -D taskmanager.memory.task.heap.size=563714445b -D taskmanager.numberOfTaskSlots=4 -D taskmanager.memory.jvm-overhead.max=214748368b
+logs: WARNING: sun.reflect.Reflection.getCallerClass is not supported. This will impact performance.
+INFO  [] - Using standard YAML parser to load flink configuration file from /opt/flink/conf/config.yaml.
+INFO  [] - Loading configuration property: taskmanager.memory.process.size, 2048m
+INFO  [] - Loading configuration property: state.checkpoints.num-retained, 3
+INFO  [] - Loading configuration property: heartbeat.timeout, 120000
+INFO  [] - Loading configuration property: jobmanager.rpc.address, flink-jobmanager
+INFO  [] - Loading configuration property: web.cancel.enable, true
+INFO  [] - Loading configuration property: jobmanager.memory.process.size, 1600m
+INFO  [] - Loading configuration property: heartbeat.interval, 10000
+INFO  [] - Loading configuration property: jobmanager.rpc.port, 6123
+INFO  [] - Loading configuration property: rest.port, 8081
+INFO  [] - Loading configuration property: security.ssl.enabled, false
+INFO  [] - Loading configuration property: parallelism.default, 1
+INFO  [] - Loading configuration property: taskmanager.numberOfTaskSlots, 4
+INFO  [] - Loading configuration property: web.submit.enable, true
+INFO  [] - Loading configuration property: rest.address, 0.0.0.0
+INFO  [] - Loading configuration property: state.backend, hashmap
+INFO  [] - Loading configuration property: env.log.level, INFO
+INFO  [] - Loading configuration property: pekko.ask.timeout, 60 s
+INFO  [] - Loading configuration property: state.checkpoints.dir, file:///opt/flink/checkpoints
+INFO  [] - Final TaskExecutor Memory configuration:
+INFO  [] -   Total Process Memory:          2.000gb (2147483648 bytes)
+INFO  [] -     Total Flink Memory:          1.550gb (1664299824 bytes)
+INFO  [] -       Total JVM Heap Memory:     665.600mb (697932173 bytes)
+INFO  [] -         Framework:               128.000mb (134217728 bytes)
+INFO  [] -         Task:                    537.600mb (563714445 bytes)
+INFO  [] -       Total Off-heap Memory:     921.600mb (966367651 bytes)
+INFO  [] -         Managed:                 634.880mb (665719939 bytes)
+INFO  [] -         Total JVM Direct Memory: 286.720mb (300647712 bytes)
+INFO  [] -           Framework:             128.000mb (134217728 bytes)
+INFO  [] -           Task:                  0 bytes
+INFO  [] -           Network:               158.720mb (166429984 bytes)
+INFO  [] -     JVM Metaspace:               256.000mb (268435456 bytes)
+INFO  [] -     JVM Overhead:                204.800mb (214748368 bytes)
+
+2026-04-04 09:25:33,868 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] - --------------------------------------------------------------------------------
+2026-04-04 09:25:33,868 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -  Starting TaskManager (Version: 1.19.1, Scala: 2.12, Rev:5edb5a9, Date:2024-06-06T14:45:33+02:00)
+2026-04-04 09:25:33,868 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -  OS current user: flink
+2026-04-04 09:25:33,869 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -  Current Hadoop/Kerberos user: <no hadoop dependency found>
+2026-04-04 09:25:33,869 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -  JVM: OpenJDK 64-Bit Server VM - Eclipse Adoptium - 11/11.0.24+8
+2026-04-04 09:25:33,869 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -  Arch: amd64
+2026-04-04 09:25:33,869 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -  Maximum heap size: 666 MiBytes
+2026-04-04 09:25:33,869 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -  JAVA_HOME: /opt/java/openjdk
+2026-04-04 09:25:33,869 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -  No Hadoop Dependency available
+2026-04-04 09:25:33,870 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -  JVM Options:
+2026-04-04 09:25:33,870 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -Xmx697932173
+2026-04-04 09:25:33,870 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -Xms697932173
+2026-04-04 09:25:33,870 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -XX:MaxDirectMemorySize=300647712
+2026-04-04 09:25:33,870 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -XX:MaxMetaspaceSize=268435456
+2026-04-04 09:25:33,871 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -XX:+IgnoreUnrecognizedVMOptions
+2026-04-04 09:25:33,871 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -Dlog.file=/opt/flink/log/flink--taskexecutor-0-flink-taskmanager.log
+2026-04-04 09:25:33,871 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -Dlog4j.configuration=file:/opt/flink/conf/log4j-console.properties
+2026-04-04 09:25:33,871 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -Dlog4j.configurationFile=file:/opt/flink/conf/log4j-console.properties
+2026-04-04 09:25:33,871 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -Dlogback.configurationFile=file:/opt/flink/conf/logback-console.xml
+2026-04-04 09:25:33,871 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -  Program Arguments:
+2026-04-04 09:25:33,872 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     --configDir
+2026-04-04 09:25:33,873 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     /opt/flink/conf
+2026-04-04 09:25:33,873 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -D
+2026-04-04 09:25:33,873 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     taskmanager.memory.network.min=166429984b
+2026-04-04 09:25:33,873 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -D
+2026-04-04 09:25:33,873 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     taskmanager.cpu.cores=4.0
+2026-04-04 09:25:33,873 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -D
+2026-04-04 09:25:33,874 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     taskmanager.memory.task.off-heap.size=0b
+2026-04-04 09:25:33,874 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -D
+2026-04-04 09:25:33,875 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     taskmanager.memory.jvm-metaspace.size=268435456b
+2026-04-04 09:25:33,875 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -D
+2026-04-04 09:25:33,875 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     external-resources=none
+2026-04-04 09:25:33,875 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -D
+2026-04-04 09:25:33,875 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     taskmanager.memory.jvm-overhead.min=214748368b
+2026-04-04 09:25:33,875 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -D
+2026-04-04 09:25:33,876 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     taskmanager.memory.framework.off-heap.size=134217728b
+2026-04-04 09:25:33,876 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -D
+2026-04-04 09:25:33,876 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     taskmanager.memory.network.max=166429984b
+2026-04-04 09:25:33,876 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -D
+2026-04-04 09:25:33,876 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     taskmanager.memory.framework.heap.size=134217728b
+2026-04-04 09:25:33,876 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -D
+2026-04-04 09:25:33,877 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     taskmanager.memory.managed.size=665719939b
+2026-04-04 09:25:33,877 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -D
+2026-04-04 09:25:33,877 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     taskmanager.memory.task.heap.size=563714445b
+2026-04-04 09:25:33,878 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -D
+2026-04-04 09:25:33,878 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     taskmanager.numberOfTaskSlots=4
+2026-04-04 09:25:33,878 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     -D
+2026-04-04 09:25:33,878 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -     taskmanager.memory.jvm-overhead.max=214748368b
+2026-04-04 09:25:33,878 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] -  Classpath: /opt/flink/lib/flink-cep-1.19.1.jar:/opt/flink/lib/flink-connector-files-1.19.1.jar:/opt/flink/lib/flink-csv-1.19.1.jar:/opt/flink/lib/flink-json-1.19.1.jar:/opt/flink/lib/flink-scala_2.12-1.19.1.jar:/opt/flink/lib/flink-table-api-java-uber-1.19.1.jar:/opt/flink/lib/flink-table-planner-loader-1.19.1.jar:/opt/flink/lib/flink-table-runtime-1.19.1.jar:/opt/flink/lib/log4j-1.2-api-2.17.1.jar:/opt/flink/lib/log4j-api-2.17.1.jar:/opt/flink/lib/log4j-core-2.17.1.jar:/opt/flink/lib/log4j-slf4j-impl-2.17.1.jar:/opt/flink/lib/flink-dist-1.19.1.jar::::
+2026-04-04 09:25:33,878 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] - --------------------------------------------------------------------------------
+2026-04-04 09:25:33,879 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] - Registered UNIX signal handlers for [TERM, HUP, INT]
+2026-04-04 09:25:33,882 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] - Maximum number of open file descriptors is 1048576.
+2026-04-04 09:25:33,886 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Using standard YAML parser to load flink configuration file from /opt/flink/conf/config.yaml.
+2026-04-04 09:25:34,010 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: taskmanager.memory.process.size, 2048m
+2026-04-04 09:25:34,011 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: state.checkpoints.num-retained, 3
+2026-04-04 09:25:34,011 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: heartbeat.timeout, 120000
+2026-04-04 09:25:34,011 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: jobmanager.rpc.address, flink-jobmanager
+2026-04-04 09:25:34,012 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: web.cancel.enable, true
+2026-04-04 09:25:34,012 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: jobmanager.memory.process.size, 1600m
+2026-04-04 09:25:34,013 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: heartbeat.interval, 10000
+2026-04-04 09:25:34,013 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: jobmanager.rpc.port, 6123
+2026-04-04 09:25:34,013 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: rest.port, 8081
+2026-04-04 09:25:34,014 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: security.ssl.enabled, false
+2026-04-04 09:25:34,014 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: parallelism.default, 1
+2026-04-04 09:25:34,014 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: taskmanager.numberOfTaskSlots, 4
+2026-04-04 09:25:34,015 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: web.submit.enable, true
+2026-04-04 09:25:34,015 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: rest.address, 0.0.0.0
+2026-04-04 09:25:34,015 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: state.backend, hashmap
+2026-04-04 09:25:34,015 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: env.log.level, INFO
+2026-04-04 09:25:34,015 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: pekko.ask.timeout, 60 s
+2026-04-04 09:25:34,015 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading configuration property: state.checkpoints.dir, file:///opt/flink/checkpoints
+2026-04-04 09:25:34,015 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading dynamic configuration property: taskmanager.memory.network.min, 166429984b
+2026-04-04 09:25:34,016 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading dynamic configuration property: taskmanager.memory.jvm-metaspace.size, 268435456b
+2026-04-04 09:25:34,016 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading dynamic configuration property: taskmanager.memory.task.off-heap.size, 0b
+2026-04-04 09:25:34,016 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading dynamic configuration property: taskmanager.cpu.cores, 4.0
+2026-04-04 09:25:34,016 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading dynamic configuration property: external-resources, none
+2026-04-04 09:25:34,016 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading dynamic configuration property: taskmanager.memory.jvm-overhead.min, 214748368b
+2026-04-04 09:25:34,016 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading dynamic configuration property: taskmanager.memory.framework.off-heap.size, 134217728b
+2026-04-04 09:25:34,018 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading dynamic configuration property: taskmanager.memory.network.max, 166429984b
+2026-04-04 09:25:34,018 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading dynamic configuration property: taskmanager.memory.framework.heap.size, 134217728b
+2026-04-04 09:25:34,020 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading dynamic configuration property: taskmanager.memory.managed.size, 665719939b
+2026-04-04 09:25:34,020 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading dynamic configuration property: taskmanager.memory.task.heap.size, 563714445b
+2026-04-04 09:25:34,020 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading dynamic configuration property: taskmanager.numberOfTaskSlots, 4
+2026-04-04 09:25:34,021 INFO  org.apache.flink.configuration.GlobalConfiguration           [] - Loading dynamic configuration property: taskmanager.memory.jvm-overhead.max, 214748368b
+2026-04-04 09:25:34,079 INFO  org.apache.flink.core.fs.FileSystem                          [] - Hadoop is not in the classpath/dependencies. The extended set of supported File Systems via Hadoop is not available.
+2026-04-04 09:25:34,093 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID not found, creating it: external-resource-gpu
+2026-04-04 09:25:34,108 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID not found, creating it: metrics-datadog
+2026-04-04 09:25:34,109 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID not found, creating it: metrics-influx
+2026-04-04 09:25:34,109 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID not found, creating it: metrics-statsd
+2026-04-04 09:25:34,109 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID not found, creating it: metrics-graphite
+2026-04-04 09:25:34,110 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID not found, creating it: metrics-jmx
+2026-04-04 09:25:34,110 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID not found, creating it: metrics-slf4j
+2026-04-04 09:25:34,110 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID not found, creating it: metrics-prometheus
+2026-04-04 09:25:34,134 INFO  org.apache.flink.runtime.state.changelog.StateChangelogStorageLoader [] - StateChangelogStorageLoader initialized with shortcut names {memory,filesystem}.
+2026-04-04 09:25:34,135 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID found, reusing it: external-resource-gpu
+2026-04-04 09:25:34,135 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID found, reusing it: metrics-datadog
+2026-04-04 09:25:34,135 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID found, reusing it: metrics-influx
+2026-04-04 09:25:34,135 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID found, reusing it: metrics-statsd
+2026-04-04 09:25:34,135 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID found, reusing it: metrics-graphite
+2026-04-04 09:25:34,136 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID found, reusing it: metrics-jmx
+2026-04-04 09:25:34,136 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID found, reusing it: metrics-slf4j
+2026-04-04 09:25:34,136 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID found, reusing it: metrics-prometheus
+2026-04-04 09:25:34,141 INFO  org.apache.flink.runtime.state.changelog.StateChangelogStorageLoader [] - StateChangelogStorageLoader initialized with shortcut names {memory,filesystem}.
+2026-04-04 09:25:34,160 INFO  org.apache.flink.runtime.security.modules.HadoopModuleFactory [] - Cannot create Hadoop Security Module because Hadoop cannot be found in the Classpath.
+2026-04-04 09:25:34,172 INFO  org.apache.flink.runtime.security.modules.JaasModule         [] - Jaas file will be created as /tmp/jaas-6755335785399423403.conf.
+2026-04-04 09:25:34,178 INFO  org.apache.flink.runtime.security.contexts.HadoopSecurityContextFactory [] - Cannot install HadoopSecurityContext because Hadoop cannot be found in the Classpath.
+2026-04-04 09:25:34,441 INFO  org.apache.flink.runtime.util.LeaderRetrievalUtils           [] - Trying to select the network interface and address to use by connecting to the leading JobManager.
+2026-04-04 09:25:34,442 INFO  org.apache.flink.runtime.util.LeaderRetrievalUtils           [] - TaskManager will try to connect for PT10S before falling back to heuristics
+2026-04-04 09:25:34,664 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] - TaskManager will use hostname/address 'flink-taskmanager' (172.18.0.3) for communication.
+2026-04-04 09:25:34,717 INFO  org.apache.flink.runtime.rpc.pekko.PekkoRpcServiceUtils      [] - Trying to start actor system, external address 172.18.0.3:0, bind address 0.0.0.0:0.
+2026-04-04 09:25:35,445 INFO  org.apache.pekko.event.slf4j.Slf4jLogger                     [] - Slf4jLogger started
+2026-04-04 09:25:35,529 INFO  org.apache.pekko.remote.RemoteActorRefProvider               [] - Pekko Cluster not in use - enabling unsafe features anyway because `pekko.remote.use-unsafe-remote-features-outside-cluster` has been enabled.
+2026-04-04 09:25:35,532 INFO  org.apache.pekko.remote.Remoting                             [] - Starting remoting
+2026-04-04 09:25:35,683 INFO  org.apache.pekko.remote.Remoting                             [] - Remoting started; listening on addresses :[pekko.tcp://flink@172.18.0.3:33735]
+2026-04-04 09:25:35,833 INFO  org.apache.flink.runtime.rpc.pekko.PekkoRpcServiceUtils      [] - Actor system started at pekko.tcp://flink@172.18.0.3:33735
+2026-04-04 09:25:35,864 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] - Using working directory: WorkingDirectory(/tmp/tm_172.18.0.3:33735-9bba20)
+2026-04-04 09:25:35,872 INFO  org.apache.flink.runtime.metrics.MetricRegistryImpl          [] - No metrics reporter configured, no metrics will be exposed/reported.
+2026-04-04 09:25:35,872 INFO  org.apache.flink.runtime.metrics.MetricRegistryImpl          [] - No trace reporter configured, no metrics will be exposed/reported.
+2026-04-04 09:25:35,876 INFO  org.apache.flink.runtime.rpc.pekko.PekkoRpcServiceUtils      [] - Trying to start actor system, external address 172.18.0.3:0, bind address 0.0.0.0:0.
+2026-04-04 09:25:35,929 INFO  org.apache.pekko.event.slf4j.Slf4jLogger                     [] - Slf4jLogger started
+2026-04-04 09:25:35,933 INFO  org.apache.pekko.remote.RemoteActorRefProvider               [] - Pekko Cluster not in use - enabling unsafe features anyway because `pekko.remote.use-unsafe-remote-features-outside-cluster` has been enabled.
+2026-04-04 09:25:35,933 INFO  org.apache.pekko.remote.Remoting                             [] - Starting remoting
+2026-04-04 09:25:35,948 INFO  org.apache.pekko.remote.Remoting                             [] - Remoting started; listening on addresses :[pekko.tcp://flink-metrics@172.18.0.3:46089]
+2026-04-04 09:25:35,966 INFO  org.apache.flink.runtime.rpc.pekko.PekkoRpcServiceUtils      [] - Actor system started at pekko.tcp://flink-metrics@172.18.0.3:46089
+2026-04-04 09:25:35,981 INFO  org.apache.flink.runtime.rpc.pekko.PekkoRpcService           [] - Starting RPC endpoint for org.apache.flink.runtime.metrics.dump.MetricQueryService at pekko://flink-metrics/user/rpc/MetricQueryService_172.18.0.3:33735-9bba20 .
+2026-04-04 09:25:36,023 INFO  org.apache.flink.runtime.blob.PermanentBlobCache             [] - Created BLOB cache storage directory /tmp/tm_172.18.0.3:33735-9bba20/blobStorage
+2026-04-04 09:25:36,030 INFO  org.apache.flink.runtime.blob.TransientBlobCache             [] - Created BLOB cache storage directory /tmp/tm_172.18.0.3:33735-9bba20/blobStorage
+2026-04-04 09:25:36,034 INFO  org.apache.flink.runtime.externalresource.ExternalResourceUtils [] - Enabled external resources: []
+2026-04-04 09:25:36,034 INFO  org.apache.flink.runtime.security.token.DelegationTokenReceiverRepository [] - Loading delegation token receivers
+2026-04-04 09:25:36,043 INFO  org.apache.flink.runtime.security.token.DelegationTokenReceiverRepository [] - Delegation token receiver hadoopfs loaded and initialized
+2026-04-04 09:25:36,044 INFO  org.apache.flink.runtime.security.token.DelegationTokenReceiverRepository [] - Delegation token receiver hbase loaded and initialized
+2026-04-04 09:25:36,045 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID found, reusing it: external-resource-gpu
+2026-04-04 09:25:36,046 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID found, reusing it: metrics-datadog
+2026-04-04 09:25:36,047 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID found, reusing it: metrics-influx
+2026-04-04 09:25:36,048 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID found, reusing it: metrics-statsd
+2026-04-04 09:25:36,048 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID found, reusing it: metrics-graphite
+2026-04-04 09:25:36,048 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID found, reusing it: metrics-jmx
+2026-04-04 09:25:36,049 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID found, reusing it: metrics-slf4j
+2026-04-04 09:25:36,049 INFO  org.apache.flink.core.plugin.DefaultPluginManager            [] - Plugin loader with ID found, reusing it: metrics-prometheus
+2026-04-04 09:25:36,050 INFO  org.apache.flink.runtime.security.token.DelegationTokenReceiverRepository [] - Delegation token receivers loaded successfully
+2026-04-04 09:25:36,050 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] - Starting TaskManager with ResourceID: 172.18.0.3:33735-9bba20
+2026-04-04 09:25:36,088 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerServices    [] - Temporary file directory '/tmp': total 223 GB, usable 205 GB (91.93% usable)
+2026-04-04 09:25:36,141 INFO  org.apache.flink.runtime.io.disk.iomanager.IOManager         [] - Created a new FileChannelManager for spilling of task related data to disk (joins, sorting, ...). Used directories:
+	/tmp/flink-io-c9d0fee8-5c9e-4d83-8612-9e22c53da28c
+2026-04-04 09:25:36,160 INFO  org.apache.flink.runtime.io.network.netty.NettyConfig        [] - NettyConfig [server address: /0.0.0.0, server port range: 0, ssl enabled: false, memory segment size (bytes): 32768, transport type: AUTO, number of server threads: 4 (manual), number of client threads: 4 (manual), server connect backlog: 0 (use Netty's default), client connect timeout (sec): 120, send/receive buffer size (bytes): 0 (use Netty's default)]
+2026-04-04 09:25:36,213 INFO  org.apache.flink.runtime.io.network.NettyShuffleServiceFactory [] - Created a new FileChannelManager for storing result partitions of BLOCKING shuffles. Used directories:
+	/tmp/flink-netty-shuffle-ca048e5e-de52-4fc6-a443-8366350a89be
+2026-04-04 09:25:36,414 INFO  org.apache.flink.runtime.io.network.buffer.NetworkBufferPool [] - Allocated 158 MB for network buffer pool (number of memory segments: 5079, bytes per segment: 32768).
+2026-04-04 09:25:36,432 INFO  org.apache.flink.runtime.io.network.NettyShuffleEnvironment  [] - Starting the network environment and its components.
+2026-04-04 09:25:36,554 INFO  org.apache.flink.runtime.io.network.netty.NettyClient        [] - Transport type 'auto': using EPOLL.
+2026-04-04 09:25:36,562 INFO  org.apache.flink.runtime.io.network.netty.NettyClient        [] - Successful initialization (took 128 ms).
+2026-04-04 09:25:36,574 INFO  org.apache.flink.runtime.io.network.netty.NettyServer        [] - Transport type 'auto': using EPOLL.
+2026-04-04 09:25:36,630 INFO  org.apache.flink.runtime.io.network.netty.NettyServer        [] - Successful initialization (took 65 ms). Listening on SocketAddress /0:0:0:0:0:0:0:0%0:39041.
+2026-04-04 09:25:36,630 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerServices    [] - TaskManager data connection initialized successfully; listening internally on port: 39041
+2026-04-04 09:25:36,632 INFO  org.apache.flink.runtime.taskexecutor.KvStateService         [] - Starting the kvState service and its components.
+2026-04-04 09:25:36,671 INFO  org.apache.flink.configuration.Configuration                 [] - Config uses fallback configuration key 'pekko.ask.timeout' instead of key 'taskmanager.slot.timeout'
+2026-04-04 09:25:36,680 INFO  org.apache.flink.runtime.rpc.pekko.PekkoRpcService           [] - Starting RPC endpoint for org.apache.flink.runtime.taskexecutor.TaskExecutor at pekko://flink/user/rpc/taskmanager_0 .
+2026-04-04 09:25:36,708 INFO  org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService [] - Start job leader service.
+2026-04-04 09:25:36,711 INFO  org.apache.flink.runtime.filecache.FileCache                 [] - User file cache uses directory /tmp/flink-dist-cache-6668e1ce-8218-4e78-afa5-f0ede78eb013
+2026-04-04 09:25:36,717 INFO  org.apache.flink.runtime.taskexecutor.TaskExecutor           [] - Connecting to ResourceManager pekko.tcp://flink@flink-jobmanager:6123/user/rpc/resourcemanager_*(00000000000000000000000000000000).
+2026-04-04 09:25:36,991 INFO  org.apache.flink.runtime.taskexecutor.TaskExecutor           [] - Resolved ResourceManager address, beginning registration
+2026-04-04 09:25:37,189 INFO  org.apache.flink.runtime.taskexecutor.TaskExecutor           [] - Successful registration at resource manager pekko.tcp://flink@flink-jobmanager:6123/user/rpc/resourcemanager_* under registration id 86f9046c2ba9585c864fac1908b4a841.
+2026-04-04 09:27:03,292 INFO  org.apache.flink.runtime.taskexecutor.TaskExecutor           [] - Receive slot request fa2f508d58bf1ef80082a39710cc24fb for job 4a7f47cdd8c2fdd35fa19406b6529f21 from resource manager with leader id 00000000000000000000000000000000.
+2026-04-04 09:27:03,301 INFO  org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl [] - Allocated slot for fa2f508d58bf1ef80082a39710cc24fb with resources ResourceProfile{cpuCores=1, taskHeapMemory=134.400mb (140928611 bytes), taskOffHeapMemory=0 bytes, managedMemory=158.720mb (166429984 bytes), networkMemory=39.680mb (41607496 bytes)}.
+2026-04-04 09:27:03,311 INFO  org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService [] - Add job 4a7f47cdd8c2fdd35fa19406b6529f21 for job leader monitoring.
+2026-04-04 09:27:03,313 INFO  org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService [] - Try to register at job manager pekko.tcp://flink@flink-jobmanager:6123/user/rpc/jobmanager_2 with leader id 00000000-0000-0000-0000-000000000000.
+2026-04-04 09:27:03,356 INFO  org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService [] - Resolved JobManager address, beginning registration
+2026-04-04 09:27:03,419 INFO  org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService [] - Successful registration at job manager pekko.tcp://flink@flink-jobmanager:6123/user/rpc/jobmanager_2 for job 4a7f47cdd8c2fdd35fa19406b6529f21.
+2026-04-04 09:27:03,421 INFO  org.apache.flink.runtime.taskexecutor.TaskExecutor           [] - Establish JobManager connection for job 4a7f47cdd8c2fdd35fa19406b6529f21.
+2026-04-04 09:27:03,425 INFO  org.apache.flink.runtime.taskexecutor.TaskExecutor           [] - Offer reserved slots to the leader of job 4a7f47cdd8c2fdd35fa19406b6529f21.
+2026-04-04 09:27:03,540 INFO  org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl [] - Activate slot fa2f508d58bf1ef80082a39710cc24fb.
+2026-04-04 09:27:03,578 INFO  org.apache.flink.runtime.state.TaskExecutorFileMergingManager [] - Registered new file merging snapshot manager for job 4a7f47cdd8c2fdd35fa19406b6529f21.
+2026-04-04 09:27:03,578 INFO  org.apache.flink.runtime.state.changelog.StateChangelogStorageLoader [] - Creating a changelog storage with name 'memory'.
+2026-04-04 09:27:03,590 INFO  org.apache.flink.runtime.state.TaskExecutorChannelStateExecutorFactoryManager [] - Creating the channel state executor factory for job id 4a7f47cdd8c2fdd35fa19406b6529f21
+2026-04-04 09:27:03,601 INFO  org.apache.flink.runtime.taskexecutor.TaskExecutor           [] - Received task Source: kafka-source-vitals-raw (1/1)#0 (c20c46963e35e1b75eb018adb74ecdd6_6fcf6c25517ae2e217a127c66fd8b86f_0_0), deploy into slot with allocation id fa2f508d58bf1ef80082a39710cc24fb.
+2026-04-04 09:27:03,602 INFO  org.apache.flink.runtime.taskmanager.Task                    [] - Source: kafka-source-vitals-raw (1/1)#0 (c20c46963e35e1b75eb018adb74ecdd6_6fcf6c25517ae2e217a127c66fd8b86f_0_0) switched from CREATED to DEPLOYING.
+2026-04-04 09:27:03,604 INFO  org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl [] - Activate slot fa2f508d58bf1ef80082a39710cc24fb.
+2026-04-04 09:27:03,636 INFO  org.apache.flink.runtime.taskmanager.Task                    [] - Loading JAR files for task Source: kafka-source-vitals-raw (1/1)#0 (c20c46963e35e1b75eb018adb74ecdd6_6fcf6c25517ae2e217a127c66fd8b86f_0_0) [DEPLOYING].
+2026-04-04 09:27:03,648 INFO  org.apache.flink.runtime.blob.BlobClient                     [] - Downloading 4a7f47cdd8c2fdd35fa19406b6529f21/p-83804f289687d35776ea48b4fbbabdf1b141d521-22063c6ee3ada8ee198855eabddbdd2f from flink-jobmanager/172.18.0.2:38475
+2026-04-04 09:27:03,678 INFO  org.apache.flink.runtime.taskexecutor.TaskExecutor           [] - Received task anomaly-detection -> kafka-sink-alert-triggered: Writer -> kafka-sink-alert-triggered: Committer (1/1)#0 (c20c46963e35e1b75eb018adb74ecdd6_85e948c5b9e9155f1c904f934ecf78f0_0_0), deploy into slot with allocation id fa2f508d58bf1ef80082a39710cc24fb.
+2026-04-04 09:27:03,680 INFO  org.apache.flink.runtime.taskmanager.Task                    [] - anomaly-detection -> kafka-sink-alert-triggered: Writer -> kafka-sink-alert-triggered: Committer (1/1)#0 (c20c46963e35e1b75eb018adb74ecdd6_85e948c5b9e9155f1c904f934ecf78f0_0_0) switched from CREATED to DEPLOYING.
+2026-04-04 09:27:03,682 INFO  org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl [] - Activate slot fa2f508d58bf1ef80082a39710cc24fb.
+2026-04-04 09:27:03,683 INFO  org.apache.flink.runtime.taskmanager.Task                    [] - Loading JAR files for task anomaly-detection -> kafka-sink-alert-triggered: Writer -> kafka-sink-alert-triggered: Committer (1/1)#0 (c20c46963e35e1b75eb018adb74ecdd6_85e948c5b9e9155f1c904f934ecf78f0_0_0) [DEPLOYING].
+2026-04-04 09:27:04,356 INFO  org.apache.flink.streaming.runtime.tasks.StreamTask          [] - Using job/cluster config to configure application-defined state backend: org.apache.flink.runtime.state.hashmap.HashMapStateBackend@73357fdb
+2026-04-04 09:27:04,358 INFO  org.apache.flink.streaming.runtime.tasks.StreamTask          [] - Using application-defined state backend: org.apache.flink.runtime.state.hashmap.HashMapStateBackend@5fcdc6c1
+2026-04-04 09:27:04,358 INFO  org.apache.flink.runtime.state.StateBackendLoader            [] - State backend loader loads the state backend as HashMapStateBackend
+2026-04-04 09:27:04,367 INFO  org.apache.flink.streaming.runtime.tasks.StreamTask          [] - Using job/cluster config to configure application-defined checkpoint storage: org.apache.flink.runtime.state.storage.FileSystemCheckpointStorage@6d0d2a8b
+2026-04-04 09:27:04,389 INFO  org.apache.flink.runtime.taskmanager.Task                    [] - anomaly-detection -> kafka-sink-alert-triggered: Writer -> kafka-sink-alert-triggered: Committer (1/1)#0 (c20c46963e35e1b75eb018adb74ecdd6_85e948c5b9e9155f1c904f934ecf78f0_0_0) switched from DEPLOYING to INITIALIZING.
+2026-04-04 09:27:04,430 INFO  org.apache.flink.streaming.runtime.tasks.StreamTask          [] - Using job/cluster config to configure application-defined state backend: org.apache.flink.runtime.state.hashmap.HashMapStateBackend@7b328e70
+2026-04-04 09:27:04,431 INFO  org.apache.flink.streaming.runtime.tasks.StreamTask          [] - Using application-defined state backend: org.apache.flink.runtime.state.hashmap.HashMapStateBackend@40e6cac7
+2026-04-04 09:27:04,432 INFO  org.apache.flink.runtime.state.StateBackendLoader            [] - State backend loader loads the state backend as HashMapStateBackend
+2026-04-04 09:27:04,432 INFO  org.apache.flink.streaming.runtime.tasks.StreamTask          [] - Using job/cluster config to configure application-defined checkpoint storage: org.apache.flink.runtime.state.storage.FileSystemCheckpointStorage@6d0d2a8b
+2026-04-04 09:27:04,434 INFO  org.apache.flink.runtime.taskmanager.Task                    [] - Source: kafka-source-vitals-raw (1/1)#0 (c20c46963e35e1b75eb018adb74ecdd6_6fcf6c25517ae2e217a127c66fd8b86f_0_0) switched from DEPLOYING to INITIALIZING.
+2026-04-04 09:27:04,829 INFO  org.apache.flink.runtime.taskmanager.Task                    [] - Source: kafka-source-vitals-raw (1/1)#0 (c20c46963e35e1b75eb018adb74ecdd6_6fcf6c25517ae2e217a127c66fd8b86f_0_0) switched from INITIALIZING to RUNNING.
+2026-04-04 09:27:04,874 INFO  org.apache.kafka.clients.producer.ProducerConfig             [] - ProducerConfig values: 
+	acks = -1
+	auto.include.jmx.reporter = true
+	batch.size = 16384
+	bootstrap.servers = [broker-1:29092, broker-2:29092, broker-3:29092]
+	buffer.memory = 33554432
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = true
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.adaptive.partitioning.enable = true
+	partitioner.availability.timeout.ms = 0
+	partitioner.class = null
+	partitioner.ignore.keys = false
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 3600000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+2026-04-04 09:27:04,880 INFO  org.apache.flink.connector.base.source.reader.SourceReaderBase [] - Adding split(s) to reader: [[Partition: medical.vitals.raw-5, StartingOffset: -3, StoppingOffset: -9223372036854775808], [Partition: medical.vitals.raw-3, StartingOffset: -3, StoppingOffset: -9223372036854775808], [Partition: medical.vitals.raw-4, StartingOffset: -3, StoppingOffset: -9223372036854775808], [Partition: medical.vitals.raw-2, StartingOffset: -3, StoppingOffset: -9223372036854775808], [Partition: medical.vitals.raw-1, StartingOffset: -3, StoppingOffset: -9223372036854775808], [Partition: medical.vitals.raw-0, StartingOffset: -3, StoppingOffset: -9223372036854775808]]
+2026-04-04 09:27:04,888 INFO  org.apache.kafka.clients.consumer.ConsumerConfig             [] - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = latest
+	bootstrap.servers = [broker-1:29092, broker-2:29092, broker-3:29092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = vitals-anomaly-detector-0
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = vitals-anomaly-detector
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+
+2026-04-04 09:27:04,911 INFO  org.apache.kafka.clients.producer.KafkaProducer              [] - [Producer clientId=producer-1] Instantiated an idempotent producer.
+2026-04-04 09:27:04,951 INFO  org.apache.kafka.common.utils.AppInfoParser                  [] - Kafka version: 3.4.0
+2026-04-04 09:27:04,952 INFO  org.apache.kafka.common.utils.AppInfoParser                  [] - Kafka commitId: 2e1947d240607d53
+2026-04-04 09:27:04,952 INFO  org.apache.kafka.common.utils.AppInfoParser                  [] - Kafka startTimeMs: 1775294824947
+2026-04-04 09:27:04,980 WARN  org.apache.kafka.clients.consumer.ConsumerConfig             [] - These configurations '[client.id.prefix, partition.discovery.interval.ms]' were supplied but are not used yet.
+2026-04-04 09:27:04,981 INFO  org.apache.kafka.common.utils.AppInfoParser                  [] - Kafka version: 3.4.0
+2026-04-04 09:27:04,981 INFO  org.apache.kafka.common.utils.AppInfoParser                  [] - Kafka commitId: 2e1947d240607d53
+2026-04-04 09:27:04,983 INFO  org.apache.kafka.common.utils.AppInfoParser                  [] - Kafka startTimeMs: 1775294824981
+2026-04-04 09:27:04,995 INFO  org.apache.flink.connector.base.source.reader.fetcher.SplitFetcher [] - Starting split fetcher 0
+2026-04-04 09:27:04,999 INFO  org.apache.flink.runtime.state.heap.HeapKeyedStateBackendBuilder [] - Finished to build heap keyed state-backend.
+2026-04-04 09:27:05,010 INFO  org.apache.kafka.clients.consumer.KafkaConsumer              [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Assigned to partition(s): medical.vitals.raw-5, medical.vitals.raw-3, medical.vitals.raw-4, medical.vitals.raw-2, medical.vitals.raw-1, medical.vitals.raw-0
+2026-04-04 09:27:05,012 INFO  org.apache.flink.runtime.state.heap.HeapKeyedStateBackend    [] - Initializing heap keyed state backend with stream factory.
+2026-04-04 09:27:05,017 INFO  com.healthcare.vitals.operator.AnomalyDetectionFunction      [] - AnomalyDetectionFunction initialised on task slot 0
+2026-04-04 09:27:05,032 INFO  org.apache.flink.runtime.taskmanager.Task                    [] - anomaly-detection -> kafka-sink-alert-triggered: Writer -> kafka-sink-alert-triggered: Committer (1/1)#0 (c20c46963e35e1b75eb018adb74ecdd6_85e948c5b9e9155f1c904f934ecf78f0_0_0) switched from INITIALIZING to RUNNING.
+2026-04-04 09:27:05,387 INFO  org.apache.kafka.clients.Metadata                            [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Resetting the last seen epoch of partition medical.vitals.raw-2 to 4 since the associated topicId changed from null to _8tF9tznTbaZ-E5TkDd_ng
+2026-04-04 09:27:05,387 INFO  org.apache.kafka.clients.Metadata                            [] - [Producer clientId=producer-1] Cluster ID: MkU3OEVBNTcwNTJENDM2Qk
+2026-04-04 09:27:05,391 INFO  org.apache.kafka.clients.Metadata                            [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Resetting the last seen epoch of partition medical.vitals.raw-3 to 4 since the associated topicId changed from null to _8tF9tznTbaZ-E5TkDd_ng
+2026-04-04 09:27:05,392 INFO  org.apache.kafka.clients.Metadata                            [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Resetting the last seen epoch of partition medical.vitals.raw-5 to 2 since the associated topicId changed from null to _8tF9tznTbaZ-E5TkDd_ng
+2026-04-04 09:27:05,392 INFO  org.apache.kafka.clients.Metadata                            [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Resetting the last seen epoch of partition medical.vitals.raw-1 to 2 since the associated topicId changed from null to _8tF9tznTbaZ-E5TkDd_ng
+2026-04-04 09:27:05,392 INFO  org.apache.kafka.clients.Metadata                            [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Resetting the last seen epoch of partition medical.vitals.raw-4 to 5 since the associated topicId changed from null to _8tF9tznTbaZ-E5TkDd_ng
+2026-04-04 09:27:05,392 INFO  org.apache.kafka.clients.Metadata                            [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Resetting the last seen epoch of partition medical.vitals.raw-0 to 5 since the associated topicId changed from null to _8tF9tznTbaZ-E5TkDd_ng
+2026-04-04 09:27:05,395 INFO  org.apache.kafka.clients.Metadata                            [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cluster ID: MkU3OEVBNTcwNTJENDM2Qk
+2026-04-04 09:27:05,397 INFO  org.apache.kafka.clients.consumer.internals.ConsumerCoordinator [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Discovered group coordinator broker-1:29092 (id: 2147483646 rack: null)
+2026-04-04 09:27:05,465 INFO  org.apache.kafka.clients.consumer.internals.ConsumerCoordinator [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Found no committed offset for partition medical.vitals.raw-1
+2026-04-04 09:27:05,466 INFO  org.apache.kafka.clients.consumer.internals.ConsumerCoordinator [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Found no committed offset for partition medical.vitals.raw-5
+2026-04-04 09:27:05,468 INFO  org.apache.kafka.clients.consumer.internals.ConsumerCoordinator [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Setting offset for partition medical.vitals.raw-0 to the committed offset FetchPosition{offset=3, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[broker-1:29092 (id: 1 rack: null)], epoch=5}}
+2026-04-04 09:27:05,469 INFO  org.apache.kafka.clients.consumer.internals.ConsumerCoordinator [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Setting offset for partition medical.vitals.raw-3 to the committed offset FetchPosition{offset=5, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[broker-1:29092 (id: 1 rack: null)], epoch=4}}
+2026-04-04 09:27:05,469 INFO  org.apache.kafka.clients.consumer.internals.ConsumerCoordinator [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Setting offset for partition medical.vitals.raw-2 to the committed offset FetchPosition{offset=11, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[broker-1:29092 (id: 1 rack: null)], epoch=4}}
+2026-04-04 09:27:05,469 INFO  org.apache.kafka.clients.consumer.internals.ConsumerCoordinator [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Setting offset for partition medical.vitals.raw-4 to the committed offset FetchPosition{offset=2, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[broker-1:29092 (id: 1 rack: null)], epoch=5}}
+2026-04-04 09:27:05,479 INFO  org.apache.kafka.clients.consumer.internals.SubscriptionState [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Resetting offset for partition medical.vitals.raw-1 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[broker-1:29092 (id: 1 rack: null)], epoch=2}}.
+2026-04-04 09:27:05,479 INFO  org.apache.kafka.clients.consumer.internals.SubscriptionState [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Resetting offset for partition medical.vitals.raw-5 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[broker-1:29092 (id: 1 rack: null)], epoch=2}}.
+2026-04-04 09:27:05,699 INFO  org.apache.kafka.clients.producer.internals.TransactionManager [] - [Producer clientId=producer-1] ProducerId set to 4000 with epoch 0
+2026-04-04 09:27:49,480 INFO  com.healthcare.vitals.operator.AnomalyDetectionFunction      [] - Alert fired: rule=HIGH_HEART_RATE severity=HIGH patient=patient-011 observed=130.0 threshold=120.0
+2026-04-04 09:27:49,538 INFO  org.apache.kafka.clients.Metadata                            [] - [Producer clientId=producer-1] Resetting the last seen epoch of partition medical.alert.triggered-3 to 3 since the associated topicId changed from null to r1VmBs5-SwiGFkGk3-of5w
+2026-04-04 09:27:49,538 INFO  org.apache.kafka.clients.Metadata                            [] - [Producer clientId=producer-1] Resetting the last seen epoch of partition medical.alert.triggered-0 to 2 since the associated topicId changed from null to r1VmBs5-SwiGFkGk3-of5w
+2026-04-04 09:27:49,538 INFO  org.apache.kafka.clients.Metadata                            [] - [Producer clientId=producer-1] Resetting the last seen epoch of partition medical.alert.triggered-2 to 5 since the associated topicId changed from null to r1VmBs5-SwiGFkGk3-of5w
+2026-04-04 09:27:49,538 INFO  org.apache.kafka.clients.Metadata                            [] - [Producer clientId=producer-1] Resetting the last seen epoch of partition medical.alert.triggered-1 to 4 since the associated topicId changed from null to r1VmBs5-SwiGFkGk3-of5w
+2026-04-04 09:27:49,539 INFO  org.apache.kafka.clients.Metadata                            [] - [Producer clientId=producer-1] Resetting the last seen epoch of partition medical.alert.triggered-4 to 2 since the associated topicId changed from null to r1VmBs5-SwiGFkGk3-of5w
+2026-04-04 09:27:49,539 INFO  org.apache.kafka.clients.Metadata                            [] - [Producer clientId=producer-1] Resetting the last seen epoch of partition medical.alert.triggered-5 to 5 since the associated topicId changed from null to r1VmBs5-SwiGFkGk3-of5w
+2026-04-04 09:28:29,025 WARN  org.apache.kafka.clients.consumer.internals.ConsumerCoordinator [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Offset commit failed on partition medical.vitals.raw-1 at offset 1: This is not the correct coordinator.
+2026-04-04 09:28:29,029 INFO  org.apache.kafka.clients.consumer.internals.ConsumerCoordinator [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Group coordinator broker-1:29092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: error response NOT_COORDINATOR. isDisconnected: false. Rediscovery will be attempted.
+2026-04-04 09:28:29,030 INFO  org.apache.kafka.clients.consumer.internals.ConsumerCoordinator [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Requesting disconnect from last known coordinator broker-1:29092 (id: 2147483646 rack: null)
+2026-04-04 09:28:29,032 WARN  org.apache.flink.connector.kafka.source.reader.KafkaSourceReader [] - Failed to commit consumer offsets for checkpoint 3
+org.apache.kafka.clients.consumer.RetriableCommitFailedException: Offset commit failed with a retriable exception. You should retry committing the latest consumed offsets.
+Caused by: org.apache.kafka.common.errors.NotCoordinatorException: This is not the correct coordinator.
+2026-04-04 09:28:29,054 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Client requested disconnect from node 2147483646
+2026-04-04 09:28:59,365 INFO  org.apache.kafka.clients.consumer.internals.ConsumerCoordinator [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Discovered group coordinator broker-2:29092 (id: 2147483645 rack: null)
+2026-04-04 09:36:05,593 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Node -1 disconnected.
+2026-04-04 09:36:19,052 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Producer clientId=producer-1] Node -2 disconnected.
+2026-04-04 09:36:19,061 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Producer clientId=producer-1] Node -3 disconnected.
+2026-04-04 09:37:19,072 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Producer clientId=producer-1] Node 1 disconnected.
+2026-04-04 10:29:45,188 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 3 due to request timeout.
+2026-04-04 10:29:45,198 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 14922 due to node 3 being disconnected (elapsed time since creation: 1229458ms, elapsed time since send: 1229458ms, request timeout: 30000ms)
+2026-04-04 10:29:45,215 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=2025641155, epoch=4899) to node 3:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 10:55:57,862 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 10:55:57,880 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 15101 due to node 1 being disconnected (elapsed time since creation: 1542938ms, elapsed time since send: 1542938ms, request timeout: 30000ms)
+2026-04-04 10:55:57,884 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 2 due to request timeout.
+2026-04-04 10:55:57,885 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 15100 due to node 2 being disconnected (elapsed time since creation: 1542939ms, elapsed time since send: 1542939ms, request timeout: 30000ms)
+2026-04-04 10:55:57,900 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=701451510, epoch=5077) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 10:55:57,907 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1484015086, epoch=4958) to node 2:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 11:00:55,918 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 2 due to request timeout.
+2026-04-04 11:00:55,929 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 15282 due to node 2 being disconnected (elapsed time since creation: 268518ms, elapsed time since send: 268518ms, request timeout: 30000ms)
+2026-04-04 11:00:55,931 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 3 due to request timeout.
+2026-04-04 11:00:55,933 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 15281 due to node 3 being disconnected (elapsed time since creation: 268518ms, elapsed time since send: 268518ms, request timeout: 30000ms)
+2026-04-04 11:00:55,935 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=114324273, epoch=58) to node 2:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 11:00:55,938 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=183157146, epoch=116) to node 3:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 11:18:26,715 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 11:18:26,722 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 15462 due to node 1 being disconnected (elapsed time since creation: 1021163ms, elapsed time since send: 1021163ms, request timeout: 30000ms)
+2026-04-04 11:18:26,723 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 2 due to request timeout.
+2026-04-04 11:18:26,723 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 15463 due to node 2 being disconnected (elapsed time since creation: 1021163ms, elapsed time since send: 1021163ms, request timeout: 30000ms)
+2026-04-04 11:18:26,723 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 3 due to request timeout.
+2026-04-04 11:18:26,724 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 15461 due to node 3 being disconnected (elapsed time since creation: 1021163ms, elapsed time since send: 1021163ms, request timeout: 30000ms)
+2026-04-04 11:18:26,724 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1617314781, epoch=117) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 11:18:26,726 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=2065088846, epoch=58) to node 2:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 11:18:26,726 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=684142179, epoch=58) to node 3:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 11:40:34,702 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 11:40:34,711 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 15643 due to node 1 being disconnected (elapsed time since creation: 1298321ms, elapsed time since send: 1298321ms, request timeout: 30000ms)
+2026-04-04 11:40:34,712 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 2 due to request timeout.
+2026-04-04 11:40:34,714 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 15645 due to node 2 being disconnected (elapsed time since creation: 1298321ms, elapsed time since send: 1298321ms, request timeout: 30000ms)
+2026-04-04 11:40:34,715 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 3 due to request timeout.
+2026-04-04 11:40:34,716 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 15644 due to node 3 being disconnected (elapsed time since creation: 1298321ms, elapsed time since send: 1298321ms, request timeout: 30000ms)
+2026-04-04 11:40:34,717 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1428740037, epoch=58) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 11:40:34,720 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1668152657, epoch=58) to node 2:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 11:40:34,721 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=302270046, epoch=58) to node 3:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 11:45:27,495 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 11:45:27,498 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 15825 due to node 1 being disconnected (elapsed time since creation: 263391ms, elapsed time since send: 263391ms, request timeout: 30000ms)
+2026-04-04 11:45:27,499 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 2 due to request timeout.
+2026-04-04 11:45:27,499 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 15827 due to node 2 being disconnected (elapsed time since creation: 263390ms, elapsed time since send: 263390ms, request timeout: 30000ms)
+2026-04-04 11:45:27,500 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1977402176, epoch=58) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 11:45:27,501 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=531635853, epoch=58) to node 2:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 12:01:24,773 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 12:01:24,810 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 16011 due to node 1 being disconnected (elapsed time since creation: 927328ms, elapsed time since send: 927328ms, request timeout: 30000ms)
+2026-04-04 12:01:24,814 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 2 due to request timeout.
+2026-04-04 12:01:24,815 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 16009 due to node 2 being disconnected (elapsed time since creation: 927333ms, elapsed time since send: 927332ms, request timeout: 30000ms)
+2026-04-04 12:01:24,817 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 3 due to request timeout.
+2026-04-04 12:01:24,817 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 16010 due to node 3 being disconnected (elapsed time since creation: 927331ms, elapsed time since send: 927331ms, request timeout: 30000ms)
+2026-04-04 12:01:24,818 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1746250690, epoch=59) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 12:01:24,821 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=89093708, epoch=59) to node 2:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 12:01:24,825 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=2091207604, epoch=118) to node 3:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 12:03:24,914 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 12:03:24,918 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 16194 due to node 1 being disconnected (elapsed time since creation: 90302ms, elapsed time since send: 90301ms, request timeout: 30000ms)
+2026-04-04 12:03:24,918 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 2 due to request timeout.
+2026-04-04 12:03:24,918 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 16196 due to node 2 being disconnected (elapsed time since creation: 90301ms, elapsed time since send: 90301ms, request timeout: 30000ms)
+2026-04-04 12:03:24,918 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 3 due to request timeout.
+2026-04-04 12:03:24,919 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 16195 due to node 3 being disconnected (elapsed time since creation: 90301ms, elapsed time since send: 90301ms, request timeout: 30000ms)
+2026-04-04 12:03:24,919 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=726620847, epoch=59) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 12:03:24,920 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=523453036, epoch=59) to node 2:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 12:03:24,920 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=322614954, epoch=59) to node 3:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 12:17:08,647 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 12:17:08,654 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 16376 due to node 1 being disconnected (elapsed time since creation: 794170ms, elapsed time since send: 794170ms, request timeout: 30000ms)
+2026-04-04 12:17:08,657 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 2 due to request timeout.
+2026-04-04 12:17:08,658 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 16378 due to node 2 being disconnected (elapsed time since creation: 794169ms, elapsed time since send: 794169ms, request timeout: 30000ms)
+2026-04-04 12:17:08,658 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 3 due to request timeout.
+2026-04-04 12:17:08,659 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 16377 due to node 3 being disconnected (elapsed time since creation: 794170ms, elapsed time since send: 794170ms, request timeout: 30000ms)
+2026-04-04 12:17:08,661 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=729756851, epoch=58) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 12:17:08,665 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=788648599, epoch=58) to node 2:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 12:17:08,667 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1591337555, epoch=58) to node 3:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 12:38:55,243 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 12:38:55,247 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 16558 due to node 1 being disconnected (elapsed time since creation: 1276829ms, elapsed time since send: 1276828ms, request timeout: 30000ms)
+2026-04-04 12:38:55,248 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 2 due to request timeout.
+2026-04-04 12:38:55,249 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 16560 due to node 2 being disconnected (elapsed time since creation: 1276829ms, elapsed time since send: 1276828ms, request timeout: 30000ms)
+2026-04-04 12:38:55,249 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 3 due to request timeout.
+2026-04-04 12:38:55,249 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 16559 due to node 3 being disconnected (elapsed time since creation: 1276829ms, elapsed time since send: 1276828ms, request timeout: 30000ms)
+2026-04-04 12:38:55,250 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1781301853, epoch=58) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 12:38:55,251 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=162446851, epoch=58) to node 2:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 12:38:55,251 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=366424726, epoch=58) to node 3:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 13:02:15,205 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 13:02:15,223 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 16737 due to node 1 being disconnected (elapsed time since creation: 1370236ms, elapsed time since send: 1370236ms, request timeout: 30000ms)
+2026-04-04 13:02:15,224 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 2 due to request timeout.
+2026-04-04 13:02:15,225 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 16739 due to node 2 being disconnected (elapsed time since creation: 1370236ms, elapsed time since send: 1370236ms, request timeout: 30000ms)
+2026-04-04 13:02:15,226 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 3 due to request timeout.
+2026-04-04 13:02:15,226 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 16738 due to node 3 being disconnected (elapsed time since creation: 1370236ms, elapsed time since send: 1370236ms, request timeout: 30000ms)
+2026-04-04 13:02:15,227 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1526236802, epoch=57) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 13:02:15,230 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1966152945, epoch=57) to node 2:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 13:02:15,232 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1631760776, epoch=57) to node 3:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 13:05:21,812 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 13:05:21,820 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 16919 due to node 1 being disconnected (elapsed time since creation: 157120ms, elapsed time since send: 157120ms, request timeout: 30000ms)
+2026-04-04 13:05:21,821 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 3 due to request timeout.
+2026-04-04 13:05:21,821 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 16920 due to node 3 being disconnected (elapsed time since creation: 157120ms, elapsed time since send: 157120ms, request timeout: 30000ms)
+2026-04-04 13:05:21,823 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=936564142, epoch=58) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 13:05:21,825 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=934825825, epoch=58) to node 3:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 13:11:05,556 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 13:11:05,572 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 17101 due to node 1 being disconnected (elapsed time since creation: 314143ms, elapsed time since send: 314143ms, request timeout: 30000ms)
+2026-04-04 13:11:05,573 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 2 due to request timeout.
+2026-04-04 13:11:05,573 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 17103 due to node 2 being disconnected (elapsed time since creation: 313924ms, elapsed time since send: 313924ms, request timeout: 30000ms)
+2026-04-04 13:11:05,574 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 3 due to request timeout.
+2026-04-04 13:11:05,574 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 17102 due to node 3 being disconnected (elapsed time since creation: 314143ms, elapsed time since send: 314143ms, request timeout: 30000ms)
+2026-04-04 13:11:05,576 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1824337003, epoch=58) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 13:11:05,579 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=250562861, epoch=118) to node 2:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 13:11:05,579 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=283259740, epoch=58) to node 3:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 13:25:52,549 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 13:25:52,552 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 17283 due to node 1 being disconnected (elapsed time since creation: 857411ms, elapsed time since send: 857411ms, request timeout: 30000ms)
+2026-04-04 13:25:52,552 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 2 due to request timeout.
+2026-04-04 13:25:52,552 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 17284 due to node 2 being disconnected (elapsed time since creation: 857411ms, elapsed time since send: 857411ms, request timeout: 30000ms)
+2026-04-04 13:25:52,552 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 3 due to request timeout.
+2026-04-04 13:25:52,553 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 17285 due to node 3 being disconnected (elapsed time since creation: 857409ms, elapsed time since send: 857409ms, request timeout: 30000ms)
+2026-04-04 13:25:52,553 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1402525856, epoch=58) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 13:25:52,554 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=657409779, epoch=58) to node 2:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 13:25:52,554 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1200336357, epoch=58) to node 3:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 13:43:42,929 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 13:43:42,933 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 17465 due to node 1 being disconnected (elapsed time since creation: 1040931ms, elapsed time since send: 1040931ms, request timeout: 30000ms)
+2026-04-04 13:43:42,933 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 2 due to request timeout.
+2026-04-04 13:43:42,934 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 17467 due to node 2 being disconnected (elapsed time since creation: 1040931ms, elapsed time since send: 1040931ms, request timeout: 30000ms)
+2026-04-04 13:43:42,934 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=68185376, epoch=58) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 13:43:42,937 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=824831509, epoch=58) to node 2:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 14:01:01,182 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 14:01:01,185 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 17647 due to node 1 being disconnected (elapsed time since creation: 1008854ms, elapsed time since send: 1008854ms, request timeout: 30000ms)
+2026-04-04 14:01:01,185 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 2 due to request timeout.
+2026-04-04 14:01:01,186 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 17648 due to node 2 being disconnected (elapsed time since creation: 1008854ms, elapsed time since send: 1008854ms, request timeout: 30000ms)
+2026-04-04 14:01:01,187 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=579679905, epoch=58) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 14:01:01,188 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=995525567, epoch=58) to node 2:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 14:09:27,073 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 14:09:27,078 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 17830 due to node 1 being disconnected (elapsed time since creation: 476053ms, elapsed time since send: 476053ms, request timeout: 30000ms)
+2026-04-04 14:09:27,081 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 2 due to request timeout.
+2026-04-04 14:09:27,081 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 17832 due to node 2 being disconnected (elapsed time since creation: 476053ms, elapsed time since send: 476053ms, request timeout: 30000ms)
+2026-04-04 14:09:27,081 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 3 due to request timeout.
+2026-04-04 14:09:27,081 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 17831 due to node 3 being disconnected (elapsed time since creation: 476053ms, elapsed time since send: 476053ms, request timeout: 30000ms)
+2026-04-04 14:09:27,082 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1665754550, epoch=59) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 14:09:27,084 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=783215430, epoch=59) to node 2:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 14:09:27,084 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=918540194, epoch=177) to node 3:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 14:14:45,065 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 14:14:45,068 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 18012 due to node 1 being disconnected (elapsed time since creation: 288530ms, elapsed time since send: 288530ms, request timeout: 30000ms)
+2026-04-04 14:14:45,068 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 2 due to request timeout.
+2026-04-04 14:14:45,068 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 18014 due to node 2 being disconnected (elapsed time since creation: 288530ms, elapsed time since send: 288530ms, request timeout: 30000ms)
+2026-04-04 14:14:45,069 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=380096576, epoch=58) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 14:14:45,072 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1963621567, epoch=58) to node 2:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 14:20:41,763 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 14:20:41,767 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 18194 due to node 1 being disconnected (elapsed time since creation: 326973ms, elapsed time since send: 326973ms, request timeout: 30000ms)
+2026-04-04 14:20:41,767 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 2 due to request timeout.
+2026-04-04 14:20:41,768 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 18193 due to node 2 being disconnected (elapsed time since creation: 326974ms, elapsed time since send: 326974ms, request timeout: 30000ms)
+2026-04-04 14:20:41,768 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 3 due to request timeout.
+2026-04-04 14:20:41,768 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 18195 due to node 3 being disconnected (elapsed time since creation: 326969ms, elapsed time since send: 326969ms, request timeout: 30000ms)
+2026-04-04 14:20:41,769 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=495717644, epoch=58) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 14:20:41,770 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1697290593, epoch=58) to node 2:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 14:20:41,770 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=479567659, epoch=117) to node 3:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 14:25:26,951 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 14:25:26,966 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 18378 due to node 1 being disconnected (elapsed time since creation: 255297ms, elapsed time since send: 255297ms, request timeout: 30000ms)
+2026-04-04 14:25:26,968 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 2 due to request timeout.
+2026-04-04 14:25:26,968 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 18380 due to node 2 being disconnected (elapsed time since creation: 255297ms, elapsed time since send: 255297ms, request timeout: 30000ms)
+2026-04-04 14:25:26,968 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 3 due to request timeout.
+2026-04-04 14:25:26,968 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 18379 due to node 3 being disconnected (elapsed time since creation: 255297ms, elapsed time since send: 255297ms, request timeout: 30000ms)
+2026-04-04 14:25:26,969 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1228186906, epoch=59) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 14:25:26,970 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=195886934, epoch=59) to node 2:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 14:25:26,970 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=393460119, epoch=59) to node 3:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 14:58:40,260 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 14:58:40,264 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 18560 due to node 1 being disconnected (elapsed time since creation: 1963651ms, elapsed time since send: 1963651ms, request timeout: 30000ms)
+2026-04-04 14:58:40,265 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 2 due to request timeout.
+2026-04-04 14:58:40,265 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 18562 due to node 2 being disconnected (elapsed time since creation: 1963651ms, elapsed time since send: 1963651ms, request timeout: 30000ms)
+2026-04-04 14:58:40,265 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 3 due to request timeout.
+2026-04-04 14:58:40,265 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 18561 due to node 3 being disconnected (elapsed time since creation: 1963651ms, elapsed time since send: 1963651ms, request timeout: 30000ms)
+2026-04-04 14:58:40,266 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1445832853, epoch=58) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 14:58:40,267 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=897619892, epoch=58) to node 2:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 14:58:40,267 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1026115755, epoch=58) to node 3:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 15:00:47,687 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 15:00:47,702 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 18742 due to node 1 being disconnected (elapsed time since creation: 97991ms, elapsed time since send: 97991ms, request timeout: 30000ms)
+2026-04-04 15:00:47,702 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 3 due to request timeout.
+2026-04-04 15:00:47,703 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 18743 due to node 3 being disconnected (elapsed time since creation: 97991ms, elapsed time since send: 97991ms, request timeout: 30000ms)
+2026-04-04 15:00:47,704 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=1833463929, epoch=58) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 15:00:47,705 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=460066857, epoch=58) to node 3:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 15:05:29,381 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 1 due to request timeout.
+2026-04-04 15:05:29,386 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 19105 due to node 1 being disconnected (elapsed time since creation: 205719ms, elapsed time since send: 205719ms, request timeout: 30000ms)
+2026-04-04 15:05:29,386 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Disconnecting from node 3 due to request timeout.
+2026-04-04 15:05:29,386 INFO  org.apache.kafka.clients.NetworkClient                       [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Cancelled in-flight FETCH request with correlation id 19106 due to node 3 being disconnected (elapsed time since creation: 205682ms, elapsed time since send: 205682ms, request timeout: 30000ms)
+2026-04-04 15:05:29,387 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=468766649, epoch=118) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 15:05:29,388 INFO  org.apache.kafka.clients.FetchSessionHandler                 [] - [Consumer clientId=vitals-anomaly-detector-0, groupId=vitals-anomaly-detector] Error sending fetch request (sessionId=2017563502, epoch=118) to node 3:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-04-04 15:05:34,674 INFO  org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] - RECEIVED SIGNAL 15: SIGTERM. Shutting down as requested.
+2026-04-04 15:05:34,711 INFO  org.apache.flink.runtime.state.TaskExecutorFileMergingManager [] - Shutting down TaskExecutorFileMergingManager.
+2026-04-04 15:05:34,703 INFO  org.apache.flink.runtime.state.TaskExecutorStateChangelogStoragesManager [] - Shutting down TaskExecutorStateChangelogStoragesManager.
+2026-04-04 15:05:34,710 INFO  org.apache.flink.runtime.state.TaskExecutorLocalStateStoresManager [] - Shutting down TaskExecutorLocalStateStoresManager.
+2026-04-04 15:05:34,716 INFO  org.apache.flink.runtime.blob.PermanentBlobCache             [] - Shutting down BLOB cache
+2026-04-04 15:05:34,706 INFO  org.apache.flink.runtime.blob.TransientBlobCache             [] - Shutting down BLOB cache
+2026-04-04 15:05:34,832 INFO  org.apache.flink.runtime.taskexecutor.TaskExecutor           [] - Stopping TaskExecutor pekko.tcp://flink@172.18.0.3:33735/user/rpc/taskmanager_0.
+2026-04-04 15:05:35,585 INFO  org.apache.pekko.actor.CoordinatedShutdown                   [] - Running CoordinatedShutdown with reason [ActorSystemTerminateReason]
+2026-04-04 15:05:35,604 INFO  org.apache.pekko.remote.RemoteActorRefProvider$RemotingTerminator [] - Shutting down remote daemon.
+2026-04-04 15:05:35,608 INFO  org.apache.pekko.remote.RemoteActorRefProvider$RemotingTerminator [] - Shutting down remote daemon.
+2026-04-04 15:05:35,627 INFO  org.apache.pekko.remote.RemoteActorRefProvider$RemotingTerminator [] - Remote daemon shut down; proceeding with flushing remote transports.
+2026-04-04 15:05:35,628 INFO  org.apache.pekko.remote.RemoteActorRefProvider$RemotingTerminator [] - Remote daemon shut down; proceeding with flushing remote transports.

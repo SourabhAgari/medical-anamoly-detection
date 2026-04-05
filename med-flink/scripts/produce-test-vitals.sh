@@ -78,15 +78,15 @@ add_record() {
 }
 
 # ── Test cases ────────────────────────────────────────────────────────────────
-add_record "patient-001" "130"  "98"  "120" "37.0" "16"  "CRITICAL heart rate (tachycardia)"
-add_record "patient-002" "72"   "85"  "120" "37.0" "16"  "CRITICAL SpO2 < 90%"
-add_record "patient-003" "72"   "98"  "190" "37.0" "16"  "HIGH systolic BP (hypertensive crisis)"
-add_record "patient-004" "72"   "98"  "70"  "37.0" "16"  "CRITICAL low systolic BP (hypotension)"
-add_record "patient-005" "72"   "98"  "120" "40.2" "16"  "MEDIUM high temperature"
-add_record "patient-006" "72"   "98"  "120" "34.0" "16"  "HIGH low temperature (hypothermia)"
-add_record "patient-007" "72"   "98"  "120" "37.0" "35"  "HIGH respiratory rate"
-add_record "patient-008" "35"   "85"  "70"  "37.0" "5"   "CRITICAL multiple: HR + SpO2 + BP + RR"
-add_record "patient-009" "80"   "99"  "120" "37.0" "14"  "NORMAL — should produce NO alert"
+add_record "patient-011" "130"  "98"  "120" "37.0" "16"  "CRITICAL heart rate (tachycardia)"
+#add_record "patient-002" "72"   "85"  "120" "37.0" "16"  "CRITICAL SpO2 < 90%"
+#add_record "patient-003" "72"   "98"  "190" "37.0" "16"  "HIGH systolic BP (hypertensive crisis)"
+#add_record "patient-004" "72"   "98"  "70"  "37.0" "16"  "CRITICAL low systolic BP (hypotension)"
+#add_record "patient-005" "72"   "98"  "120" "40.2" "16"  "MEDIUM high temperature"
+#add_record "patient-006" "72"   "98"  "120" "34.0" "16"  "HIGH low temperature (hypothermia)"
+#add_record "patient-007" "72"   "98"  "120" "37.0" "35"  "HIGH respiratory rate"
+#add_record "patient-008" "35"   "85"  "70"  "37.0" "5"   "CRITICAL multiple: HR + SpO2 + BP + RR"
+#add_record "patient-009" "80"   "99"  "120" "37.0" "14"  "NORMAL — should produce NO alert"
 
 # Produce all records in a single producer invocation
 cat "$TMPFILE" | docker exec -i schema-registry kafka-avro-console-producer \
