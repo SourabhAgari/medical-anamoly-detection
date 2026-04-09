@@ -15,6 +15,11 @@ public final class JobConfig {
     // ── Kafka ────────────────────────────────────────────────────────────────
     private final String bootstrapServers;
     private final String consumerGroup;
+
+    // this property controls where the Kafka consumer starts reading if no committed offsets are found for the group:
+    // - "earliest" = from the beginning of the topic (oldest available records)
+    // - "latest"   = from the end of the topic (new records only)
+    // none - gives exception
     private final String autoOffsetReset;
 
     // ── Schema Registry ──────────────────────────────────────────────────────

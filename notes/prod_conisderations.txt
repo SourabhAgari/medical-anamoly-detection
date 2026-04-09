@@ -1,0 +1,44 @@
+ Production Readiness TODO List
+
+  CRITICAL — Must fix before any production deployment
+
+  - [HIPAA] Pseudonymize patientId in all log statements — AnomalyDetectionFunction.java:64,83,88,100,113,119,133,139,152,158,185 — plain patient identifiers in logs = PHI disclosure violation
+  - [Security] Enable Kafka TLS/SSL — flink-conf/config.yaml:51, docker-compose.yml:16 — all vital signs and alerts transit the network in cleartext
+  - [Reliability] Move checkpoint storage off local Docker volume to S3/GCS/HDFS — flink-conf/config.yaml:33 — local volume loss = no recovery, restart falls back to latest offset, missing alerts
+  - [Observability] Uncomment and enable Prometheus metrics reporter — flink-conf/config.yaml:44–47 — no way to detect a silently failed pipeline in production
+
+  ---
+  HIGH — Fix before first patient goes live
+
+  - [Reliability] Switch sink to EXACTLY_ONCE delivery guarantee with a deterministic transactionalIdPrefix — KafkaSinkFactory.java:53 — job restarts will fire duplicate clinical alerts
+  - [Data Quality] Replace UUID.randomUUID() alertId with a deterministic UUID derived from vitalId + ruleTriggered — AnomalyDetectionFunction.java — non-deterministic ID makes duplicate alert deduplication impossible for consumers
+  - [Data Quality] Replace Instant.now() with event time from measuredAt for alertTime — AnomalyDetectionFunction.java:178 — wall-clock time on delayed records causes alert ordering inconsistency
+  - [Security] Enable Schema Registry authentication — JobConfig.java:62–64 — any process on the Docker network can read all schemas or register malicious ones
+  - [Security] Put Flink REST API behind auth or disable web.submit.enable — flink-conf/config.yaml:41 — unauthenticated endpoint allows anyone to cancel the job or submit arbitrary jars
+  - [Observability] Add custom business metrics — alert counters per severity, records-processed counter, detection latency histogram — AnomalyDetectionFunction.open() — "no alerts" is ambiguous without metrics
+  - [Observability] Set up job health alerting — FAILED/RESTARTING job state must page on-call; no mechanism exists today
+  - [Scalability] Fix submit script to read FLINK_PARALLELISM env var — scripts/submit-job.sh:52 — parallelism is hardcoded to 1 regardless of the env var, job can never scale out
+  - [Scalability] Add a second TaskManager — single TM is a single point of failure; configure Flink HA mode
+  - [Operations] Write a savepoint-based upgrade script — currently upgrading = cancel + redeploy from latest, silently missing messages during the gap
+  - [Testing] Add integration tests using Testcontainers (KafkaContainer + SchemaRegistryContainer + Flink MiniCluster) — the full pipeline has never been exercised end-to-end in a test
+
+  ---
+  MEDIUM — Fix before scaling beyond a pilot ward
+
+  - [Reliability] Switch HashMapStateBackend → RocksDBStateBackend — VitalsAnomalyDetectionJob.java:75 — heap-based state will cause GC pauses at scale
+  - [Reliability] Increase restart strategy attempts and use exponential backoff — VitalsAnomalyDetectionJob.java:78 — 3 attempts × 10s = job gives up in 30s during a slow infrastructure recovery
+  - [Reliability] Implement close() on FaultTolerantDeserializer to flush and close the DLQ producer — KafkaSourceFactory.java:165 — resource leak, buffered DLQ records may be dropped on shutdown
+  - [Reliability] Add a late-data side output with its own DLQ sink — WatermarkStrategyFactory.java:19 — records arriving >30s late are silently dropped with no audit trail
+  - [Security] Run JobManager as non-root user — docker-compose.yml:41 — container security best practice
+  - [Observability] Add MDC correlation IDs (vitalId, pseudonymized patient ref) to log context — no way to trace a single vital reading across source → operator → sink in logs
+  - [Secrets Management] Integrate a secrets manager (Vault, AWS Secrets Manager) — credentials must not live in docker-compose.yml
+  - [Operations] Add idempotency guard to submit-job.sh — running it twice submits two job instances against the same consumer group, splitting partitions and duplicating alerts
+  - [Testing] Add boundary value and Double.NaN tests — AnomalyDetectionFunctionTest.java — NaN > 120.0 is false so a NaN vital silently passes without an alert (possible sensor malfunction masking)
+  - [Data Quality] Add default enum symbol (UNKNOWN_RULE) to VitalRule and AlertSeverity — AlertEvent.avsc:13–30 — adding new enum values will break existing consumers that don't have a default
+
+  ---
+  LOW — Housekeeping
+
+  - [Data Quality] Document diastolicBp as intentionally unevaluated or implement checkDiastolicBP — AnomalyDetectionFunction.java — field is ingested but never checked; diastolic BP <50 is clinically significant
+  - [Testing] Uncomment the 9 commented-out test scenarios in produce-test-vitals.sh — scripts/produce-test-vitals.sh:82–89 — only HIGH_HEART_RATE is currently exercised as a smoke test
+  - [Operations] Increase retained checkpoint count from 3 to at least 10 — flink-conf/config.yaml:37 — 90s rollback window is too tight for a multi-minute cluster restart

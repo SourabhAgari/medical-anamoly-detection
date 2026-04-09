@@ -64,8 +64,9 @@ public class VitalsAnomalyDetectionJob {
 
         // ── Checkpointing ──────────────────────────────────────────────────
         env.enableCheckpointing(config.getCheckpointIntervalMs(), CheckpointingMode.EXACTLY_ONCE);
+        // avoid checkpoint storms give some time for processing to stabilize between checkpoints
         env.getCheckpointConfig().setMinPauseBetweenCheckpoints(config.getCheckpointIntervalMs() / 2);
-        env.getCheckpointConfig().setMaxConcurrentCheckpoints(1);
+        env.getCheckpointConfig().setMaxConcurrentCheckpoints(1); // avoid overlapping checkpoints piling up if processing is slow
         // Retain checkpoint on cancellation so job can resume from last good state
         env.getCheckpointConfig().setExternalizedCheckpointCleanup(
             CheckpointConfig.ExternalizedCheckpointCleanup.RETAIN_ON_CANCELLATION);
