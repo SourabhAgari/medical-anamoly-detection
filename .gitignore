@@ -1,0 +1,32 @@
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Sensitive — never commit
+med-infra/.env
+**/.env
+*.env
+
+# Maven build output
+med-flink/target/
+
+# Flink runtime logs
+med-flink/logs/
+
+# Generated visualisation output
+graphify-out/
+
+# Notes / local scratch files
+notes/*.dmg
+notes/*.html
+
+# Compiled class files (covered by target/ above, but belt-and-suspenders)
+*.class
+
+# Fat JARs
+*.jar
