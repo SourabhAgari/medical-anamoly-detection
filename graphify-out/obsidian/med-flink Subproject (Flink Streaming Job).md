@@ -1,0 +1,16 @@
+---
+source_file: "CLAUDE.md"
+type: "document"
+community: "Project Structure"
+tags:
+  - graphify/document
+  - graphify/EXTRACTED
+  - community/Project_Structure
+---
+
+# med-flink Subproject (Flink Streaming Job)
+
+## Connections
+- [[Medical Anomaly Detection Project]] - `references` [EXTRACTED]
+
+#graphify/document #graphify/EXTRACTED #community/Project_Structure

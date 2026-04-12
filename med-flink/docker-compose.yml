@@ -32,7 +32,10 @@ services:
 
   # ── JobManager ──────────────────────────────────────────────────────────────
   flink-jobmanager:
-    image: apache/flink:1.19.1-scala_2.12-java11
+    build:
+      context: .
+      dockerfile: Dockerfile.flink
+    platform: linux/arm64
     container_name: flink-jobmanager
     hostname: flink-jobmanager
     # Ensure checkpoint dir is owned by flink user (uid 9999) before starting JM
@@ -60,7 +63,10 @@ services:
 
   # ── TaskManager ─────────────────────────────────────────────────────────────
   flink-taskmanager:
-    image: apache/flink:1.19.1-scala_2.12-java11
+    build:
+      context: .
+      dockerfile: Dockerfile.flink
+    platform: linux/arm64
     container_name: flink-taskmanager
     hostname: flink-taskmanager
     command: taskmanager
@@ -88,8 +94,63 @@ services:
       retries: 10
       start_period: 30s
 
+  # ── Prometheus ───────────────────────────────────────────────────────────────
+  prometheus:
+    image: prom/prometheus:v2.51.2
+    container_name: flink-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - flink-net
+
+  # ── Loki ─────────────────────────────────────────────────────────────────────
+  loki:
+    image: grafana/loki:2.9.4
+    container_name: flink-loki
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - flink-net
+
+  # ── Promtail ─────────────────────────────────────────────────────────────────
+  promtail:
+    image: grafana/promtail:2.9.4
+    container_name: flink-promtail
+    volumes:
+      - ./logs/jobmanager:/var/log/flink/jobmanager:ro
+      - ./logs/taskmanager:/var/log/flink/taskmanager:ro
+      - ./monitoring/promtail-config.yaml:/etc/promtail/config.yaml
+    command: -config.file=/etc/promtail/config.yaml
+    networks:
+      - flink-net
+    depends_on:
+      - loki
+
+  # ── Grafana ───────────────────────────────────────────────────────────────────
+  grafana:
+    image: grafana/grafana:10.4.2
+    container_name: flink-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning
+      - grafana-data:/var/lib/grafana
+    networks:
+      - flink-net
+    depends_on:
+      - loki
+      - prometheus
+
 volumes:
   flink-checkpoints:
+    driver: local
+  grafana-data:
     driver: local
 
 networks:

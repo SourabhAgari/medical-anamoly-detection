@@ -1,0 +1,10 @@
+FROM --platform=linux/arm64 apache/flink:1.19.1-scala_2.12-java11
+
+# Add Prometheus metrics reporter so the flink-metrics-prometheus JAR is
+# present in /opt/flink/lib when the cluster starts.
+RUN wget -q https://repo1.maven.org/maven2/org/apache/flink/flink-metrics-prometheus/1.19.1/flink-metrics-prometheus-1.19.1.jar \
+    -O /opt/flink/lib/flink-metrics-prometheus-1.19.1.jar
+
+# Replace the default Flink console log4j config with the structured JSON
+# variant defined in flink-conf/log4j2.properties.
+COPY flink-conf/log4j2.properties /opt/flink/conf/log4j-console.properties

@@ -187,7 +187,6 @@ class AnomalyDetectionFunctionTest {
         assertThat(alert.getVitalId().toString()).isEqualTo("vital-xyz");
         assertThat(alert.getWardId().toString()).isEqualTo("ward-ICU");
         assertThat(alert.getAlertId().toString()).isNotBlank();
-        assertThat(alert.getMessage().toString()).contains("patient-001");
     }
 
     // ── Test helpers ──────────────────────────────────────────────────────

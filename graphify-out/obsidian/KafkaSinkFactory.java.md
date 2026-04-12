@@ -1,0 +1,17 @@
+---
+source_file: "med-flink/src/main/java/com/healthcare/vitals/sink/KafkaSinkFactory.java"
+type: "code"
+community: "Kafka Sink Factory"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Kafka_Sink_Factory
+---
+
+# KafkaSinkFactory.java
+
+## Connections
+- [[KafkaSinkFactory]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Kafka_Sink_Factory

@@ -1,5 +1,27 @@
 # Medical Anomaly Detection — CLAUDE.md
 
+## Knowledge Graph (RAG)
+
+A pre-built knowledge graph of this codebase lives at `graphify-out/`:
+
+| File | Purpose |
+|---|---|
+| `graphify-out/graph.json` | Full node/edge graph — query this for relationships between classes, topics, config, and docs |
+| `graphify-out/GRAPH_REPORT.md` | God nodes, surprising connections, community map — read this first for orientation |
+| `graphify-out/graph.html` | Interactive visual — open in browser |
+
+**How to use as RAG:** Before answering questions about how components relate, where a concept is implemented, or what connects two parts of the system, load `graphify-out/graph.json` and traverse from relevant nodes. Use `/graphify query "<question>"` to run a BFS/DFS traversal. Use `/graphify explain "<node>"` to get all connections for a specific class or concept.
+
+**Key god nodes** (highest connectivity — start here for any investigation):
+- `AnomalyDetectionFunctionTest` (18 edges) — bridge between detection logic and pipeline concepts
+- `FaultTolerantDeserializerTest` (17 edges) — bridge between DLQ flow and test infrastructure
+- `JobConfig` (13 edges) — central config wiring source, sink, and job assembly
+- `Production Readiness TODO List` (11 edges) — tracks all known production gaps
+
+**Rebuild the graph** after significant code changes: `/graphify` (full) or `/graphify . --update` (incremental).
+
+---
+
 ## Project Overview
 
 Real-time patient vital sign anomaly detection system built on Apache Flink and Kafka. Bedside devices publish vital readings to Kafka; a Flink streaming job evaluates each reading against NICE NG51 / NEWS2 clinical thresholds and emits structured alerts to clinical staff.

@@ -1,0 +1,29 @@
+Changes Made
+
+  Java Code (HIPAA + MDC)
+
+  - AnomalyDetectionFunction.java — Removed patientId from the INFO log in buildAlert(), replaced with vitalId. Added MDC.put("vitalId", ...) + MDC.put("wardId", ...) at the top of flatMap() with MDC.clear() in a finally block.
+  - KafkaSourceFactory.java — Added MDC with Kafka metadata (kafka.topic, kafka.partition, kafka.offset) in deserialize(), cleared in finally.
+
+  Logging Config
+
+  - flink-conf/log4j2.properties (new) — Async loggers + JsonTemplateLayout. MDC fields (vitalId, wardId) appear automatically on every JSON log line. Log levels tuned: org.apache.kafka.clients → WARN, flink.runtime.heartbeat →
+  WARN, etc.
+  - flink-conf/config.yaml — Prometheus reporter uncommented (port 9249).
+
+  Flink Docker Image
+
+  - Dockerfile.flink (new) — Extends apache/flink:1.19.1, downloads flink-metrics-prometheus-1.19.1.jar from Maven Central, and copies the log4j2.properties into the image.
+
+  Observability Stack
+
+  - docker-compose.yml — Both Flink services now build from Dockerfile.flink. Added 4 new services: prometheus, loki, promtail, grafana.
+  - monitoring/promtail-config.yaml — Tails both log dirs, labels logs with job=med-flink + component=jobmanager|taskmanager.
+  - monitoring/prometheus.yml — Scrapes Flink's Prometheus endpoint on both JobManager and TaskManager.
+  - monitoring/grafana/provisioning/ — Auto-provisioned datasources (Prometheus + Loki) and two dashboards:
+    - ops-health.json — Consumer lag, checkpoint failures/duration, alerts fired rate, task restarts
+    - diagnostics.json — Loki log panels pre-filtered to level="ERROR" and all logs
+
+  Tests
+
+  All existing tests pass (mvn test clean).

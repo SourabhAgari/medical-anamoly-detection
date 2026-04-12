@@ -1,0 +1,254 @@
+
+<style>
+  .k8s-wrap { padding: 1rem 0.5rem; font-family: var(--font-sans); }
+  .cluster { border: 1.5px solid #378ADD; border-radius: 20px; padding: 16px 16px 20px; position: relative; }
+  .cluster-label { position: absolute; top: -11px; left: 20px; background: var(--color-background-primary); padding: 0 8px; font-size: 11px; font-weight: 500; color: #185FA5; letter-spacing: .04em; }
+  .node-row { display: flex; gap: 14px; margin-top: 12px; align-items: flex-start; }
+  .worker-node { border: 1px dashed #5DCAA5; border-radius: 14px; padding: 12px; flex: 0 0 auto; width: 340px; position: relative; background: #E1F5EE22; }
+  .node-label { position: absolute; top: -10px; left: 14px; background: var(--color-background-primary); padding: 0 6px; font-size: 10px; font-weight: 500; color: #0F6E56; letter-spacing: .04em; }
+  .cluster-services { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+  .flink-pod { border: 1px solid #534AB7; border-radius: 12px; padding: 10px; position: relative; background: #EEEDFE55; margin-bottom: 10px; }
+  .pod-label { position: absolute; top: -9px; left: 12px; background: var(--color-background-primary); padding: 0 6px; font-size: 10px; font-weight: 500; color: #3C3489; letter-spacing: .04em; }
+  .pod-inner { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip { border-radius: 8px; padding: 7px 10px; font-size: 12px; font-weight: 500; cursor: pointer; transition: opacity .15s; user-select: none; }
+  .chip:hover { opacity: .78; }
+  .chip-purple { background: #EEEDFE; color: #3C3489; border: 0.5px solid #AFA9EC; }
+  .chip-teal   { background: #E1F5EE; color: #085041; border: 0.5px solid #5DCAA5; }
+  .chip-amber  { background: #FAEEDA; color: #633806; border: 0.5px solid #EF9F27; }
+  .chip-blue   { background: #E6F1FB; color: #0C447C; border: 0.5px solid #85B7EB; }
+  .chip-coral  { background: #FAECE7; color: #712B13; border: 0.5px solid #F0997B; }
+  .chip-gray   { background: #F1EFE8; color: #444441; border: 0.5px solid #B4B2A9; }
+  .chip-red    { background: #FCEBEB; color: #791F1F; border: 0.5px solid #F09595; }
+  .chip-green  { background: #EAF3DE; color: #27500A; border: 0.5px solid #97C459; }
+  .svc-box { border-radius: 10px; padding: 10px 12px; position: relative; border: 0.5px solid; }
+  .svc-title { font-size: 12px; font-weight: 500; margin: 0 0 2px; }
+  .svc-sub   { font-size: 11px; opacity: .7; margin: 0; }
+  .arrow-down { display: flex; justify-content: center; margin: 3px 0; }
+  .arrow-down svg { opacity: .45; }
+  .arrow-right { display: inline-flex; align-items: center; margin: 0 2px; opacity: .45; }
+  .section-title { font-size: 10px; font-weight: 500; letter-spacing: .05em; opacity: .5; margin: 0 0 6px; text-transform: uppercase; }
+  .badge { display: inline-block; font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 20px; margin-left: 6px; vertical-align: middle; }
+  .badge-hipaa { background: #FCEBEB; color: #791F1F; border: 0.5px solid #F09595; }
+  .badge-daemonset { background: #E1F5EE; color: #085041; border: 0.5px solid #5DCAA5; }
+  .badge-crd { background: #E6F1FB; color: #0C447C; border: 0.5px solid #85B7EB; }
+  .tooltip-wrap { position: relative; display: inline-block; }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; padding-top: 12px; border-top: 0.5px solid var(--color-border-tertiary); }
+  .leg-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--color-text-secondary); }
+  .leg-dot { width: 10px; height: 10px; border-radius: 3px; }
+  .flow-line { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-text-secondary); margin: 6px 0; padding: 0 4px; }
+  .flow-arrow { color: var(--color-text-tertiary); font-size: 13px; }
+  .hostpath { border: 0.5px dashed #888780; border-radius: 6px; padding: 4px 8px; font-size: 11px; color: #5F5E5A; margin-top: 6px; background: #F1EFE833; }
+  .info-panel { display:none; position:fixed; bottom:20px; right:20px; background:var(--color-background-primary); border:0.5px solid var(--color-border-secondary); border-radius:12px; padding:14px 16px; max-width:260px; font-size:12px; line-height:1.5; color:var(--color-text-secondary); z-index:100; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+  .info-panel.visible { display:block; }
+  .info-panel .info-title { font-size:13px; font-weight:500; color:var(--color-text-primary); margin:0 0 6px; }
+  .info-close { float:right; cursor:pointer; opacity:.5; font-size:14px; margin-left:8px; }
+  .node-fs { font-size: 10px; color: #5F5E5A; background: #F1EFE8; border: 0.5px solid #B4B2A9; border-radius: 5px; padding: 3px 7px; margin-top: 4px; display: inline-block; }
+</style>
+
+<div class="k8s-wrap">
+  <div class="cluster" onclick="event.stopPropagation()">
+    <span class="cluster-label">Kubernetes cluster</span>
+
+    <div style="display:flex; gap:10px; align-items:center; margin-bottom:10px;">
+      <div class="svc-box" style="background:#E6F1FB33; border-color:#85B7EB; padding:6px 12px; flex:0 0 auto;" onclick="showInfo('kube-api','Kubernetes API server','Central control plane. All components — Fluent Bit SD, Prometheus Operator, ServiceMonitor — discover targets by calling this API.')">
+        <p class="svc-title" style="color:#0C447C;">kube-apiserver</p>
+        <p class="svc-sub" style="color:#185FA5;">control plane</p>
+      </div>
+      <div style="font-size:11px; color:var(--color-text-tertiary);">← all SD &amp; CRD watches</div>
+    </div>
+
+    <div class="node-row">
+
+      <!-- ── WORKER NODE ── -->
+      <div class="worker-node">
+        <span class="node-label">worker node (×N)</span>
+
+        <!-- Flink Pod -->
+        <div class="flink-pod" onclick="showInfo('flink-pod','Flink TaskManager pod','One pod per TaskManager replica. Runs your streaming job — AnomalyDetectionFunction etc. Writes logs to stdout only; container runtime captures them to the node filesystem.')">
+          <span class="pod-label">Flink TaskManager pod</span>
+          <div class="pod-inner">
+            <div class="chip chip-purple" onclick="event.stopPropagation();showInfo('log4j2','Log4j2 → stdout','Configured with JSON layout + MDC (vitalId, wardId). No file appender. stdout is captured by containerd to /var/log/pods/…')">Log4j2 → stdout</div>
+            <div class="chip chip-teal" onclick="event.stopPropagation();showInfo('mdc','MDC context','Mapped Diagnostic Context: vitalId (UUID) + wardId on every log line. patientId must NOT appear here — audit path only.')">MDC: vitalId, wardId</div>
+            <div class="chip chip-amber" onclick="event.stopPropagation();showInfo('prom-reporter','Prometheus reporter','flink-conf/config.yaml — metrics.reporter.prom.class with port 9249. Exposes /metrics. Scraped by ServiceMonitor.')">Prom reporter :9249</div>
+            <div class="chip chip-coral" onclick="event.stopPropagation();showInfo('anomaly','AnomalyDetectionFunction','Publishes to medical.audit.events Kafka topic. Must log only vitalId — never patientId — in operational logs.')">AnomalyDetection fn</div>
+          </div>
+          <div class="flow-line" style="margin-top:8px;">
+            <span class="chip chip-red" style="font-size:10px;padding:3px 7px;" onclick="event.stopPropagation();showInfo('phi-warning','PHI risk','AnomalyDetectionFunction previously logged patientId in INFO messages. Fix: replace with vitalId UUID. patientId belongs only in medical.audit.events.')">⚠ no patientId in logs</span>
+          </div>
+        </div>
+
+        <!-- containerd layer -->
+        <div class="arrow-down"><svg width="12" height="16" viewBox="0 0 12 16"><line x1="6" y1="0" x2="6" y2="12" stroke="var(--color-text-secondary)" stroke-width="1.2"/><polyline points="2,9 6,14 10,9" fill="none" stroke="var(--color-text-secondary)" stroke-width="1.2"/></svg></div>
+
+        <div class="svc-box" style="background:#F1EFE833; border-color:#B4B2A9;" onclick="showInfo('containerd','containerd (runtime)','Captures all stdout from every container on this node and writes it to /var/log/pods/<namespace>_<pod>_<uid>/<container>/N.log. Managed by kubelet.')">
+          <p class="svc-title" style="color:#444441;">containerd</p>
+          <p class="svc-sub" style="color:#5F5E5A;">container runtime</p>
+        </div>
+
+        <div class="hostpath" onclick="showInfo('hostpath','/var/log/pods','The node-local path where containerd writes log files. Fluent Bit mounts this via hostPath volume to read all pod logs on this node.')">
+          /var/log/pods/…/n.log
+        </div>
+
+        <div class="arrow-down"><svg width="12" height="16" viewBox="0 0 12 16"><line x1="6" y1="0" x2="6" y2="12" stroke="#1D9E75" stroke-width="1.2"/><polyline points="2,9 6,14 10,9" fill="none" stroke="#1D9E75" stroke-width="1.2"/></svg></div>
+
+        <!-- Fluent Bit DaemonSet -->
+        <div class="flink-pod" style="border-color:#5DCAA5; background:#E1F5EE33;" onclick="showInfo('fluentbit','Fluent Bit DaemonSet','One pod per node. Mounts /var/log/pods via hostPath. Uses kubernetes_sd to auto-discover pods. Enriches with namespace, pod, node, container, labels. Forwards to Loki push API. ~450KB RSS.')">
+          <span class="pod-label" style="color:#0F6E56; font-size:10px;">Fluent Bit pod <span class="badge badge-daemonset">DaemonSet</span></span>
+          <div class="pod-inner" style="margin-top:4px;">
+            <div class="chip chip-teal" onclick="event.stopPropagation();showInfo('k8s-sd','kubernetes_sd_configs','Calls kube-apiserver to discover all pods dynamically. No static IPs needed. When TaskManagers scale 1→6, Fluent Bit picks them up automatically.')">kubernetes_sd</div>
+            <div class="chip chip-teal" onclick="event.stopPropagation();showInfo('enrichment','Log enrichment','Adds: namespace, pod name, node name, container name, pod labels to every log line before forwarding to Loki.')">enrichment</div>
+            <div class="chip chip-gray" onclick="event.stopPropagation();showInfo('hostmount','hostPath mount','Mounts /var/log/pods from the node filesystem. Fluent Bit tails new log files as pods start/stop.')">hostPath mount</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CLUSTER SERVICES ── -->
+      <div class="cluster-services">
+
+        <p class="section-title">cluster-level deployments</p>
+
+        <!-- Loki distributed -->
+        <div class="svc-box" style="background:#E6F1FB33; border-color:#85B7EB;" onclick="showInfo('loki','Loki distributed mode','Not single-binary. Separate K8s Deployments: distributor → ingester → querier → compactor. S3/GCS backend survives pod/cluster restarts. 30-day log retention (no PHI after fix).')">
+          <p class="svc-title" style="color:#0C447C;">Loki <span style="font-weight:400; font-size:11px; color:#185FA5;">distributed mode</span></p>
+          <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:6px;">
+            <span class="chip chip-blue" style="font-size:10px;padding:3px 8px;" onclick="event.stopPropagation();showInfo('loki-dist','Distributor','Receives log push from Fluent Bit. Routes streams to ingesters via consistent hashing.')">distributor</span>
+            <span class="chip chip-blue" style="font-size:10px;padding:3px 8px;" onclick="event.stopPropagation();showInfo('loki-ing','Ingester','Buffers log chunks in memory, flushes to S3/GCS. Handles deduplication.')">ingester</span>
+            <span class="chip chip-blue" style="font-size:10px;padding:3px 8px;" onclick="event.stopPropagation();showInfo('loki-q','Querier','Serves LogQL queries from Grafana. Reads from ingesters + S3.')">querier</span>
+            <span class="chip chip-amber" style="font-size:10px;padding:3px 8px;" onclick="event.stopPropagation();showInfo('loki-s3','S3 / GCS backend','Durable object storage. Survives pod restarts. Loki compactor handles 30-day TTL. Must be in BAA scope for HIPAA.')">S3 / GCS</span>
+          </div>
+        </div>
+
+        <!-- Prometheus Operator -->
+        <div class="svc-box" style="background:#E1F5EE33; border-color:#5DCAA5;" onclick="showInfo('prom-op','Prometheus Operator','kube-prometheus-stack Helm chart. Watches ServiceMonitor CRDs. When TaskManagers scale 1→6, new pods are scraped automatically — no config change needed.')">
+          <p class="svc-title" style="color:#085041;">Prometheus Operator <span class="badge badge-crd">CRD</span></p>
+          <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:6px;">
+            <span class="chip chip-teal" style="font-size:10px;padding:3px 8px;" onclick="event.stopPropagation();showInfo('svcmon','ServiceMonitor CRD','Replaces static prometheus.yml scrape targets. Selects pods by label. Auto-discovers as replicas scale.')">ServiceMonitor</span>
+            <span class="chip chip-teal" style="font-size:10px;padding:3px 8px;" onclick="event.stopPropagation();showInfo('prom-rules','AlertingRules','Defined as PrometheusRule CRDs in Git — not inside Grafana dashboards. Version-controlled, reviewed.')">PrometheusRule</span>
+          </div>
+        </div>
+
+        <!-- Alertmanager -->
+        <div class="svc-box" style="background:#FAECE733; border-color:#F0997B;" onclick="showInfo('alertmanager','Alertmanager','Routes alerts by severity. CRITICAL/HIGH → PagerDuty (pages on-call). MEDIUM/LOW → Slack channel. Rules live in Git as code.')">
+          <p class="svc-title" style="color:#712B13;">Alertmanager</p>
+          <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:6px;">
+            <span class="chip chip-coral" style="font-size:10px;padding:3px 8px;">CRITICAL → PagerDuty</span>
+            <span class="chip chip-gray" style="font-size:10px;padding:3px 8px;">LOW → Slack</span>
+          </div>
+        </div>
+
+        <!-- Grafana -->
+        <div class="svc-box" style="background:#EEEDFE33; border-color:#AFA9EC;" onclick="showInfo('grafana','Grafana','Dashboards provisioned from ConfigMaps (not bind-mounted JSON). OIDC/LDAP replaces admin/admin. RBAC: clinical=read-only, on-call=read-write, compliance=audit only.')">
+          <p class="svc-title" style="color:#3C3489;">Grafana</p>
+          <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:6px;">
+            <span class="chip chip-purple" style="font-size:10px;padding:3px 8px;" onclick="event.stopPropagation();showInfo('configmaps','ConfigMap dashboards','Dashboard JSON stored as ConfigMaps in Git. Provisioned at startup. Survives pod restarts.')">ConfigMap dashboards</span>
+            <span class="chip chip-gray" style="font-size:10px;padding:3px 8px;" onclick="event.stopPropagation();showInfo('rbac','RBAC roles','clinical: read-only · on-call: read-write · compliance: audit dashboard only. OIDC/LDAP auth replaces admin/admin.')">OIDC + RBAC</span>
+          </div>
+        </div>
+
+        <!-- Kafka audit path -->
+        <div class="svc-box" style="background:#FCEBEB33; border-color:#F09595;" onclick="showInfo('kafka','Kafka audit path','Separate from operational logs. medical.audit.events topic receives events from AnomalyDetectionFunction. vitalId only — never patientId. Must retain 6 years (HIPAA). Current config: 365 days — FIX NEEDED.')">
+          <p class="svc-title" style="color:#791F1F;">Kafka audit path <span class="badge badge-hipaa">HIPAA</span></p>
+          <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:6px;">
+            <span class="chip chip-red" style="font-size:10px;padding:3px 8px;">medical.audit.events</span>
+            <span class="chip chip-amber" style="font-size:10px;padding:3px 8px;" onclick="event.stopPropagation();showInfo('retention','Retention mismatch','Current Kafka retention: 365 days. HIPAA requirement: 6 years. Must configure long-term compliant store (S3 + BAA, dedicated audit DB, etc.).')">6-yr retention ⚠</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Flow summary -->
+    <div style="margin-top:14px; padding:10px 12px; border-radius:8px; background:var(--color-background-secondary); border:0.5px solid var(--color-border-tertiary);">
+      <p class="section-title" style="margin-bottom:4px;">log flow</p>
+      <div style="display:flex; align-items:center; gap:4px; flex-wrap:wrap; font-size:11px; color:var(--color-text-secondary);">
+        <span class="chip chip-purple" style="font-size:10px;padding:2px 7px;">Log4j2</span>
+        <span class="flow-arrow">→</span>
+        <span class="chip chip-gray" style="font-size:10px;padding:2px 7px;">stdout</span>
+        <span class="flow-arrow">→</span>
+        <span class="chip chip-gray" style="font-size:10px;padding:2px 7px;">containerd</span>
+        <span class="flow-arrow">→</span>
+        <span class="chip chip-gray" style="font-size:10px;padding:2px 7px;">/var/log/pods</span>
+        <span class="flow-arrow">→</span>
+        <span class="chip chip-teal" style="font-size:10px;padding:2px 7px;">Fluent Bit</span>
+        <span class="flow-arrow">→</span>
+        <span class="chip chip-blue" style="font-size:10px;padding:2px 7px;">Loki</span>
+        <span class="flow-arrow">→</span>
+        <span class="chip chip-purple" style="font-size:10px;padding:2px 7px;">Grafana</span>
+      </div>
+      <p class="section-title" style="margin-bottom:4px; margin-top:8px;">metrics flow</p>
+      <div style="display:flex; align-items:center; gap:4px; flex-wrap:wrap; font-size:11px; color:var(--color-text-secondary);">
+        <span class="chip chip-amber" style="font-size:10px;padding:2px 7px;">:9249 /metrics</span>
+        <span class="flow-arrow">→</span>
+        <span class="chip chip-teal" style="font-size:10px;padding:2px 7px;">ServiceMonitor</span>
+        <span class="flow-arrow">→</span>
+        <span class="chip chip-teal" style="font-size:10px;padding:2px 7px;">Prometheus</span>
+        <span class="flow-arrow">→</span>
+        <span class="chip chip-coral" style="font-size:10px;padding:2px 7px;">Alertmanager</span>
+        <span class="flow-arrow">+</span>
+        <span class="chip chip-purple" style="font-size:10px;padding:2px 7px;">Grafana</span>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="legend">
+      <div class="leg-item"><div class="leg-dot" style="background:#EEEDFE;border:0.5px solid #AFA9EC;"></div>app / viz</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#E1F5EE;border:0.5px solid #5DCAA5;"></div>collection</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#E6F1FB;border:0.5px solid #85B7EB;"></div>storage</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#FAEEDA;border:0.5px solid #EF9F27;"></div>durable / cloud</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#FCEBEB;border:0.5px solid #F09595;"></div>HIPAA / audit</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#FAECE7;border:0.5px solid #F0997B;"></div>alerting</div>
+      <div class="leg-item" style="margin-left:auto; cursor:pointer; color:var(--color-text-tertiary); font-size:11px;" onclick="sendPrompt('What should I fix first before going live on Kubernetes?')">Ask about go-live checklist ↗</div>
+    </div>
+  </div>
+</div>
+
+<!-- Info panel -->
+<div class="info-panel" id="info-panel">
+  <span class="info-close" onclick="document.getElementById('info-panel').classList.remove('visible')">✕</span>
+  <p class="info-title" id="info-title"></p>
+  <p id="info-body" style="margin:0;"></p>
+  <button onclick="sendPrompt(document.getElementById('info-ask').value)" id="info-btn" style="margin-top:10px;font-size:11px;padding:4px 10px;">Ask Claude ↗</button>
+  <input type="hidden" id="info-ask"/>
+</div>
+
+<script>
+const infos = {
+  'kube-api':       ['Kubernetes API server', 'Central control plane. All components — Fluent Bit SD, Prometheus Operator, ServiceMonitor — discover targets by calling this API.', 'How does kubernetes_sd_configs discover pods via the API server?'],
+  'flink-pod':      ['Flink TaskManager pod', 'One pod per TaskManager replica. Runs your streaming job. Writes logs to stdout only; container runtime captures them to the node filesystem.', 'How does Flink handle pod restarts in Kubernetes?'],
+  'log4j2':         ['Log4j2 → stdout', 'Configured with JSON layout + MDC (vitalId, wardId). No file appender. stdout is captured by containerd to /var/log/pods/…', 'Show me a Log4j2 config for structured JSON output to stdout.'],
+  'mdc':            ['MDC context', 'Mapped Diagnostic Context carries vitalId and wardId on every log line. patientId must NOT appear here — HIPAA audit path only.', 'How do I set MDC context in a Flink function?'],
+  'prom-reporter':  ['Prometheus reporter :9249', 'flink-conf/config.yaml metrics.reporter.prom with port 9249. Exposes /metrics endpoint. Scraped by ServiceMonitor.', 'How do I configure the Flink Prometheus reporter?'],
+  'anomaly':        ['AnomalyDetectionFunction', 'Publishes to medical.audit.events Kafka topic. Must log only vitalId — never patientId — in operational INFO logs.', 'How do I fix the patientId PHI leak in my Flink logging?'],
+  'phi-warning':    ['PHI leak risk', 'AnomalyDetectionFunction logs "Heart rate X bpm below threshold for patient P-12345". Fix: use only vitalId UUID. patientId belongs only in Kafka audit events.', 'Show me how to remove patientId from Flink log messages.'],
+  'containerd':     ['containerd (runtime)', 'Captures all stdout/stderr from every container on this node. Writes to /var/log/pods/<ns>_<pod>_<uid>/<container>/N.log. Managed by kubelet.', 'How does containerd handle log rotation on Kubernetes?'],
+  'hostpath':       ['/var/log/pods','Node-local path where containerd writes log files. Fluent Bit mounts this via hostPath volume to read all pod logs on this node.', 'What are the security implications of hostPath mounts for log collection?'],
+  'fluentbit':      ['Fluent Bit DaemonSet', 'One pod per node. Mounts /var/log/pods via hostPath. Uses kubernetes_sd to auto-discover pods. Enriches with metadata. Forwards to Loki. ~450KB RSS vs Promtail ~80MB.', 'Show me a Fluent Bit DaemonSet config for Kubernetes.'],
+  'k8s-sd':         ['kubernetes_sd_configs', 'Calls kube-apiserver to discover all pods dynamically. No static IPs needed. When TaskManagers scale 1→6, Fluent Bit picks them up automatically.', 'How does Fluent Bit kubernetes_sd discovery work?'],
+  'enrichment':     ['Log enrichment', 'Adds namespace, pod name, node name, container name, and pod labels to every log line before forwarding to Loki. Enables powerful label-filtered queries.', 'What Loki labels should I index for Flink workloads?'],
+  'hostmount':      ['hostPath mount', 'Mounts /var/log/pods from the node filesystem. Fluent Bit tails new log files as pods start and stop — no configuration needed per pod.', 'How do I configure a hostPath volume for Fluent Bit?'],
+  'loki':           ['Loki distributed mode', 'Separate K8s Deployments: distributor → ingester → querier → compactor. S3/GCS backend survives pod/cluster restarts. 30-day log retention.', 'How do I deploy Loki in distributed mode on Kubernetes?'],
+  'loki-dist':      ['Loki distributor', 'Receives log push from Fluent Bit. Routes streams to ingesters via consistent hashing on the stream fingerprint.', 'How does Loki distributor routing work?'],
+  'loki-ing':       ['Loki ingester', 'Buffers log chunks in memory, then flushes to S3/GCS. Handles deduplication of out-of-order entries.', 'How should I size Loki ingesters for high-throughput workloads?'],
+  'loki-q':         ['Loki querier', 'Serves LogQL queries from Grafana. Reads from ingesters for recent data and from S3 for older data.', 'How does Loki querier fan out queries across ingesters?'],
+  'loki-s3':        ['S3 / GCS backend', 'Durable object storage. Loki compactor handles TTL and retention. Must be in BAA scope for HIPAA. Operational logs: 30 days.', 'How do I configure S3 backend for Loki with HIPAA compliance?'],
+  'prom-op':        ['Prometheus Operator', 'kube-prometheus-stack Helm chart. Watches ServiceMonitor CRDs. When TaskManagers scale 1→6, new pods are scraped automatically.', 'How do I install kube-prometheus-stack with Helm?'],
+  'svcmon':         ['ServiceMonitor CRD', 'Replaces static prometheus.yml scrape targets. Selects pods by label selector. Auto-discovers as replicas scale — zero config changes.', 'Show me a ServiceMonitor CRD for Flink TaskManagers.'],
+  'prom-rules':     ['PrometheusRule CRDs', 'Alerting rules stored as PrometheusRule CRDs in Git — version-controlled and reviewed. Not embedded in Grafana dashboards.', 'Show me a PrometheusRule for Flink checkpoint failure alerts.'],
+  'alertmanager':   ['Alertmanager routing', 'CRITICAL/HIGH → PagerDuty (pages on-call engineer). MEDIUM/LOW → Slack channel. Rules live in Git as code.', 'Show me an Alertmanager config for PagerDuty and Slack routing.'],
+  'grafana':        ['Grafana', 'Dashboards provisioned from ConfigMaps. OIDC/LDAP replaces admin/admin. RBAC: clinical=read-only, on-call=read-write, compliance=audit dashboard only.', 'How do I provision Grafana dashboards from ConfigMaps?'],
+  'configmaps':     ['ConfigMap dashboards', 'Dashboard JSON stored as ConfigMaps in Git. Provisioned at Grafana startup. Survives pod restarts with no manual re-import.', 'How do I export a Grafana dashboard to a ConfigMap?'],
+  'rbac':           ['Grafana RBAC', 'clinical: read-only · on-call: read-write · compliance: audit dashboard only. OIDC/LDAP auth. admin/admin is not acceptable in a HIPAA environment.', 'How do I configure Grafana RBAC with OIDC in Kubernetes?'],
+  'kafka':          ['Kafka audit path', 'medical.audit.events receives events from AnomalyDetectionFunction. vitalId only — never patientId. Must retain 6 years (HIPAA). Current config: 365 days.', 'How do I configure 6-year Kafka retention for HIPAA compliance?'],
+  'retention':      ['Retention mismatch', 'Kafka retention currently 365 days. HIPAA requires 6 years. Must set up a long-term compliant store — dedicated audit DB or S3 bucket under BAA.', 'What is a good HIPAA-compliant 6-year audit log architecture?'],
+};
+
+function showInfo(key, fallbackTitle, fallbackBody, fallbackAsk) {
+  const d = infos[key] || [fallbackTitle, fallbackBody, fallbackAsk || ('Tell me more about ' + fallbackTitle)];
+  document.getElementById('info-title').textContent = d[0];
+  document.getElementById('info-body').textContent = d[1];
+  document.getElementById('info-ask').value = d[2];
+  document.getElementById('info-panel').classList.add('visible');
+  event.stopPropagation();
+}
+document.addEventListener('click', () => document.getElementById('info-panel').classList.remove('visible'));
+</script>

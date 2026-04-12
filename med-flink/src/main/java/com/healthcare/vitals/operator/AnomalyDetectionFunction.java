@@ -9,6 +9,7 @@ import org.apache.flink.configuration.Configuration;
 import org.apache.flink.util.Collector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 import java.time.Instant;
 import java.util.Optional;
@@ -61,13 +62,19 @@ public class AnomalyDetectionFunction extends RichFlatMapFunction<PatientVitals,
 
     @Override
     public void flatMap(PatientVitals vitals, Collector<AlertEvent> out) {
-        LOG.debug("Processing vitals for patient={} vitalId={}", vitals.getPatientId(), vitals.getVitalId());
+        MDC.put("vitalId", vitals.getVitalId().toString());
+        MDC.put("wardId", vitals.getWardId().toString());
+        try {
+            LOG.debug("Vitals record received: vitalId={} wardId={}", vitals.getVitalId(), vitals.getWardId());
 
-        checkHeartRate(vitals).ifPresent(out::collect);
-        checkSpO2(vitals).ifPresent(out::collect);
-        checkSystolicBP(vitals).ifPresent(out::collect);
-        checkTemperature(vitals).ifPresent(out::collect);
-        checkRespiratoryRate(vitals).ifPresent(out::collect);
+            checkHeartRate(vitals).ifPresent(out::collect);
+            checkSpO2(vitals).ifPresent(out::collect);
+            checkSystolicBP(vitals).ifPresent(out::collect);
+            checkTemperature(vitals).ifPresent(out::collect);
+            checkRespiratoryRate(vitals).ifPresent(out::collect);
+        } finally {
+            MDC.clear();
+        }
     }
 
     // ── Individual vital checks ───────────────────────────────────────────────
@@ -79,14 +86,14 @@ public class AnomalyDetectionFunction extends RichFlatMapFunction<PatientVitals,
         if (hr < HR_LOW) {
             return Optional.of(buildAlert(v, VitalRule.LOW_HEART_RATE, AlertSeverity.CRITICAL,
                 hr, HR_LOW,
-                String.format("CRITICAL: Heart rate %.1f bpm is below %.1f bpm (bradycardia) for patient %s",
-                    hr, HR_LOW, v.getPatientId())));
+                String.format("CRITICAL: Heart rate %.1f bpm is below %.1f bpm (bradycardia)",
+                    hr, HR_LOW)));
         }
         if (hr > HR_HIGH) {
             return Optional.of(buildAlert(v, VitalRule.HIGH_HEART_RATE, AlertSeverity.HIGH,
                 hr, HR_HIGH,
-                String.format("HIGH: Heart rate %.1f bpm exceeds %.1f bpm (tachycardia) for patient %s",
-                    hr, HR_HIGH, v.getPatientId())));
+                String.format("HIGH: Heart rate %.1f bpm exceeds %.1f bpm (tachycardia)",
+                    hr, HR_HIGH)));
         }
         return Optional.empty();
     }
@@ -98,8 +105,8 @@ public class AnomalyDetectionFunction extends RichFlatMapFunction<PatientVitals,
         if (spo2 < SPO2_CRITICAL) {
             return Optional.of(buildAlert(v, VitalRule.LOW_SPO2, AlertSeverity.CRITICAL,
                 spo2, SPO2_CRITICAL,
-                String.format("CRITICAL: SpO2 %.1f%% is below %.1f%% for patient %s",
-                    spo2, SPO2_CRITICAL, v.getPatientId())));
+                String.format("CRITICAL: SpO2 %.1f%% is below %.1f%%",
+                    spo2, SPO2_CRITICAL)));
         }
         return Optional.empty();
     }
@@ -111,14 +118,14 @@ public class AnomalyDetectionFunction extends RichFlatMapFunction<PatientVitals,
         if (sbp < SBP_LOW) {
             return Optional.of(buildAlert(v, VitalRule.LOW_SYSTOLIC_BP, AlertSeverity.CRITICAL,
                 sbp, SBP_LOW,
-                String.format("CRITICAL: Systolic BP %.1f mmHg is below %.1f mmHg (hypotension) for patient %s",
-                    sbp, SBP_LOW, v.getPatientId())));
+                String.format("CRITICAL: Systolic BP %.1f mmHg is below %.1f mmHg (hypotension)",
+                    sbp, SBP_LOW)));
         }
         if (sbp > SBP_HIGH) {
             return Optional.of(buildAlert(v, VitalRule.HIGH_SYSTOLIC_BP, AlertSeverity.HIGH,
                 sbp, SBP_HIGH,
-                String.format("HIGH: Systolic BP %.1f mmHg exceeds %.1f mmHg (hypertensive crisis) for patient %s",
-                    sbp, SBP_HIGH, v.getPatientId())));
+                String.format("HIGH: Systolic BP %.1f mmHg exceeds %.1f mmHg (hypertensive crisis)",
+                    sbp, SBP_HIGH)));
         }
         return Optional.empty();
     }
@@ -130,14 +137,14 @@ public class AnomalyDetectionFunction extends RichFlatMapFunction<PatientVitals,
         if (temp < TEMP_LOW) {
             return Optional.of(buildAlert(v, VitalRule.LOW_TEMPERATURE, AlertSeverity.HIGH,
                 temp, TEMP_LOW,
-                String.format("HIGH: Temperature %.1f°C is below %.1f°C (hypothermia) for patient %s",
-                    temp, TEMP_LOW, v.getPatientId())));
+                String.format("HIGH: Temperature %.1f°C is below %.1f°C (hypothermia)",
+                    temp, TEMP_LOW)));
         }
         if (temp > TEMP_HIGH) {
             return Optional.of(buildAlert(v, VitalRule.HIGH_TEMPERATURE, AlertSeverity.MEDIUM,
                 temp, TEMP_HIGH,
-                String.format("MEDIUM: Temperature %.1f°C exceeds %.1f°C (hyperpyrexia) for patient %s",
-                    temp, TEMP_HIGH, v.getPatientId())));
+                String.format("MEDIUM: Temperature %.1f°C exceeds %.1f°C (hyperpyrexia)",
+                    temp, TEMP_HIGH)));
         }
         return Optional.empty();
     }
@@ -149,14 +156,14 @@ public class AnomalyDetectionFunction extends RichFlatMapFunction<PatientVitals,
         if (rr < RR_LOW) {
             return Optional.of(buildAlert(v, VitalRule.LOW_RESPIRATORY_RATE, AlertSeverity.CRITICAL,
                 rr, RR_LOW,
-                String.format("CRITICAL: Respiratory rate %.1f/min is below %.1f/min (bradypnea) for patient %s",
-                    rr, RR_LOW, v.getPatientId())));
+                String.format("CRITICAL: Respiratory rate %.1f/min is below %.1f/min (bradypnea)",
+                    rr, RR_LOW)));
         }
         if (rr > RR_HIGH) {
             return Optional.of(buildAlert(v, VitalRule.HIGH_RESPIRATORY_RATE, AlertSeverity.HIGH,
                 rr, RR_HIGH,
-                String.format("HIGH: Respiratory rate %.1f/min exceeds %.1f/min for patient %s",
-                    rr, RR_HIGH, v.getPatientId())));
+                String.format("HIGH: Respiratory rate %.1f/min exceeds %.1f/min",
+                    rr, RR_HIGH)));
         }
         return Optional.empty();
     }
@@ -182,8 +189,8 @@ public class AnomalyDetectionFunction extends RichFlatMapFunction<PatientVitals,
             .setMessage(message)
             .build();
 
-        LOG.info("Alert fired: rule={} severity={} patient={} observed={} threshold={}",
-                 rule, severity, vitals.getPatientId(), observed, threshold);
+        LOG.info("Alert fired: rule={} severity={} vitalId={} observed={} threshold={}",
+                 rule, severity, vitals.getVitalId(), observed, threshold);
         return alert;
     }
 }

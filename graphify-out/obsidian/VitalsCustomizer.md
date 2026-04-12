@@ -1,0 +1,18 @@
+---
+source_file: "med-flink/src/test/java/com/healthcare/vitals/operator/AnomalyDetectionFunctionTest.java"
+type: "code"
+community: "Anomaly Detection Tests"
+location: "L194"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Anomaly_Detection_Tests
+---
+
+# VitalsCustomizer
+
+## Connections
+- [[.customize()]] - `method` [EXTRACTED]
+- [[AnomalyDetectionFunctionTest.java]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Anomaly_Detection_Tests

@@ -17,6 +17,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.ByteArraySerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -111,6 +112,9 @@ public final class KafkaSourceFactory {
         @Override
         public void deserialize(ConsumerRecord<byte[], byte[]> record,
                                 Collector<PatientVitals> out) throws IOException {
+            MDC.put("kafka.topic", record.topic());
+            MDC.put("kafka.partition", String.valueOf(record.partition()));
+            MDC.put("kafka.offset", String.valueOf(record.offset()));
             try {
                 delegate.deserialize(record.value(), out);
             } catch (Exception e) {
@@ -126,6 +130,8 @@ public final class KafkaSourceFactory {
                 );
                 sendToDlq(record, e);
                 // Not emitting to out — record is excluded from the main pipeline
+            } finally {
+                MDC.clear();
             }
         }
 

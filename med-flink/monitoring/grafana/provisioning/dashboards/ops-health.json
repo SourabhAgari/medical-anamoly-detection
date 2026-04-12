@@ -1,0 +1,212 @@
+{
+  "uid": "med-flink-ops",
+  "title": "Med-Flink Ops Health",
+  "schemaVersion": 38,
+  "version": 2,
+  "refresh": "30s",
+  "time": { "from": "now-1h", "to": "now" },
+  "timepicker": {},
+  "panels": [
+
+    { "id": 1, "type": "row", "title": "Alert Summary", "collapsed": false, "gridPos": { "x": 0, "y": 0, "w": 24, "h": 1 } },
+
+    {
+      "id": 2, "type": "stat", "title": "Total Alerts Fired",
+      "gridPos": { "x": 0, "y": 1, "w": 4, "h": 4 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [{ "expr": "sum(count_over_time({job=\"med-flink\"} | json | message =~ \"Alert fired\" [$__range]))", "legendFormat": "Total", "refId": "A" }],
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "orientation": "auto", "textMode": "auto", "colorMode": "background", "graphMode": "none" },
+      "fieldConfig": { "defaults": { "unit": "short", "color": { "mode": "fixed", "fixedColor": "blue" } }, "overrides": [] }
+    },
+
+    {
+      "id": 3, "type": "stat", "title": "CRITICAL Alerts",
+      "gridPos": { "x": 4, "y": 1, "w": 4, "h": 4 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [{ "expr": "sum(count_over_time({job=\"med-flink\"} | json | message =~ \"severity=CRITICAL\" [$__range]))", "legendFormat": "CRITICAL", "refId": "A" }],
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "orientation": "auto", "textMode": "auto", "colorMode": "background", "graphMode": "none" },
+      "fieldConfig": { "defaults": { "unit": "short", "color": { "mode": "fixed", "fixedColor": "red" } }, "overrides": [] }
+    },
+
+    {
+      "id": 4, "type": "stat", "title": "HIGH Alerts",
+      "gridPos": { "x": 8, "y": 1, "w": 4, "h": 4 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [{ "expr": "sum(count_over_time({job=\"med-flink\"} | json | message =~ \"severity=HIGH\" [$__range]))", "legendFormat": "HIGH", "refId": "A" }],
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "orientation": "auto", "textMode": "auto", "colorMode": "background", "graphMode": "none" },
+      "fieldConfig": { "defaults": { "unit": "short", "color": { "mode": "fixed", "fixedColor": "orange" } }, "overrides": [] }
+    },
+
+    {
+      "id": 5, "type": "stat", "title": "Consumer Lag",
+      "gridPos": { "x": 12, "y": 1, "w": 4, "h": 4 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "max(flink_taskmanager_job_task_operator_KafkaSourceReader_topic_partition_currentOffset - flink_taskmanager_job_task_operator_KafkaSourceReader_topic_partition_committedOffset)", "legendFormat": "lag", "refId": "A" }],
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "orientation": "auto", "textMode": "auto", "colorMode": "background", "graphMode": "area" },
+      "fieldConfig": {
+        "defaults": { "unit": "short", "noValue": "0", "thresholds": { "mode": "absolute", "steps": [{ "value": 0, "color": "green" }, { "value": 1000, "color": "yellow" }, { "value": 10000, "color": "red" }] } },
+        "overrides": []
+      }
+    },
+
+    {
+      "id": 6, "type": "gauge", "title": "Last Checkpoint Duration",
+      "gridPos": { "x": 16, "y": 1, "w": 4, "h": 4 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "flink_jobmanager_job_lastCheckpointDuration", "legendFormat": "ms", "refId": "A" }],
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "minVizWidth": 75, "minVizHeight": 75 },
+      "fieldConfig": {
+        "defaults": { "unit": "ms", "min": 0, "max": 30000, "thresholds": { "mode": "absolute", "steps": [{ "value": 0, "color": "green" }, { "value": 10000, "color": "yellow" }, { "value": 20000, "color": "red" }] } },
+        "overrides": []
+      }
+    },
+
+    {
+      "id": 7, "type": "stat", "title": "Task Restarts",
+      "gridPos": { "x": 20, "y": 1, "w": 4, "h": 4 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "flink_jobmanager_job_numRestarts", "legendFormat": "restarts", "refId": "A" }],
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "orientation": "auto", "textMode": "auto", "colorMode": "background", "graphMode": "none" },
+      "fieldConfig": {
+        "defaults": { "unit": "short", "thresholds": { "mode": "absolute", "steps": [{ "value": 0, "color": "green" }, { "value": 1, "color": "red" }] } },
+        "overrides": []
+      }
+    },
+
+    { "id": 8, "type": "row", "title": "Alert Breakdown", "collapsed": false, "gridPos": { "x": 0, "y": 5, "w": 24, "h": 1 } },
+
+    {
+      "id": 9, "type": "piechart", "title": "Alerts by Severity",
+      "gridPos": { "x": 0, "y": 6, "w": 8, "h": 8 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [
+        { "expr": "sum(count_over_time({job=\"med-flink\"} | json | message =~ \"severity=CRITICAL\" [$__range]))", "legendFormat": "CRITICAL", "refId": "A" },
+        { "expr": "sum(count_over_time({job=\"med-flink\"} | json | message =~ \"severity=HIGH\" [$__range]))",     "legendFormat": "HIGH",     "refId": "B" },
+        { "expr": "sum(count_over_time({job=\"med-flink\"} | json | message =~ \"severity=MEDIUM\" [$__range]))",  "legendFormat": "MEDIUM",   "refId": "C" },
+        { "expr": "sum(count_over_time({job=\"med-flink\"} | json | message =~ \"severity=LOW\" [$__range]))",     "legendFormat": "LOW",      "refId": "D" }
+      ],
+      "options": {
+        "pieType": "pie",
+        "tooltip": { "mode": "single", "sort": "none" },
+        "legend": { "displayMode": "table", "placement": "right", "showLegend": true, "values": ["value", "percent"] },
+        "displayLabels": ["percent"]
+      },
+      "fieldConfig": {
+        "defaults": { "unit": "short" },
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "CRITICAL" }, "properties": [{ "id": "color", "value": { "mode": "fixed", "fixedColor": "red" } }] },
+          { "matcher": { "id": "byName", "options": "HIGH" },     "properties": [{ "id": "color", "value": { "mode": "fixed", "fixedColor": "orange" } }] },
+          { "matcher": { "id": "byName", "options": "MEDIUM" },   "properties": [{ "id": "color", "value": { "mode": "fixed", "fixedColor": "yellow" } }] },
+          { "matcher": { "id": "byName", "options": "LOW" },      "properties": [{ "id": "color", "value": { "mode": "fixed", "fixedColor": "blue" } }] }
+        ]
+      }
+    },
+
+    {
+      "id": 10, "type": "barchart", "title": "Alerts by Rule",
+      "gridPos": { "x": 8, "y": 6, "w": 16, "h": 8 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [
+        { "expr": "sum(count_over_time({job=\"med-flink\"} | json | message =~ \"rule=HIGH_HEART_RATE\"      [$__range]))", "legendFormat": "HIGH_HEART_RATE",      "refId": "A" },
+        { "expr": "sum(count_over_time({job=\"med-flink\"} | json | message =~ \"rule=LOW_HEART_RATE\"       [$__range]))", "legendFormat": "LOW_HEART_RATE",       "refId": "B" },
+        { "expr": "sum(count_over_time({job=\"med-flink\"} | json | message =~ \"rule=LOW_SPO2\"             [$__range]))", "legendFormat": "LOW_SPO2",             "refId": "C" },
+        { "expr": "sum(count_over_time({job=\"med-flink\"} | json | message =~ \"rule=HIGH_SYSTOLIC_BP\"     [$__range]))", "legendFormat": "HIGH_SYSTOLIC_BP",     "refId": "D" },
+        { "expr": "sum(count_over_time({job=\"med-flink\"} | json | message =~ \"rule=LOW_SYSTOLIC_BP\"      [$__range]))", "legendFormat": "LOW_SYSTOLIC_BP",      "refId": "E" },
+        { "expr": "sum(count_over_time({job=\"med-flink\"} | json | message =~ \"rule=HIGH_TEMPERATURE\"     [$__range]))", "legendFormat": "HIGH_TEMPERATURE",     "refId": "F" },
+        { "expr": "sum(count_over_time({job=\"med-flink\"} | json | message =~ \"rule=LOW_TEMPERATURE\"      [$__range]))", "legendFormat": "LOW_TEMPERATURE",      "refId": "G" },
+        { "expr": "sum(count_over_time({job=\"med-flink\"} | json | message =~ \"rule=HIGH_RESPIRATORY_RATE\" [$__range]))", "legendFormat": "HIGH_RESPIRATORY_RATE", "refId": "H" },
+        { "expr": "sum(count_over_time({job=\"med-flink\"} | json | message =~ \"rule=LOW_RESPIRATORY_RATE\"  [$__range]))", "legendFormat": "LOW_RESPIRATORY_RATE",  "refId": "I" }
+      ],
+      "transformations": [
+        { "id": "reduce", "options": { "reducers": ["lastNotNull"] } }
+      ],
+      "options": {
+        "orientation": "horizontal",
+        "groupWidth": 0.7,
+        "barMaxWidth": 30,
+        "tooltip": { "mode": "single", "sort": "none" },
+        "legend": { "displayMode": "list", "placement": "bottom", "showLegend": false },
+        "xTickLabelRotation": 0
+      },
+      "fieldConfig": { "defaults": { "unit": "short", "color": { "mode": "palette-classic" } }, "overrides": [] }
+    },
+
+    { "id": 11, "type": "row", "title": "Pipeline Metrics", "collapsed": false, "gridPos": { "x": 0, "y": 14, "w": 24, "h": 1 } },
+
+    {
+      "id": 12, "type": "timeseries", "title": "Alert Rate Over Time",
+      "gridPos": { "x": 0, "y": 15, "w": 12, "h": 6 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "flink_taskmanager_job_task_operator_numRecordsOutPerSecond", "legendFormat": "alerts/s", "refId": "A" }],
+      "fieldConfig": { "defaults": { "unit": "ops", "color": { "mode": "palette-classic" } }, "overrides": [] },
+      "options": { "tooltip": { "mode": "single" }, "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true } }
+    },
+
+    {
+      "id": 13, "type": "timeseries", "title": "Consumer Lag Over Time",
+      "gridPos": { "x": 12, "y": 15, "w": 12, "h": 6 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "max(flink_taskmanager_job_task_operator_KafkaSourceReader_topic_partition_currentOffset - flink_taskmanager_job_task_operator_KafkaSourceReader_topic_partition_committedOffset)", "legendFormat": "lag", "refId": "A" }],
+      "fieldConfig": {
+        "defaults": { "unit": "short", "noValue": "0", "color": { "mode": "thresholds" }, "thresholds": { "mode": "absolute", "steps": [{ "value": 0, "color": "green" }, { "value": 1000, "color": "yellow" }, { "value": 10000, "color": "red" }] } },
+        "overrides": []
+      },
+      "options": { "tooltip": { "mode": "single" }, "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true } }
+    },
+
+    {
+      "id": 14, "type": "timeseries", "title": "Checkpoint Failures Over Time",
+      "gridPos": { "x": 0, "y": 21, "w": 8, "h": 6 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "flink_jobmanager_job_numberOfFailedCheckpoints", "legendFormat": "failures", "refId": "A" }],
+      "fieldConfig": {
+        "defaults": { "unit": "short", "color": { "mode": "thresholds" }, "thresholds": { "mode": "absolute", "steps": [{ "value": 0, "color": "green" }, { "value": 1, "color": "red" }] } },
+        "overrides": []
+      },
+      "options": { "tooltip": { "mode": "single" }, "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true } }
+    },
+
+    {
+      "id": 15, "type": "timeseries", "title": "Checkpoint Duration Over Time",
+      "gridPos": { "x": 8, "y": 21, "w": 8, "h": 6 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "flink_jobmanager_job_lastCheckpointDuration", "legendFormat": "duration ms", "refId": "A" }],
+      "fieldConfig": {
+        "defaults": { "unit": "ms", "color": { "mode": "thresholds" }, "thresholds": { "mode": "absolute", "steps": [{ "value": 0, "color": "green" }, { "value": 10000, "color": "yellow" }, { "value": 20000, "color": "red" }] } },
+        "overrides": []
+      },
+      "options": { "tooltip": { "mode": "single" }, "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true } }
+    },
+
+    {
+      "id": 16, "type": "timeseries", "title": "Task Restarts Over Time",
+      "gridPos": { "x": 16, "y": 21, "w": 8, "h": 6 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "flink_jobmanager_job_numRestarts", "legendFormat": "restarts", "refId": "A" }],
+      "fieldConfig": {
+        "defaults": { "unit": "short", "color": { "mode": "thresholds" }, "thresholds": { "mode": "absolute", "steps": [{ "value": 0, "color": "green" }, { "value": 1, "color": "red" }] } },
+        "overrides": []
+      },
+      "options": { "tooltip": { "mode": "single" }, "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true } }
+    },
+
+    { "id": 17, "type": "row", "title": "Recent Alerts", "collapsed": false, "gridPos": { "x": 0, "y": 27, "w": 24, "h": 1 } },
+
+    {
+      "id": 18, "type": "logs", "title": "Recent Alert Events",
+      "gridPos": { "x": 0, "y": 28, "w": 24, "h": 8 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [{ "expr": "{job=\"med-flink\"} | json | message =~ \"Alert fired\"", "refId": "A" }],
+      "options": {
+        "showTime": true,
+        "showLabels": true,
+        "showCommonLabels": false,
+        "wrapLogMessage": true,
+        "sortOrder": "Descending",
+        "dedupStrategy": "none",
+        "enableLogDetails": true
+      }
+    }
+
+  ]
+}

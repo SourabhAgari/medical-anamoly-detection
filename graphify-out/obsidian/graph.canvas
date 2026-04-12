@@ -1,0 +1,3016 @@
+{
+  "nodes": [
+    {
+      "id": "g0",
+      "type": "group",
+      "label": "Anomaly Detection Logic",
+      "x": 0,
+      "y": 0,
+      "width": 1320,
+      "height": 1120,
+      "color": "1"
+    },
+    {
+      "id": "n_kafkasinkfactory_at_least_once",
+      "type": "file",
+      "file": "graphify/obsidian/AT_LEAST_ONCE Delivery Guarantee (Sink).md",
+      "x": 20,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_notes_exactly_once_sink_risk",
+      "type": "file",
+      "file": "graphify/obsidian/AT_LEAST_ONCE Sink Duplicate Alert Risk.md",
+      "x": 220,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_notes_alerttime_wallclock_risk",
+      "type": "file",
+      "file": "graphify/obsidian/Alert Time Uses Wall Clock Instead of Event Time.md",
+      "x": 420,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_avro_alertseverity_enum",
+      "type": "file",
+      "file": "graphify/obsidian/AlertSeverity Enum (LOW, MEDIUM, HIGH, CRITICAL).md",
+      "x": 20,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunction_buildalert",
+      "type": "file",
+      "file": "graphify/obsidian/AnomalyDetectionFunction.buildAlert().md",
+      "x": 220,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunction_checkheartrate",
+      "type": "file",
+      "file": "graphify/obsidian/AnomalyDetectionFunction.checkHeartRate().md",
+      "x": 420,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunction_checkrespiratoryrate",
+      "type": "file",
+      "file": "graphify/obsidian/AnomalyDetectionFunction.checkRespiratoryRate().md",
+      "x": 20,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunction_checkspo2",
+      "type": "file",
+      "file": "graphify/obsidian/AnomalyDetectionFunction.checkSpO2().md",
+      "x": 220,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunction_checksystolicbp",
+      "type": "file",
+      "file": "graphify/obsidian/AnomalyDetectionFunction.checkSystolicBP().md",
+      "x": 420,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunction_checktemperature",
+      "type": "file",
+      "file": "graphify/obsidian/AnomalyDetectionFunction.checkTemperature().md",
+      "x": 20,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunction_flatmap",
+      "type": "file",
+      "file": "graphify/obsidian/AnomalyDetectionFunction.flatMap().md",
+      "x": 220,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_test_anomalydetectionfunctiontest",
+      "type": "file",
+      "file": "graphify/obsidian/AnomalyDetectionFunctionTest (35+ unit tests).md",
+      "x": 420,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_notes_checkpoint_storage_risk",
+      "type": "file",
+      "file": "graphify/obsidian/Checkpoint Storage on Local Docker Volume Risk.md",
+      "x": 20,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_notes_nan_vital_test_gap",
+      "type": "file",
+      "file": "graphify/obsidian/Double.NaN Vital Test Gap (sensor malfunction masking).md",
+      "x": 220,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_vitalsanomalydetectionjob_checkpoint_exactly_once",
+      "type": "file",
+      "file": "graphify/obsidian/EXACTLY_ONCE Checkpointing Configuration.md",
+      "x": 420,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_vitalsanomalydetectionjob_restart_strategy",
+      "type": "file",
+      "file": "graphify/obsidian/Fixed Delay Restart Strategy (3 attempts, 10s).md",
+      "x": 20,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_notes_hipaa_phi_risk",
+      "type": "file",
+      "file": "graphify/obsidian/HIPAA PHI Disclosure Risk (patientId in logs).md",
+      "x": 220,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_vitalsanomalydetectionjob_hashmap_backend",
+      "type": "file",
+      "file": "graphify/obsidian/HashMapStateBackend (in-memory, dev).md",
+      "x": 420,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_notes_kafka_tls_risk",
+      "type": "file",
+      "file": "graphify/obsidian/Kafka TLSSSL Missing (cleartext vitals).md",
+      "x": 20,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_test_listcollector",
+      "type": "file",
+      "file": "graphify/obsidian/ListCollector Test Helper (in-memory output collector).md",
+      "x": 220,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunction_mdc",
+      "type": "file",
+      "file": "graphify/obsidian/MDC vitalIdwardId Context in flatMap().md",
+      "x": 420,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_notes_deterministic_alertid",
+      "type": "file",
+      "file": "graphify/obsidian/Non-deterministic alertId Deduplication Issue.md",
+      "x": 20,
+      "y": 640,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_notes_prod_considerations",
+      "type": "file",
+      "file": "graphify/obsidian/Production Readiness TODO List.md",
+      "x": 220,
+      "y": 640,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_claudemd_production_upgrade_checklist",
+      "type": "file",
+      "file": "graphify/obsidian/Production Upgrade Checklist.md",
+      "x": 420,
+      "y": 640,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_notes_rocksdb_upgrade",
+      "type": "file",
+      "file": "graphify/obsidian/RocksDB State Backend Upgrade (scalability).md",
+      "x": 20,
+      "y": 720,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_avro_vitalrule_enum",
+      "type": "file",
+      "file": "graphify/obsidian/VitalRule Enum (HIGH_HEART_RATE, LOW_SPO2, etc.).md",
+      "x": 220,
+      "y": 720,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_vitalsanomalydetectionjob_buildenv",
+      "type": "file",
+      "file": "graphify/obsidian/VitalsAnomalyDetectionJob.buildEnvironment().md",
+      "x": 420,
+      "y": 720,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_test_buildvitals",
+      "type": "file",
+      "file": "graphify/obsidian/buildVitals() Builder Pattern (test helper).md",
+      "x": 20,
+      "y": 800,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g1",
+      "type": "group",
+      "label": "Core Pipeline Concepts",
+      "x": 1400,
+      "y": 0,
+      "width": 1100,
+      "height": 1020,
+      "color": "2"
+    },
+    {
+      "id": "n_avro_alertevent_schema",
+      "type": "file",
+      "file": "graphify/obsidian/AlertEvent Avro Schema (output).md",
+      "x": 1420,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunction_class",
+      "type": "file",
+      "file": "graphify/obsidian/AnomalyDetectionFunction (RichFlatMapFunction).md",
+      "x": 1620,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_claudemd_arch_decision_dlq_on_error",
+      "type": "file",
+      "file": "graphify/obsidian/Architectural Decision DLQ on Deserialize Error.md",
+      "x": 1820,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_claudemd_arch_decision_event_time",
+      "type": "file",
+      "file": "graphify/obsidian/Architectural Decision Event-time on measuredAt.md",
+      "x": 1420,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_claudemd_arch_decision_nullable_vitals",
+      "type": "file",
+      "file": "graphify/obsidian/Architectural Decision Nullable Vital Fields in Avro.md",
+      "x": 1620,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_claudemd_arch_decision_stateless_detection",
+      "type": "file",
+      "file": "graphify/obsidian/Architectural Decision Stateless Anomaly Detection.md",
+      "x": 1820,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializer_class",
+      "type": "file",
+      "file": "graphify/obsidian/FaultTolerantDeserializer (inner class).md",
+      "x": 1420,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_test_faulttolerabledeserializertest",
+      "type": "file",
+      "file": "graphify/obsidian/FaultTolerantDeserializerTest (40+ unit tests).md",
+      "x": 1620,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_class",
+      "type": "file",
+      "file": "graphify/obsidian/JobConfig (Environment-based Configuration).md",
+      "x": 1820,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_toschemaregistryproperties",
+      "type": "file",
+      "file": "graphify/obsidian/JobConfig.toSchemaRegistryProperties().md",
+      "x": 1420,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_kafkasinkfactory_class",
+      "type": "file",
+      "file": "graphify/obsidian/KafkaSinkFactory_1.md",
+      "x": 1620,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_kafkasinkfactory_create",
+      "type": "file",
+      "file": "graphify/obsidian/KafkaSinkFactory.create().md",
+      "x": 1820,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_kafkasourcefactory_class",
+      "type": "file",
+      "file": "graphify/obsidian/KafkaSourceFactory_1.md",
+      "x": 1420,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_kafkasourcefactory_create",
+      "type": "file",
+      "file": "graphify/obsidian/KafkaSourceFactory.create().md",
+      "x": 1620,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_notes_late_data_side_output",
+      "type": "file",
+      "file": "graphify/obsidian/Late Data Side Output Missing (30s records silently dropped).md",
+      "x": 1820,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_claudemd_nice_ng51_news2_thresholds",
+      "type": "file",
+      "file": "graphify/obsidian/NICE NG51  NEWS2 Clinical Thresholds.md",
+      "x": 1420,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_avro_patientvitals_schema",
+      "type": "file",
+      "file": "graphify/obsidian/PatientVitals Avro Schema (input).md",
+      "x": 1620,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_kafkasinkfactory_patient_key",
+      "type": "file",
+      "file": "graphify/obsidian/Sink Key Strategy patientId bytes.md",
+      "x": 1820,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_topicnames_alert_triggered",
+      "type": "file",
+      "file": "graphify/obsidian/Topic medical.alert.triggered.md",
+      "x": 1420,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_topicnames_vitals_dlq",
+      "type": "file",
+      "file": "graphify/obsidian/Topic medical.vitals.dlq.md",
+      "x": 1620,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_topicnames_vitals_raw",
+      "type": "file",
+      "file": "graphify/obsidian/Topic medical.vitals.raw.md",
+      "x": 1820,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_topicnames_class",
+      "type": "file",
+      "file": "graphify/obsidian/TopicNames (Config Class).md",
+      "x": 1420,
+      "y": 640,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_vitalsanomalydetectionjob_buildpipeline",
+      "type": "file",
+      "file": "graphify/obsidian/VitalsAnomalyDetectionJob.buildPipeline().md",
+      "x": 1620,
+      "y": 640,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_watermarkstrategyfactory_class",
+      "type": "file",
+      "file": "graphify/obsidian/WatermarkStrategyFactory_1.md",
+      "x": 1820,
+      "y": 640,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_watermarkstrategyfactory_forvitals",
+      "type": "file",
+      "file": "graphify/obsidian/WatermarkStrategyFactory.forVitals().md",
+      "x": 1420,
+      "y": 720,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g2",
+      "type": "group",
+      "label": "Anomaly Detection Tests",
+      "x": 2580,
+      "y": 0,
+      "width": 1100,
+      "height": 920,
+      "color": "3"
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_alert_hascorrectpatientandvitalid",
+      "type": "file",
+      "file": "graphify/obsidian/.alert_hasCorrectPatientAndVitalId().md",
+      "x": 2600,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_allnullvitals_noalerts",
+      "type": "file",
+      "file": "graphify/obsidian/.allNullVitals_noAlerts().md",
+      "x": 2800,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "type": "file",
+      "file": "graphify/obsidian/.buildVitals().md",
+      "x": 3000,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_listcollector_close",
+      "type": "file",
+      "file": "graphify/obsidian/.close()_1.md",
+      "x": 2600,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_listcollector_collect",
+      "type": "file",
+      "file": "graphify/obsidian/.collect()_1.md",
+      "x": 2800,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_criticallylowspo2_firescriticalalert",
+      "type": "file",
+      "file": "graphify/obsidian/.criticallyLowSpO2_firesCriticalAlert().md",
+      "x": 3000,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_vitalscustomizer_customize",
+      "type": "file",
+      "file": "graphify/obsidian/.customize().md",
+      "x": 2600,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_highheartrate_fireshighalert",
+      "type": "file",
+      "file": "graphify/obsidian/.highHeartRate_firesHighAlert().md",
+      "x": 2800,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_highrespiratoryrate_fireshighalert",
+      "type": "file",
+      "file": "graphify/obsidian/.highRespiratoryRate_firesHighAlert().md",
+      "x": 3000,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_highsystolicbp_fireshighalert",
+      "type": "file",
+      "file": "graphify/obsidian/.highSystolicBP_firesHighAlert().md",
+      "x": 2600,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_hightemperature_firesmediumalert",
+      "type": "file",
+      "file": "graphify/obsidian/.highTemperature_firesMediumAlert().md",
+      "x": 2800,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowheartrate_firescriticalalert",
+      "type": "file",
+      "file": "graphify/obsidian/.lowHeartRate_firesCriticalAlert().md",
+      "x": 3000,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowrespiratoryrate_firescriticalalert",
+      "type": "file",
+      "file": "graphify/obsidian/.lowRespiratoryRate_firesCriticalAlert().md",
+      "x": 2600,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowsystolicbp_firescriticalalert",
+      "type": "file",
+      "file": "graphify/obsidian/.lowSystolicBP_firesCriticalAlert().md",
+      "x": 2800,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowtemperature_fireshighalert",
+      "type": "file",
+      "file": "graphify/obsidian/.lowTemperature_firesHighAlert().md",
+      "x": 3000,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_multipleabnormalvitals_firesmultiplealerts",
+      "type": "file",
+      "file": "graphify/obsidian/.multipleAbnormalVitals_firesMultipleAlerts().md",
+      "x": 2600,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_normalheartrate_noalert",
+      "type": "file",
+      "file": "graphify/obsidian/.normalHeartRate_noAlert().md",
+      "x": 2800,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_normalspo2_noalert",
+      "type": "file",
+      "file": "graphify/obsidian/.normalSpO2_noAlert().md",
+      "x": 3000,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_nullheartrate_noalert",
+      "type": "file",
+      "file": "graphify/obsidian/.nullHeartRate_noAlert().md",
+      "x": 2600,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_setup",
+      "type": "file",
+      "file": "graphify/obsidian/.setUp()_1.md",
+      "x": 2800,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "type": "file",
+      "file": "graphify/obsidian/AnomalyDetectionFunctionTest.md",
+      "x": 3000,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_med_flink_src_test_java_com_healthcare_vitals_operator_anomalydetectionfunctiontest_java",
+      "type": "file",
+      "file": "graphify/obsidian/AnomalyDetectionFunctionTest.java.md",
+      "x": 2600,
+      "y": 640,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_listcollector",
+      "type": "file",
+      "file": "graphify/obsidian/ListCollector_1.md",
+      "x": 2800,
+      "y": 640,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunctiontest_vitalscustomizer",
+      "type": "file",
+      "file": "graphify/obsidian/VitalsCustomizer.md",
+      "x": 3000,
+      "y": 640,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g3",
+      "type": "group",
+      "label": "Job Config Builder",
+      "x": 3760,
+      "y": 0,
+      "width": 1100,
+      "height": 920,
+      "color": "4"
+    },
+    {
+      "id": "n_jobconfig_jobconfig_jobconfig",
+      "type": "file",
+      "file": "graphify/obsidian/.JobConfig().md",
+      "x": 3780,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_builder_autooffsetreset",
+      "type": "file",
+      "file": "graphify/obsidian/.autoOffsetReset().md",
+      "x": 3980,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_builder_bootstrapservers",
+      "type": "file",
+      "file": "graphify/obsidian/.bootstrapServers().md",
+      "x": 4180,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_builder_build",
+      "type": "file",
+      "file": "graphify/obsidian/.build().md",
+      "x": 3780,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_builder_checkpointintervalms",
+      "type": "file",
+      "file": "graphify/obsidian/.checkpointIntervalMs().md",
+      "x": 3980,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_builder_consumergroup",
+      "type": "file",
+      "file": "graphify/obsidian/.consumerGroup().md",
+      "x": 4180,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_jobconfig_env",
+      "type": "file",
+      "file": "graphify/obsidian/.env().md",
+      "x": 3780,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_jobconfig_fromenvironment",
+      "type": "file",
+      "file": "graphify/obsidian/.fromEnvironment().md",
+      "x": 3980,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_jobconfig_getautooffsetreset",
+      "type": "file",
+      "file": "graphify/obsidian/.getAutoOffsetReset().md",
+      "x": 4180,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_jobconfig_getbootstrapservers",
+      "type": "file",
+      "file": "graphify/obsidian/.getBootstrapServers().md",
+      "x": 3780,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_jobconfig_getcheckpointintervalms",
+      "type": "file",
+      "file": "graphify/obsidian/.getCheckpointIntervalMs().md",
+      "x": 3980,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_jobconfig_getconsumergroup",
+      "type": "file",
+      "file": "graphify/obsidian/.getConsumerGroup().md",
+      "x": 4180,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_jobconfig_getparallelism",
+      "type": "file",
+      "file": "graphify/obsidian/.getParallelism().md",
+      "x": 3780,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_jobconfig_getschemaregistryurl",
+      "type": "file",
+      "file": "graphify/obsidian/.getSchemaRegistryUrl().md",
+      "x": 3980,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_builder_parallelism",
+      "type": "file",
+      "file": "graphify/obsidian/.parallelism().md",
+      "x": 4180,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_jobconfig_requireenv",
+      "type": "file",
+      "file": "graphify/obsidian/.requireEnv().md",
+      "x": 3780,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_builder_schemaregistryurl",
+      "type": "file",
+      "file": "graphify/obsidian/.schemaRegistryUrl().md",
+      "x": 3980,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_jobconfig_toschemaregistryproperties",
+      "type": "file",
+      "file": "graphify/obsidian/.toSchemaRegistryProperties().md",
+      "x": 4180,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_jobconfig_tostring",
+      "type": "file",
+      "file": "graphify/obsidian/.toString().md",
+      "x": 3780,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_builder",
+      "type": "file",
+      "file": "graphify/obsidian/Builder.md",
+      "x": 3980,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_jobconfig",
+      "type": "file",
+      "file": "graphify/obsidian/JobConfig.md",
+      "x": 4180,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_jobconfig_fromenvironment",
+      "type": "file",
+      "file": "graphify/obsidian/JobConfig.fromEnvironment().md",
+      "x": 3780,
+      "y": 640,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_med_flink_src_main_java_com_healthcare_vitals_job_jobconfig_java",
+      "type": "file",
+      "file": "graphify/obsidian/JobConfig.java.md",
+      "x": 3980,
+      "y": 640,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_vitalsanomalydetectionjob_class",
+      "type": "file",
+      "file": "graphify/obsidian/VitalsAnomalyDetectionJob (Job Entry Point).md",
+      "x": 4180,
+      "y": 640,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g4",
+      "type": "group",
+      "label": "DLQ Deserializer Tests",
+      "x": 4940,
+      "y": 0,
+      "width": 1100,
+      "height": 820,
+      "color": "5"
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_badbytes",
+      "type": "file",
+      "file": "graphify/obsidian/.badBytes().md",
+      "x": 4960,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_captureddlqrecord",
+      "type": "file",
+      "file": "graphify/obsidian/.capturedDlqRecord().md",
+      "x": 5160,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_listcollector_close",
+      "type": "file",
+      "file": "graphify/obsidian/.close().md",
+      "x": 5360,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_listcollector_collect",
+      "type": "file",
+      "file": "graphify/obsidian/.collect().md",
+      "x": 4960,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "type": "file",
+      "file": "graphify/obsidian/.consumerRecord().md",
+      "x": 5160,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainserrorclassandmessage",
+      "type": "file",
+      "file": "graphify/obsidian/.corruptRecord_dlqHeaderContainsErrorClassAndMessage().md",
+      "x": 5360,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcepartitionandoffset",
+      "type": "file",
+      "file": "graphify/obsidian/.corruptRecord_dlqHeaderContainsSourcePartitionAndOffset().md",
+      "x": 4960,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcetopic",
+      "type": "file",
+      "file": "graphify/obsidian/.corruptRecord_dlqHeaderContainsSourceTopic().md",
+      "x": 5160,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_isnotemittedtomainstream",
+      "type": "file",
+      "file": "graphify/obsidian/.corruptRecord_isNotEmittedToMainStream().md",
+      "x": 5360,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_rawbytesaresenttodlqtopic",
+      "type": "file",
+      "file": "graphify/obsidian/.corruptRecord_rawBytesAreSentToDlqTopic().md",
+      "x": 4960,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_dlqproducerthrows_exceptionisswallowedandjobcontinues",
+      "type": "file",
+      "file": "graphify/obsidian/.dlqProducerThrows_exceptionIsSwallowedAndJobContinues().md",
+      "x": 5160,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_header",
+      "type": "file",
+      "file": "graphify/obsidian/.header().md",
+      "x": 5360,
+      "y": 320,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_longerrormessage_istruncatedto500charsinheader",
+      "type": "file",
+      "file": "graphify/obsidian/.longErrorMessage_isTruncatedTo500CharsInHeader().md",
+      "x": 4960,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_mixedstream_validrecordspassthroughandcorruptgotodlq",
+      "type": "file",
+      "file": "graphify/obsidian/.mixedStream_validRecordsPassThroughAndCorruptGoToDlq().md",
+      "x": 5160,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_nullrecordvalue_isroutedtodlq",
+      "type": "file",
+      "file": "graphify/obsidian/.nullRecordValue_isRoutedToDlq().md",
+      "x": 5360,
+      "y": 400,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_setup",
+      "type": "file",
+      "file": "graphify/obsidian/.setUp().md",
+      "x": 4960,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_validrecord_doesnottouchdlqproducer",
+      "type": "file",
+      "file": "graphify/obsidian/.validRecord_doesNotTouchDlqProducer().md",
+      "x": 5160,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_validrecord_isemittedtomainstream",
+      "type": "file",
+      "file": "graphify/obsidian/.validRecord_isEmittedToMainStream().md",
+      "x": 5360,
+      "y": 480,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_faulttolerantdeserializertest",
+      "type": "file",
+      "file": "graphify/obsidian/FaultTolerantDeserializerTest.md",
+      "x": 4960,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_med_flink_src_test_java_com_healthcare_vitals_source_faulttolerantdeserializertest_java",
+      "type": "file",
+      "file": "graphify/obsidian/FaultTolerantDeserializerTest.java.md",
+      "x": 5160,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializertest_listcollector",
+      "type": "file",
+      "file": "graphify/obsidian/ListCollector.md",
+      "x": 5360,
+      "y": 560,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g5",
+      "type": "group",
+      "label": "Fault Tolerant Deserializer",
+      "x": 0,
+      "y": 1200,
+      "width": 880,
+      "height": 520,
+      "color": "6"
+    },
+    {
+      "id": "n_kafkasourcefactory_faulttolerantdeserializer_faulttolerantdeserializer",
+      "type": "file",
+      "file": "graphify/obsidian/.FaultTolerantDeserializer().md",
+      "x": 20,
+      "y": 1280,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_kafkasourcefactory_kafkasourcefactory_kafkasourcefactory",
+      "type": "file",
+      "file": "graphify/obsidian/.KafkaSourceFactory().md",
+      "x": 220,
+      "y": 1280,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_kafkasourcefactory_kafkasourcefactory_create",
+      "type": "file",
+      "file": "graphify/obsidian/.create().md",
+      "x": 420,
+      "y": 1280,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_kafkasourcefactory_faulttolerantdeserializer_createdlqproducer",
+      "type": "file",
+      "file": "graphify/obsidian/.createDlqProducer().md",
+      "x": 20,
+      "y": 1360,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_kafkasourcefactory_faulttolerantdeserializer_deserialize",
+      "type": "file",
+      "file": "graphify/obsidian/.deserialize().md",
+      "x": 220,
+      "y": 1360,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_kafkasourcefactory_faulttolerantdeserializer_getproducedtype",
+      "type": "file",
+      "file": "graphify/obsidian/.getProducedType().md",
+      "x": 420,
+      "y": 1360,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_kafkasourcefactory_faulttolerantdeserializer_sendtodlq",
+      "type": "file",
+      "file": "graphify/obsidian/.sendToDlq().md",
+      "x": 20,
+      "y": 1440,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_kafkasourcefactory_faulttolerantdeserializer_truncate",
+      "type": "file",
+      "file": "graphify/obsidian/.truncate().md",
+      "x": 220,
+      "y": 1440,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_kafkasourcefactory_faulttolerantdeserializer",
+      "type": "file",
+      "file": "graphify/obsidian/FaultTolerantDeserializer.md",
+      "x": 420,
+      "y": 1440,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_kafkasourcefactory_kafkasourcefactory",
+      "type": "file",
+      "file": "graphify/obsidian/KafkaSourceFactory.md",
+      "x": 20,
+      "y": 1520,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_med_flink_src_main_java_com_healthcare_vitals_source_kafkasourcefactory_java",
+      "type": "file",
+      "file": "graphify/obsidian/KafkaSourceFactory.java.md",
+      "x": 220,
+      "y": 1520,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g6",
+      "type": "group",
+      "label": "AnomalyDetectionFunction Class",
+      "x": 1400,
+      "y": 1200,
+      "width": 880,
+      "height": 520,
+      "color": "1"
+    },
+    {
+      "id": "n_anomalydetectionfunction_anomalydetectionfunction_buildalert",
+      "type": "file",
+      "file": "graphify/obsidian/.buildAlert().md",
+      "x": 1420,
+      "y": 1280,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunction_anomalydetectionfunction_checkheartrate",
+      "type": "file",
+      "file": "graphify/obsidian/.checkHeartRate().md",
+      "x": 1620,
+      "y": 1280,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunction_anomalydetectionfunction_checkrespiratoryrate",
+      "type": "file",
+      "file": "graphify/obsidian/.checkRespiratoryRate().md",
+      "x": 1820,
+      "y": 1280,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunction_anomalydetectionfunction_checkspo2",
+      "type": "file",
+      "file": "graphify/obsidian/.checkSpO2().md",
+      "x": 1420,
+      "y": 1360,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunction_anomalydetectionfunction_checksystolicbp",
+      "type": "file",
+      "file": "graphify/obsidian/.checkSystolicBP().md",
+      "x": 1620,
+      "y": 1360,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunction_anomalydetectionfunction_checktemperature",
+      "type": "file",
+      "file": "graphify/obsidian/.checkTemperature().md",
+      "x": 1820,
+      "y": 1360,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunction_anomalydetectionfunction_flatmap",
+      "type": "file",
+      "file": "graphify/obsidian/.flatMap().md",
+      "x": 1420,
+      "y": 1440,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunction_anomalydetectionfunction_open",
+      "type": "file",
+      "file": "graphify/obsidian/.open().md",
+      "x": 1620,
+      "y": 1440,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_anomalydetectionfunction_anomalydetectionfunction",
+      "type": "file",
+      "file": "graphify/obsidian/AnomalyDetectionFunction.md",
+      "x": 1820,
+      "y": 1440,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_med_flink_src_main_java_com_healthcare_vitals_operator_anomalydetectionfunction_java",
+      "type": "file",
+      "file": "graphify/obsidian/AnomalyDetectionFunction.java.md",
+      "x": 1420,
+      "y": 1520,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g7",
+      "type": "group",
+      "label": "DLQ Error Routing Flow",
+      "x": 2580,
+      "y": 1200,
+      "width": 880,
+      "height": 520,
+      "color": "2"
+    },
+    {
+      "id": "n_faulttolerantdeserializer_dlq_producer",
+      "type": "file",
+      "file": "graphify/obsidian/DLQ KafkaProducer (lazy-initialized).md",
+      "x": 2600,
+      "y": 1280,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_notes_dockerfile_flink",
+      "type": "file",
+      "file": "graphify/obsidian/Dockerfile.flink (custom Flink image with Prometheus plugin).md",
+      "x": 2800,
+      "y": 1280,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializer_deserialize",
+      "type": "file",
+      "file": "graphify/obsidian/FaultTolerantDeserializer.deserialize().md",
+      "x": 3000,
+      "y": 1280,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializer_sendtodlq",
+      "type": "file",
+      "file": "graphify/obsidian/FaultTolerantDeserializer.sendToDlq().md",
+      "x": 2600,
+      "y": 1360,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_notes_grafana_dashboards",
+      "type": "file",
+      "file": "graphify/obsidian/Grafana Dashboards (ops-health + diagnostics).md",
+      "x": 2800,
+      "y": 1360,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_notes_loki_promtail",
+      "type": "file",
+      "file": "graphify/obsidian/Loki + Promtail Log Aggregation.md",
+      "x": 3000,
+      "y": 1360,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_faulttolerantdeserializer_mdc",
+      "type": "file",
+      "file": "graphify/obsidian/MDC Kafka Metadata Context in deserialize().md",
+      "x": 2600,
+      "y": 1440,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_notes_prod_changes_made",
+      "type": "file",
+      "file": "graphify/obsidian/Production Changes Made (HIPAA + MDC + Observability).md",
+      "x": 2800,
+      "y": 1440,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_notes_prometheus_reporter",
+      "type": "file",
+      "file": "graphify/obsidian/Prometheus Metrics Reporter (observability).md",
+      "x": 3000,
+      "y": 1440,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_notes_log4j2_json_template",
+      "type": "file",
+      "file": "graphify/obsidian/log4j2 JsonTemplateLayout with Async Loggers.md",
+      "x": 2600,
+      "y": 1520,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g8",
+      "type": "group",
+      "label": "Job Entry Point",
+      "x": 3760,
+      "y": 1200,
+      "width": 660,
+      "height": 400,
+      "color": "3"
+    },
+    {
+      "id": "n_vitalsanomalydetectionjob_vitalsanomalydetectionjob_buildenvironment",
+      "type": "file",
+      "file": "graphify/obsidian/.buildEnvironment().md",
+      "x": 3780,
+      "y": 1280,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_vitalsanomalydetectionjob_vitalsanomalydetectionjob_buildpipeline",
+      "type": "file",
+      "file": "graphify/obsidian/.buildPipeline().md",
+      "x": 3980,
+      "y": 1280,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_vitalsanomalydetectionjob_vitalsanomalydetectionjob_main",
+      "type": "file",
+      "file": "graphify/obsidian/.main().md",
+      "x": 4180,
+      "y": 1280,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_vitalsanomalydetectionjob_vitalsanomalydetectionjob",
+      "type": "file",
+      "file": "graphify/obsidian/VitalsAnomalyDetectionJob.md",
+      "x": 3780,
+      "y": 1360,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_med_flink_src_main_java_com_healthcare_vitals_job_vitalsanomalydetectionjob_java",
+      "type": "file",
+      "file": "graphify/obsidian/VitalsAnomalyDetectionJob.java.md",
+      "x": 3980,
+      "y": 1360,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g9",
+      "type": "group",
+      "label": "Watermark Strategy",
+      "x": 4940,
+      "y": 1200,
+      "width": 600,
+      "height": 400,
+      "color": "4"
+    },
+    {
+      "id": "n_watermarkstrategyfactory_watermarkstrategyfactory_watermarkstrategyfactory",
+      "type": "file",
+      "file": "graphify/obsidian/.WatermarkStrategyFactory().md",
+      "x": 4960,
+      "y": 1280,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_watermarkstrategyfactory_watermarkstrategyfactory_forvitals",
+      "type": "file",
+      "file": "graphify/obsidian/.forVitals().md",
+      "x": 5160,
+      "y": 1280,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_watermarkstrategyfactory_watermarkstrategyfactory",
+      "type": "file",
+      "file": "graphify/obsidian/WatermarkStrategyFactory.md",
+      "x": 5360,
+      "y": 1280,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_med_flink_src_main_java_com_healthcare_vitals_source_watermarkstrategyfactory_java",
+      "type": "file",
+      "file": "graphify/obsidian/WatermarkStrategyFactory.java.md",
+      "x": 4960,
+      "y": 1360,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g10",
+      "type": "group",
+      "label": "Kafka Sink Factory",
+      "x": 0,
+      "y": 1800,
+      "width": 600,
+      "height": 400,
+      "color": "5"
+    },
+    {
+      "id": "n_kafkasinkfactory_kafkasinkfactory_kafkasinkfactory",
+      "type": "file",
+      "file": "graphify/obsidian/.KafkaSinkFactory().md",
+      "x": 20,
+      "y": 1880,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_kafkasinkfactory_kafkasinkfactory_create",
+      "type": "file",
+      "file": "graphify/obsidian/.create()_1.md",
+      "x": 220,
+      "y": 1880,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_kafkasinkfactory_kafkasinkfactory",
+      "type": "file",
+      "file": "graphify/obsidian/KafkaSinkFactory.md",
+      "x": 420,
+      "y": 1880,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_med_flink_src_main_java_com_healthcare_vitals_sink_kafkasinkfactory_java",
+      "type": "file",
+      "file": "graphify/obsidian/KafkaSinkFactory.java.md",
+      "x": 20,
+      "y": 1960,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g11",
+      "type": "group",
+      "label": "Topic Names Config",
+      "x": 1400,
+      "y": 1800,
+      "width": 600,
+      "height": 400,
+      "color": "6"
+    },
+    {
+      "id": "n_topicnames_topicnames_topicnames",
+      "type": "file",
+      "file": "graphify/obsidian/.TopicNames().md",
+      "x": 1420,
+      "y": 1880,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_topicnames_topicnames",
+      "type": "file",
+      "file": "graphify/obsidian/TopicNames.md",
+      "x": 1620,
+      "y": 1880,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_med_flink_src_main_java_com_healthcare_vitals_config_topicnames_java",
+      "type": "file",
+      "file": "graphify/obsidian/TopicNames.java.md",
+      "x": 1820,
+      "y": 1880,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g12",
+      "type": "group",
+      "label": "Project Structure",
+      "x": 2580,
+      "y": 1800,
+      "width": 600,
+      "height": 400,
+      "color": "1"
+    },
+    {
+      "id": "n_claudemd_medical_anomaly_detection_project",
+      "type": "file",
+      "file": "graphify/obsidian/Medical Anomaly Detection Project.md",
+      "x": 2600,
+      "y": 1880,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_claudemd_med_flink_subproject",
+      "type": "file",
+      "file": "graphify/obsidian/med-flink Subproject (Flink Streaming Job).md",
+      "x": 2800,
+      "y": 1880,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_claudemd_med_infra_subproject",
+      "type": "file",
+      "file": "graphify/obsidian/med-infra Subproject (Kafka Infrastructure).md",
+      "x": 3000,
+      "y": 1880,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g13",
+      "type": "group",
+      "label": "Schema Registry Config",
+      "x": 3760,
+      "y": 1800,
+      "width": 600,
+      "height": 400,
+      "color": "2"
+    },
+    {
+      "id": "n_claudemd_arch_decision_full_transitive_schema",
+      "type": "file",
+      "file": "graphify/obsidian/Architectural Decision FULL_TRANSITIVE Schema Compatibility.md",
+      "x": 3780,
+      "y": 1880,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_confluent_schema_registry",
+      "type": "file",
+      "file": "graphify/obsidian/Confluent Schema Registry.md",
+      "x": 3980,
+      "y": 1880,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g14",
+      "type": "group",
+      "label": "Kafka KRaft Cluster",
+      "x": 4940,
+      "y": 1800,
+      "width": 600,
+      "height": 400,
+      "color": "3"
+    },
+    {
+      "id": "n_apache_kafka_cluster",
+      "type": "file",
+      "file": "graphify/obsidian/Apache Kafka Cluster (3-broker KRaft).md",
+      "x": 4960,
+      "y": 1880,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_claudemd_arch_decision_kraft",
+      "type": "file",
+      "file": "graphify/obsidian/Architectural Decision KRaft (no ZooKeeper).md",
+      "x": 5160,
+      "y": 1880,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g15",
+      "type": "group",
+      "label": "Pipeline Architecture Docs",
+      "x": 0,
+      "y": 2280,
+      "width": 600,
+      "height": 400,
+      "color": "4"
+    },
+    {
+      "id": "n_claudemd_pipeline_architecture",
+      "type": "file",
+      "file": "graphify/obsidian/Flink Pipeline Architecture.md",
+      "x": 20,
+      "y": 2360,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g16",
+      "type": "group",
+      "label": "Kafka Topics",
+      "x": 1400,
+      "y": 2280,
+      "width": 600,
+      "height": 400,
+      "color": "5"
+    },
+    {
+      "id": "n_claudemd_kafka_topics",
+      "type": "file",
+      "file": "graphify/obsidian/Kafka Topic Configuration.md",
+      "x": 1420,
+      "y": 2360,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g17",
+      "type": "group",
+      "label": "Fault Tolerance Design",
+      "x": 2580,
+      "y": 2280,
+      "width": 600,
+      "height": 400,
+      "color": "6"
+    },
+    {
+      "id": "n_claudemd_fault_tolerance_dlq",
+      "type": "file",
+      "file": "graphify/obsidian/Fault Tolerance and DLQ Design.md",
+      "x": 2600,
+      "y": 2360,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g18",
+      "type": "group",
+      "label": "Flink Runtime",
+      "x": 3760,
+      "y": 2280,
+      "width": 600,
+      "height": 400,
+      "color": "1"
+    },
+    {
+      "id": "n_apache_flink_runtime",
+      "type": "file",
+      "file": "graphify/obsidian/Apache Flink 1.19.1 Runtime.md",
+      "x": 3780,
+      "y": 2360,
+      "width": 180,
+      "height": 60
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_med_flink_src_test_java_com_healthcare_vitals_source_faulttolerantdeserializertest_java_faulttolerantdeserializertest_faulttolerantdeserializertest",
+      "fromNode": "n_med_flink_src_test_java_com_healthcare_vitals_source_faulttolerantdeserializertest_java",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_med_flink_src_test_java_com_healthcare_vitals_source_faulttolerantdeserializertest_java_faulttolerantdeserializertest_listcollector",
+      "fromNode": "n_med_flink_src_test_java_com_healthcare_vitals_source_faulttolerantdeserializertest_java",
+      "toNode": "n_faulttolerantdeserializertest_listcollector",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_setup",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_setup",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_validrecord_isemittedtomainstream",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_validrecord_isemittedtomainstream",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_validrecord_doesnottouchdlqproducer",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_validrecord_doesnottouchdlqproducer",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_isnotemittedtomainstream",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_isnotemittedtomainstream",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_rawbytesaresenttodlqtopic",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_rawbytesaresenttodlqtopic",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcetopic",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcetopic",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcepartitionandoffset",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcepartitionandoffset",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainserrorclassandmessage",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainserrorclassandmessage",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_longerrormessage_istruncatedto500charsinheader",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_longerrormessage_istruncatedto500charsinheader",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_nullrecordvalue_isroutedtodlq",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_nullrecordvalue_isroutedtodlq",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_dlqproducerthrows_exceptionisswallowedandjobcontinues",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_dlqproducerthrows_exceptionisswallowedandjobcontinues",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_mixedstream_validrecordspassthroughandcorruptgotodlq",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_mixedstream_validrecordspassthroughandcorruptgotodlq",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_badbytes",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_badbytes",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_captureddlqrecord",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_captureddlqrecord",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_faulttolerantdeserializertest_header",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_header",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_validrecord_isemittedtomainstream_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_validrecord_isemittedtomainstream",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_validrecord_isemittedtomainstream_faulttolerantdeserializertest_listcollector_collect",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_validrecord_isemittedtomainstream",
+      "toNode": "n_faulttolerantdeserializertest_listcollector_collect",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_validrecord_doesnottouchdlqproducer_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_validrecord_doesnottouchdlqproducer",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_isnotemittedtomainstream_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_isnotemittedtomainstream",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_rawbytesaresenttodlqtopic_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_rawbytesaresenttodlqtopic",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_rawbytesaresenttodlqtopic_faulttolerantdeserializertest_faulttolerantdeserializertest_captureddlqrecord",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_rawbytesaresenttodlqtopic",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_captureddlqrecord",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcetopic_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcetopic",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcetopic_faulttolerantdeserializertest_faulttolerantdeserializertest_badbytes",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcetopic",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_badbytes",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcetopic_faulttolerantdeserializertest_faulttolerantdeserializertest_header",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcetopic",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_header",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcetopic_faulttolerantdeserializertest_faulttolerantdeserializertest_captureddlqrecord",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcetopic",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_captureddlqrecord",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcepartitionandoffset_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcepartitionandoffset",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcepartitionandoffset_faulttolerantdeserializertest_faulttolerantdeserializertest_badbytes",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcepartitionandoffset",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_badbytes",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcepartitionandoffset_faulttolerantdeserializertest_faulttolerantdeserializertest_captureddlqrecord",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcepartitionandoffset",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_captureddlqrecord",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcepartitionandoffset_faulttolerantdeserializertest_faulttolerantdeserializertest_header",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainssourcepartitionandoffset",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_header",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainserrorclassandmessage_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainserrorclassandmessage",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainserrorclassandmessage_faulttolerantdeserializertest_faulttolerantdeserializertest_badbytes",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainserrorclassandmessage",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_badbytes",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainserrorclassandmessage_faulttolerantdeserializertest_faulttolerantdeserializertest_captureddlqrecord",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainserrorclassandmessage",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_captureddlqrecord",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainserrorclassandmessage_faulttolerantdeserializertest_faulttolerantdeserializertest_header",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_corruptrecord_dlqheadercontainserrorclassandmessage",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_header",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_longerrormessage_istruncatedto500charsinheader_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_longerrormessage_istruncatedto500charsinheader",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_longerrormessage_istruncatedto500charsinheader_faulttolerantdeserializertest_faulttolerantdeserializertest_badbytes",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_longerrormessage_istruncatedto500charsinheader",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_badbytes",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_longerrormessage_istruncatedto500charsinheader_faulttolerantdeserializertest_faulttolerantdeserializertest_header",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_longerrormessage_istruncatedto500charsinheader",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_header",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_longerrormessage_istruncatedto500charsinheader_faulttolerantdeserializertest_faulttolerantdeserializertest_captureddlqrecord",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_longerrormessage_istruncatedto500charsinheader",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_captureddlqrecord",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_nullrecordvalue_isroutedtodlq_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_nullrecordvalue_isroutedtodlq",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_dlqproducerthrows_exceptionisswallowedandjobcontinues_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_dlqproducerthrows_exceptionisswallowedandjobcontinues",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_dlqproducerthrows_exceptionisswallowedandjobcontinues_faulttolerantdeserializertest_faulttolerantdeserializertest_badbytes",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_dlqproducerthrows_exceptionisswallowedandjobcontinues",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_badbytes",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_mixedstream_validrecordspassthroughandcorruptgotodlq_faulttolerantdeserializertest_listcollector_collect",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_mixedstream_validrecordspassthroughandcorruptgotodlq",
+      "toNode": "n_faulttolerantdeserializertest_listcollector_collect",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_faulttolerantdeserializertest_mixedstream_validrecordspassthroughandcorruptgotodlq_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "fromNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_mixedstream_validrecordspassthroughandcorruptgotodlq",
+      "toNode": "n_faulttolerantdeserializertest_faulttolerantdeserializertest_consumerrecord",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_listcollector_faulttolerantdeserializertest_listcollector_collect",
+      "fromNode": "n_faulttolerantdeserializertest_listcollector",
+      "toNode": "n_faulttolerantdeserializertest_listcollector_collect",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_faulttolerantdeserializertest_listcollector_faulttolerantdeserializertest_listcollector_close",
+      "fromNode": "n_faulttolerantdeserializertest_listcollector",
+      "toNode": "n_faulttolerantdeserializertest_listcollector_close",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_med_flink_src_test_java_com_healthcare_vitals_operator_anomalydetectionfunctiontest_java_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "fromNode": "n_med_flink_src_test_java_com_healthcare_vitals_operator_anomalydetectionfunctiontest_java",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_med_flink_src_test_java_com_healthcare_vitals_operator_anomalydetectionfunctiontest_java_anomalydetectionfunctiontest_vitalscustomizer",
+      "fromNode": "n_med_flink_src_test_java_com_healthcare_vitals_operator_anomalydetectionfunctiontest_java",
+      "toNode": "n_anomalydetectionfunctiontest_vitalscustomizer",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_med_flink_src_test_java_com_healthcare_vitals_operator_anomalydetectionfunctiontest_java_anomalydetectionfunctiontest_listcollector",
+      "fromNode": "n_med_flink_src_test_java_com_healthcare_vitals_operator_anomalydetectionfunctiontest_java",
+      "toNode": "n_anomalydetectionfunctiontest_listcollector",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_setup",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_setup",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_highheartrate_fireshighalert",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_highheartrate_fireshighalert",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowheartrate_firescriticalalert",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowheartrate_firescriticalalert",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_normalheartrate_noalert",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_normalheartrate_noalert",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_nullheartrate_noalert",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_nullheartrate_noalert",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_criticallylowspo2_firescriticalalert",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_criticallylowspo2_firescriticalalert",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_normalspo2_noalert",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_normalspo2_noalert",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_highsystolicbp_fireshighalert",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_highsystolicbp_fireshighalert",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowsystolicbp_firescriticalalert",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowsystolicbp_firescriticalalert",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_hightemperature_firesmediumalert",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_hightemperature_firesmediumalert",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowtemperature_fireshighalert",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowtemperature_fireshighalert",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_highrespiratoryrate_fireshighalert",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_highrespiratoryrate_fireshighalert",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowrespiratoryrate_firescriticalalert",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowrespiratoryrate_firescriticalalert",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_multipleabnormalvitals_firesmultiplealerts",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_multipleabnormalvitals_firesmultiplealerts",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_allnullvitals_noalerts",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_allnullvitals_noalerts",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_alert_hascorrectpatientandvitalid",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_alert_hascorrectpatientandvitalid",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_highheartrate_fireshighalert_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_highheartrate_fireshighalert",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowheartrate_firescriticalalert_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowheartrate_firescriticalalert",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_normalheartrate_noalert_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_normalheartrate_noalert",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_nullheartrate_noalert_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_nullheartrate_noalert",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_criticallylowspo2_firescriticalalert_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_criticallylowspo2_firescriticalalert",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_normalspo2_noalert_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_normalspo2_noalert",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_highsystolicbp_fireshighalert_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_highsystolicbp_fireshighalert",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowsystolicbp_firescriticalalert_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowsystolicbp_firescriticalalert",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_hightemperature_firesmediumalert_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_hightemperature_firesmediumalert",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowtemperature_fireshighalert_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowtemperature_fireshighalert",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_highrespiratoryrate_fireshighalert_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_highrespiratoryrate_fireshighalert",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowrespiratoryrate_firescriticalalert_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_lowrespiratoryrate_firescriticalalert",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_multipleabnormalvitals_firesmultiplealerts_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_multipleabnormalvitals_firesmultiplealerts",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_allnullvitals_noalerts_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_allnullvitals_noalerts",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_anomalydetectionfunctiontest_alert_hascorrectpatientandvitalid_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "fromNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_alert_hascorrectpatientandvitalid",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_vitalscustomizer_anomalydetectionfunctiontest_vitalscustomizer_customize",
+      "fromNode": "n_anomalydetectionfunctiontest_vitalscustomizer",
+      "toNode": "n_anomalydetectionfunctiontest_vitalscustomizer_customize",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_vitalscustomizer_customize_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "fromNode": "n_anomalydetectionfunctiontest_vitalscustomizer_customize",
+      "toNode": "n_anomalydetectionfunctiontest_anomalydetectionfunctiontest_buildvitals",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_listcollector_anomalydetectionfunctiontest_listcollector_collect",
+      "fromNode": "n_anomalydetectionfunctiontest_listcollector",
+      "toNode": "n_anomalydetectionfunctiontest_listcollector_collect",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunctiontest_listcollector_anomalydetectionfunctiontest_listcollector_close",
+      "fromNode": "n_anomalydetectionfunctiontest_listcollector",
+      "toNode": "n_anomalydetectionfunctiontest_listcollector_close",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_med_flink_src_main_java_com_healthcare_vitals_config_topicnames_java_topicnames_topicnames",
+      "fromNode": "n_med_flink_src_main_java_com_healthcare_vitals_config_topicnames_java",
+      "toNode": "n_topicnames_topicnames",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_topicnames_topicnames_topicnames_topicnames_topicnames",
+      "fromNode": "n_topicnames_topicnames",
+      "toNode": "n_topicnames_topicnames_topicnames",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_med_flink_src_main_java_com_healthcare_vitals_source_watermarkstrategyfactory_java_watermarkstrategyfactory_watermarkstrategyfactory",
+      "fromNode": "n_med_flink_src_main_java_com_healthcare_vitals_source_watermarkstrategyfactory_java",
+      "toNode": "n_watermarkstrategyfactory_watermarkstrategyfactory",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_watermarkstrategyfactory_watermarkstrategyfactory_watermarkstrategyfactory_watermarkstrategyfactory_watermarkstrategyfactory",
+      "fromNode": "n_watermarkstrategyfactory_watermarkstrategyfactory",
+      "toNode": "n_watermarkstrategyfactory_watermarkstrategyfactory_watermarkstrategyfactory",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_watermarkstrategyfactory_watermarkstrategyfactory_watermarkstrategyfactory_watermarkstrategyfactory_forvitals",
+      "fromNode": "n_watermarkstrategyfactory_watermarkstrategyfactory",
+      "toNode": "n_watermarkstrategyfactory_watermarkstrategyfactory_forvitals",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_med_flink_src_main_java_com_healthcare_vitals_source_kafkasourcefactory_java_kafkasourcefactory_kafkasourcefactory",
+      "fromNode": "n_med_flink_src_main_java_com_healthcare_vitals_source_kafkasourcefactory_java",
+      "toNode": "n_kafkasourcefactory_kafkasourcefactory",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_med_flink_src_main_java_com_healthcare_vitals_source_kafkasourcefactory_java_kafkasourcefactory_faulttolerantdeserializer",
+      "fromNode": "n_med_flink_src_main_java_com_healthcare_vitals_source_kafkasourcefactory_java",
+      "toNode": "n_kafkasourcefactory_faulttolerantdeserializer",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_kafkasourcefactory_kafkasourcefactory_kafkasourcefactory_kafkasourcefactory_kafkasourcefactory",
+      "fromNode": "n_kafkasourcefactory_kafkasourcefactory",
+      "toNode": "n_kafkasourcefactory_kafkasourcefactory_kafkasourcefactory",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_kafkasourcefactory_kafkasourcefactory_kafkasourcefactory_kafkasourcefactory_create",
+      "fromNode": "n_kafkasourcefactory_kafkasourcefactory",
+      "toNode": "n_kafkasourcefactory_kafkasourcefactory_create",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_kafkasourcefactory_faulttolerantdeserializer_kafkasourcefactory_faulttolerantdeserializer_faulttolerantdeserializer",
+      "fromNode": "n_kafkasourcefactory_faulttolerantdeserializer",
+      "toNode": "n_kafkasourcefactory_faulttolerantdeserializer_faulttolerantdeserializer",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_kafkasourcefactory_faulttolerantdeserializer_kafkasourcefactory_faulttolerantdeserializer_deserialize",
+      "fromNode": "n_kafkasourcefactory_faulttolerantdeserializer",
+      "toNode": "n_kafkasourcefactory_faulttolerantdeserializer_deserialize",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_kafkasourcefactory_faulttolerantdeserializer_kafkasourcefactory_faulttolerantdeserializer_sendtodlq",
+      "fromNode": "n_kafkasourcefactory_faulttolerantdeserializer",
+      "toNode": "n_kafkasourcefactory_faulttolerantdeserializer_sendtodlq",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_kafkasourcefactory_faulttolerantdeserializer_kafkasourcefactory_faulttolerantdeserializer_createdlqproducer",
+      "fromNode": "n_kafkasourcefactory_faulttolerantdeserializer",
+      "toNode": "n_kafkasourcefactory_faulttolerantdeserializer_createdlqproducer",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_kafkasourcefactory_faulttolerantdeserializer_kafkasourcefactory_faulttolerantdeserializer_getproducedtype",
+      "fromNode": "n_kafkasourcefactory_faulttolerantdeserializer",
+      "toNode": "n_kafkasourcefactory_faulttolerantdeserializer_getproducedtype",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_kafkasourcefactory_faulttolerantdeserializer_kafkasourcefactory_faulttolerantdeserializer_truncate",
+      "fromNode": "n_kafkasourcefactory_faulttolerantdeserializer",
+      "toNode": "n_kafkasourcefactory_faulttolerantdeserializer_truncate",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_kafkasourcefactory_faulttolerantdeserializer_deserialize_kafkasourcefactory_faulttolerantdeserializer_sendtodlq",
+      "fromNode": "n_kafkasourcefactory_faulttolerantdeserializer_deserialize",
+      "toNode": "n_kafkasourcefactory_faulttolerantdeserializer_sendtodlq",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_kafkasourcefactory_faulttolerantdeserializer_sendtodlq_kafkasourcefactory_faulttolerantdeserializer_createdlqproducer",
+      "fromNode": "n_kafkasourcefactory_faulttolerantdeserializer_sendtodlq",
+      "toNode": "n_kafkasourcefactory_faulttolerantdeserializer_createdlqproducer",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_kafkasourcefactory_faulttolerantdeserializer_sendtodlq_kafkasourcefactory_faulttolerantdeserializer_truncate",
+      "fromNode": "n_kafkasourcefactory_faulttolerantdeserializer_sendtodlq",
+      "toNode": "n_kafkasourcefactory_faulttolerantdeserializer_truncate",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_med_flink_src_main_java_com_healthcare_vitals_sink_kafkasinkfactory_java_kafkasinkfactory_kafkasinkfactory",
+      "fromNode": "n_med_flink_src_main_java_com_healthcare_vitals_sink_kafkasinkfactory_java",
+      "toNode": "n_kafkasinkfactory_kafkasinkfactory",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_kafkasinkfactory_kafkasinkfactory_kafkasinkfactory_kafkasinkfactory_kafkasinkfactory",
+      "fromNode": "n_kafkasinkfactory_kafkasinkfactory",
+      "toNode": "n_kafkasinkfactory_kafkasinkfactory_kafkasinkfactory",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_kafkasinkfactory_kafkasinkfactory_kafkasinkfactory_kafkasinkfactory_create",
+      "fromNode": "n_kafkasinkfactory_kafkasinkfactory",
+      "toNode": "n_kafkasinkfactory_kafkasinkfactory_create",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_med_flink_src_main_java_com_healthcare_vitals_job_jobconfig_java_jobconfig_jobconfig",
+      "fromNode": "n_med_flink_src_main_java_com_healthcare_vitals_job_jobconfig_java",
+      "toNode": "n_jobconfig_jobconfig",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_med_flink_src_main_java_com_healthcare_vitals_job_jobconfig_java_jobconfig_builder",
+      "fromNode": "n_med_flink_src_main_java_com_healthcare_vitals_job_jobconfig_java",
+      "toNode": "n_jobconfig_builder",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_jobconfig_jobconfig_jobconfig",
+      "fromNode": "n_jobconfig_jobconfig",
+      "toNode": "n_jobconfig_jobconfig_jobconfig",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_jobconfig_jobconfig_fromenvironment",
+      "fromNode": "n_jobconfig_jobconfig",
+      "toNode": "n_jobconfig_jobconfig_fromenvironment",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_jobconfig_jobconfig_toschemaregistryproperties",
+      "fromNode": "n_jobconfig_jobconfig",
+      "toNode": "n_jobconfig_jobconfig_toschemaregistryproperties",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_jobconfig_jobconfig_getbootstrapservers",
+      "fromNode": "n_jobconfig_jobconfig",
+      "toNode": "n_jobconfig_jobconfig_getbootstrapservers",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_jobconfig_jobconfig_getconsumergroup",
+      "fromNode": "n_jobconfig_jobconfig",
+      "toNode": "n_jobconfig_jobconfig_getconsumergroup",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_jobconfig_jobconfig_getautooffsetreset",
+      "fromNode": "n_jobconfig_jobconfig",
+      "toNode": "n_jobconfig_jobconfig_getautooffsetreset",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_jobconfig_jobconfig_getschemaregistryurl",
+      "fromNode": "n_jobconfig_jobconfig",
+      "toNode": "n_jobconfig_jobconfig_getschemaregistryurl",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_jobconfig_jobconfig_getparallelism",
+      "fromNode": "n_jobconfig_jobconfig",
+      "toNode": "n_jobconfig_jobconfig_getparallelism",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_jobconfig_jobconfig_getcheckpointintervalms",
+      "fromNode": "n_jobconfig_jobconfig",
+      "toNode": "n_jobconfig_jobconfig_getcheckpointintervalms",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_jobconfig_jobconfig_env",
+      "fromNode": "n_jobconfig_jobconfig",
+      "toNode": "n_jobconfig_jobconfig_env",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_jobconfig_jobconfig_requireenv",
+      "fromNode": "n_jobconfig_jobconfig",
+      "toNode": "n_jobconfig_jobconfig_requireenv",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_jobconfig_jobconfig_tostring",
+      "fromNode": "n_jobconfig_jobconfig",
+      "toNode": "n_jobconfig_jobconfig_tostring",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_fromenvironment_jobconfig_builder_build",
+      "fromNode": "n_jobconfig_jobconfig_fromenvironment",
+      "toNode": "n_jobconfig_builder_build",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_fromenvironment_jobconfig_builder_checkpointintervalms",
+      "fromNode": "n_jobconfig_jobconfig_fromenvironment",
+      "toNode": "n_jobconfig_builder_checkpointintervalms",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_fromenvironment_jobconfig_builder_parallelism",
+      "fromNode": "n_jobconfig_jobconfig_fromenvironment",
+      "toNode": "n_jobconfig_builder_parallelism",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_fromenvironment_jobconfig_builder_autooffsetreset",
+      "fromNode": "n_jobconfig_jobconfig_fromenvironment",
+      "toNode": "n_jobconfig_builder_autooffsetreset",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_fromenvironment_jobconfig_builder_consumergroup",
+      "fromNode": "n_jobconfig_jobconfig_fromenvironment",
+      "toNode": "n_jobconfig_builder_consumergroup",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_fromenvironment_jobconfig_builder_schemaregistryurl",
+      "fromNode": "n_jobconfig_jobconfig_fromenvironment",
+      "toNode": "n_jobconfig_builder_schemaregistryurl",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_fromenvironment_jobconfig_builder_bootstrapservers",
+      "fromNode": "n_jobconfig_jobconfig_fromenvironment",
+      "toNode": "n_jobconfig_builder_bootstrapservers",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_fromenvironment_jobconfig_jobconfig_requireenv",
+      "fromNode": "n_jobconfig_jobconfig_fromenvironment",
+      "toNode": "n_jobconfig_jobconfig_requireenv",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_jobconfig_fromenvironment_jobconfig_jobconfig_env",
+      "fromNode": "n_jobconfig_jobconfig_fromenvironment",
+      "toNode": "n_jobconfig_jobconfig_env",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_builder_jobconfig_builder_bootstrapservers",
+      "fromNode": "n_jobconfig_builder",
+      "toNode": "n_jobconfig_builder_bootstrapservers",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_builder_jobconfig_builder_consumergroup",
+      "fromNode": "n_jobconfig_builder",
+      "toNode": "n_jobconfig_builder_consumergroup",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_builder_jobconfig_builder_autooffsetreset",
+      "fromNode": "n_jobconfig_builder",
+      "toNode": "n_jobconfig_builder_autooffsetreset",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_builder_jobconfig_builder_schemaregistryurl",
+      "fromNode": "n_jobconfig_builder",
+      "toNode": "n_jobconfig_builder_schemaregistryurl",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_builder_jobconfig_builder_parallelism",
+      "fromNode": "n_jobconfig_builder",
+      "toNode": "n_jobconfig_builder_parallelism",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_builder_jobconfig_builder_checkpointintervalms",
+      "fromNode": "n_jobconfig_builder",
+      "toNode": "n_jobconfig_builder_checkpointintervalms",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_builder_jobconfig_builder_build",
+      "fromNode": "n_jobconfig_builder",
+      "toNode": "n_jobconfig_builder_build",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_jobconfig_builder_jobconfig_fromenvironment",
+      "fromNode": "n_jobconfig_builder",
+      "toNode": "n_jobconfig_fromenvironment",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_med_flink_src_main_java_com_healthcare_vitals_job_vitalsanomalydetectionjob_java_vitalsanomalydetectionjob_vitalsanomalydetectionjob",
+      "fromNode": "n_med_flink_src_main_java_com_healthcare_vitals_job_vitalsanomalydetectionjob_java",
+      "toNode": "n_vitalsanomalydetectionjob_vitalsanomalydetectionjob",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_vitalsanomalydetectionjob_vitalsanomalydetectionjob_vitalsanomalydetectionjob_vitalsanomalydetectionjob_main",
+      "fromNode": "n_vitalsanomalydetectionjob_vitalsanomalydetectionjob",
+      "toNode": "n_vitalsanomalydetectionjob_vitalsanomalydetectionjob_main",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_vitalsanomalydetectionjob_vitalsanomalydetectionjob_vitalsanomalydetectionjob_vitalsanomalydetectionjob_buildenvironment",
+      "fromNode": "n_vitalsanomalydetectionjob_vitalsanomalydetectionjob",
+      "toNode": "n_vitalsanomalydetectionjob_vitalsanomalydetectionjob_buildenvironment",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_vitalsanomalydetectionjob_vitalsanomalydetectionjob_vitalsanomalydetectionjob_vitalsanomalydetectionjob_buildpipeline",
+      "fromNode": "n_vitalsanomalydetectionjob_vitalsanomalydetectionjob",
+      "toNode": "n_vitalsanomalydetectionjob_vitalsanomalydetectionjob_buildpipeline",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_vitalsanomalydetectionjob_vitalsanomalydetectionjob_main_vitalsanomalydetectionjob_vitalsanomalydetectionjob_buildenvironment",
+      "fromNode": "n_vitalsanomalydetectionjob_vitalsanomalydetectionjob_main",
+      "toNode": "n_vitalsanomalydetectionjob_vitalsanomalydetectionjob_buildenvironment",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_vitalsanomalydetectionjob_vitalsanomalydetectionjob_main_vitalsanomalydetectionjob_vitalsanomalydetectionjob_buildpipeline",
+      "fromNode": "n_vitalsanomalydetectionjob_vitalsanomalydetectionjob_main",
+      "toNode": "n_vitalsanomalydetectionjob_vitalsanomalydetectionjob_buildpipeline",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_med_flink_src_main_java_com_healthcare_vitals_operator_anomalydetectionfunction_java_anomalydetectionfunction_anomalydetectionfunction",
+      "fromNode": "n_med_flink_src_main_java_com_healthcare_vitals_operator_anomalydetectionfunction_java",
+      "toNode": "n_anomalydetectionfunction_anomalydetectionfunction",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunction_anomalydetectionfunction_anomalydetectionfunction_anomalydetectionfunction_open",
+      "fromNode": "n_anomalydetectionfunction_anomalydetectionfunction",
+      "toNode": "n_anomalydetectionfunction_anomalydetectionfunction_open",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunction_anomalydetectionfunction_anomalydetectionfunction_anomalydetectionfunction_flatmap",
+      "fromNode": "n_anomalydetectionfunction_anomalydetectionfunction",
+      "toNode": "n_anomalydetectionfunction_anomalydetectionfunction_flatmap",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunction_anomalydetectionfunction_anomalydetectionfunction_anomalydetectionfunction_checkheartrate",
+      "fromNode": "n_anomalydetectionfunction_anomalydetectionfunction",
+      "toNode": "n_anomalydetectionfunction_anomalydetectionfunction_checkheartrate",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunction_anomalydetectionfunction_anomalydetectionfunction_anomalydetectionfunction_checkspo2",
+      "fromNode": "n_anomalydetectionfunction_anomalydetectionfunction",
+      "toNode": "n_anomalydetectionfunction_anomalydetectionfunction_checkspo2",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunction_anomalydetectionfunction_anomalydetectionfunction_anomalydetectionfunction_checksystolicbp",
+      "fromNode": "n_anomalydetectionfunction_anomalydetectionfunction",
+      "toNode": "n_anomalydetectionfunction_anomalydetectionfunction_checksystolicbp",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunction_anomalydetectionfunction_anomalydetectionfunction_anomalydetectionfunction_checktemperature",
+      "fromNode": "n_anomalydetectionfunction_anomalydetectionfunction",
+      "toNode": "n_anomalydetectionfunction_anomalydetectionfunction_checktemperature",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunction_anomalydetectionfunction_anomalydetectionfunction_anomalydetectionfunction_checkrespiratoryrate",
+      "fromNode": "n_anomalydetectionfunction_anomalydetectionfunction",
+      "toNode": "n_anomalydetectionfunction_anomalydetectionfunction_checkrespiratoryrate",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunction_anomalydetectionfunction_anomalydetectionfunction_anomalydetectionfunction_buildalert",
+      "fromNode": "n_anomalydetectionfunction_anomalydetectionfunction",
+      "toNode": "n_anomalydetectionfunction_anomalydetectionfunction_buildalert",
+      "label": "method [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunction_anomalydetectionfunction_flatmap_anomalydetectionfunction_anomalydetectionfunction_checkheartrate",
+      "fromNode": "n_anomalydetectionfunction_anomalydetectionfunction_flatmap",
+      "toNode": "n_anomalydetectionfunction_anomalydetectionfunction_checkheartrate",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunction_anomalydetectionfunction_flatmap_anomalydetectionfunction_anomalydetectionfunction_checkspo2",
+      "fromNode": "n_anomalydetectionfunction_anomalydetectionfunction_flatmap",
+      "toNode": "n_anomalydetectionfunction_anomalydetectionfunction_checkspo2",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunction_anomalydetectionfunction_flatmap_anomalydetectionfunction_anomalydetectionfunction_checksystolicbp",
+      "fromNode": "n_anomalydetectionfunction_anomalydetectionfunction_flatmap",
+      "toNode": "n_anomalydetectionfunction_anomalydetectionfunction_checksystolicbp",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunction_anomalydetectionfunction_flatmap_anomalydetectionfunction_anomalydetectionfunction_checktemperature",
+      "fromNode": "n_anomalydetectionfunction_anomalydetectionfunction_flatmap",
+      "toNode": "n_anomalydetectionfunction_anomalydetectionfunction_checktemperature",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunction_anomalydetectionfunction_flatmap_anomalydetectionfunction_anomalydetectionfunction_checkrespiratoryrate",
+      "fromNode": "n_anomalydetectionfunction_anomalydetectionfunction_flatmap",
+      "toNode": "n_anomalydetectionfunction_anomalydetectionfunction_checkrespiratoryrate",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunction_anomalydetectionfunction_checkheartrate_anomalydetectionfunction_anomalydetectionfunction_buildalert",
+      "fromNode": "n_anomalydetectionfunction_anomalydetectionfunction_checkheartrate",
+      "toNode": "n_anomalydetectionfunction_anomalydetectionfunction_buildalert",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunction_anomalydetectionfunction_checkspo2_anomalydetectionfunction_anomalydetectionfunction_buildalert",
+      "fromNode": "n_anomalydetectionfunction_anomalydetectionfunction_checkspo2",
+      "toNode": "n_anomalydetectionfunction_anomalydetectionfunction_buildalert",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunction_anomalydetectionfunction_checksystolicbp_anomalydetectionfunction_anomalydetectionfunction_buildalert",
+      "fromNode": "n_anomalydetectionfunction_anomalydetectionfunction_checksystolicbp",
+      "toNode": "n_anomalydetectionfunction_anomalydetectionfunction_buildalert",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunction_anomalydetectionfunction_checktemperature_anomalydetectionfunction_anomalydetectionfunction_buildalert",
+      "fromNode": "n_anomalydetectionfunction_anomalydetectionfunction_checktemperature",
+      "toNode": "n_anomalydetectionfunction_anomalydetectionfunction_buildalert",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_anomalydetectionfunction_anomalydetectionfunction_checkrespiratoryrate_anomalydetectionfunction_anomalydetectionfunction_buildalert",
+      "fromNode": "n_anomalydetectionfunction_anomalydetectionfunction_checkrespiratoryrate",
+      "toNode": "n_anomalydetectionfunction_anomalydetectionfunction_buildalert",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_claudemd_medical_anomaly_detection_project_claudemd_med_infra_subproject",
+      "fromNode": "n_claudemd_medical_anomaly_detection_project",
+      "toNode": "n_claudemd_med_infra_subproject",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_claudemd_medical_anomaly_detection_project_claudemd_med_flink_subproject",
+      "fromNode": "n_claudemd_medical_anomaly_detection_project",
+      "toNode": "n_claudemd_med_flink_subproject",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_claudemd_nice_ng51_news2_thresholds_anomalydetectionfunction_class",
+      "fromNode": "n_claudemd_nice_ng51_news2_thresholds",
+      "toNode": "n_anomalydetectionfunction_class",
+      "label": "conceptually_related_to [EXTRACTED]"
+    },
+    {
+      "id": "e_claudemd_arch_decision_stateless_detection_anomalydetectionfunction_class",
+      "fromNode": "n_claudemd_arch_decision_stateless_detection",
+      "toNode": "n_anomalydetectionfunction_class",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_claudemd_arch_decision_event_time_watermarkstrategyfactory_forvitals",
+      "fromNode": "n_claudemd_arch_decision_event_time",
+      "toNode": "n_watermarkstrategyfactory_forvitals",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_claudemd_arch_decision_full_transitive_schema_confluent_schema_registry",
+      "fromNode": "n_claudemd_arch_decision_full_transitive_schema",
+      "toNode": "n_confluent_schema_registry",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_claudemd_arch_decision_kraft_apache_kafka_cluster",
+      "fromNode": "n_claudemd_arch_decision_kraft",
+      "toNode": "n_apache_kafka_cluster",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_claudemd_arch_decision_nullable_vitals_avro_patientvitals_schema",
+      "fromNode": "n_claudemd_arch_decision_nullable_vitals",
+      "toNode": "n_avro_patientvitals_schema",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_claudemd_arch_decision_dlq_on_error_faulttolerantdeserializer_class",
+      "fromNode": "n_claudemd_arch_decision_dlq_on_error",
+      "toNode": "n_faulttolerantdeserializer_class",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_notes_prod_changes_made_anomalydetectionfunction_mdc",
+      "fromNode": "n_notes_prod_changes_made",
+      "toNode": "n_anomalydetectionfunction_mdc",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_notes_prod_changes_made_faulttolerantdeserializer_mdc",
+      "fromNode": "n_notes_prod_changes_made",
+      "toNode": "n_faulttolerantdeserializer_mdc",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_notes_prod_changes_made_notes_prometheus_reporter",
+      "fromNode": "n_notes_prod_changes_made",
+      "toNode": "n_notes_prometheus_reporter",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_notes_prod_changes_made_notes_log4j2_json_template",
+      "fromNode": "n_notes_prod_changes_made",
+      "toNode": "n_notes_log4j2_json_template",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_notes_prod_changes_made_notes_grafana_dashboards",
+      "fromNode": "n_notes_prod_changes_made",
+      "toNode": "n_notes_grafana_dashboards",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_notes_prod_changes_made_notes_loki_promtail",
+      "fromNode": "n_notes_prod_changes_made",
+      "toNode": "n_notes_loki_promtail",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_notes_prod_changes_made_notes_dockerfile_flink",
+      "fromNode": "n_notes_prod_changes_made",
+      "toNode": "n_notes_dockerfile_flink",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_notes_prod_considerations_notes_hipaa_phi_risk",
+      "fromNode": "n_notes_prod_considerations",
+      "toNode": "n_notes_hipaa_phi_risk",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_notes_prod_considerations_notes_kafka_tls_risk",
+      "fromNode": "n_notes_prod_considerations",
+      "toNode": "n_notes_kafka_tls_risk",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_notes_prod_considerations_notes_checkpoint_storage_risk",
+      "fromNode": "n_notes_prod_considerations",
+      "toNode": "n_notes_checkpoint_storage_risk",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_notes_prod_considerations_notes_exactly_once_sink_risk",
+      "fromNode": "n_notes_prod_considerations",
+      "toNode": "n_notes_exactly_once_sink_risk",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_notes_prod_considerations_notes_deterministic_alertid",
+      "fromNode": "n_notes_prod_considerations",
+      "toNode": "n_notes_deterministic_alertid",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_notes_prod_considerations_notes_alerttime_wallclock_risk",
+      "fromNode": "n_notes_prod_considerations",
+      "toNode": "n_notes_alerttime_wallclock_risk",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_notes_prod_considerations_notes_rocksdb_upgrade",
+      "fromNode": "n_notes_prod_considerations",
+      "toNode": "n_notes_rocksdb_upgrade",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_notes_prod_considerations_notes_nan_vital_test_gap",
+      "fromNode": "n_notes_prod_considerations",
+      "toNode": "n_notes_nan_vital_test_gap",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_notes_prod_considerations_notes_late_data_side_output",
+      "fromNode": "n_notes_prod_considerations",
+      "toNode": "n_notes_late_data_side_output",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_topicnames_vitals_raw_topicnames_class",
+      "fromNode": "n_topicnames_vitals_raw",
+      "toNode": "n_topicnames_class",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_topicnames_vitals_raw_vitalsanomalydetectionjob_buildpipeline",
+      "fromNode": "n_topicnames_vitals_raw",
+      "toNode": "n_vitalsanomalydetectionjob_buildpipeline",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_topicnames_alert_triggered_topicnames_class",
+      "fromNode": "n_topicnames_alert_triggered",
+      "toNode": "n_topicnames_class",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_topicnames_alert_triggered_vitalsanomalydetectionjob_buildpipeline",
+      "fromNode": "n_topicnames_alert_triggered",
+      "toNode": "n_vitalsanomalydetectionjob_buildpipeline",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_topicnames_alert_triggered_kafkasinkfactory_create",
+      "fromNode": "n_topicnames_alert_triggered",
+      "toNode": "n_kafkasinkfactory_create",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_topicnames_vitals_dlq_topicnames_class",
+      "fromNode": "n_topicnames_vitals_dlq",
+      "toNode": "n_topicnames_class",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_topicnames_vitals_dlq_faulttolerantdeserializer_sendtodlq",
+      "fromNode": "n_topicnames_vitals_dlq",
+      "toNode": "n_faulttolerantdeserializer_sendtodlq",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_topicnames_vitals_dlq_test_faulttolerabledeserializertest",
+      "fromNode": "n_topicnames_vitals_dlq",
+      "toNode": "n_test_faulttolerabledeserializertest",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_topicnames_class_kafkasourcefactory_create",
+      "fromNode": "n_topicnames_class",
+      "toNode": "n_kafkasourcefactory_create",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_watermarkstrategyfactory_class_watermarkstrategyfactory_forvitals",
+      "fromNode": "n_watermarkstrategyfactory_class",
+      "toNode": "n_watermarkstrategyfactory_forvitals",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_watermarkstrategyfactory_forvitals_avro_patientvitals_schema",
+      "fromNode": "n_watermarkstrategyfactory_forvitals",
+      "toNode": "n_avro_patientvitals_schema",
+      "label": "shares_data_with [EXTRACTED]"
+    },
+    {
+      "id": "e_watermarkstrategyfactory_forvitals_vitalsanomalydetectionjob_buildpipeline",
+      "fromNode": "n_watermarkstrategyfactory_forvitals",
+      "toNode": "n_vitalsanomalydetectionjob_buildpipeline",
+      "label": "calls [EXTRACTED]"
+    }
+  ]
+}
